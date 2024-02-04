@@ -1,0 +1,31 @@
+.loginPageDiv {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+  
+    .div1,
+    .div2 {
+      height: 100vh;
+    }
+    .div1 {
+      width: 60%;
+      // background-color: red;
+      background-image: url(https://cdn.pixabay.com/photo/2023/09/02/15/34/mountains-8229139_1280.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .div2 {
+      width: 40%;
+      background-color: #9bb3b6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .loginFormDiv {
+          background-color: rgb(237, 254, 241);
+          position: absolute;
+          border: none !important;
+
+        }
+    }
+  }
+  

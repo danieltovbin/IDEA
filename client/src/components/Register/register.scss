@@ -1,0 +1,23 @@
+.registerFormDiv {
+    border: 1px solid rgb(93, 64, 255);
+    padding: 3rem;
+    border-radius: 10px;
+
+  .noConfirmPass {
+    color: rgb(255, 88, 88);
+    padding-left: 20px;
+  }
+  .confirmPass {
+    color: green;
+    padding-left: 20px;
+    text-align: center;
+  }
+  .submitBtn{
+    background-color: #9eb2d6;
+    color: black;
+    padding: 20px;
+    &:hover{
+        color: white;
+    }
+  }
+}

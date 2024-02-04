@@ -1,0 +1,48 @@
+.nav {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  width: 100vw; //will change to 100%
+  background-color: #fafafa;
+  box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.11) ;
+  .rNav {
+    display: flex;
+    flex-direction: row-reverse;
+    button {
+      align-items: center;
+      justify-content: center;
+      font-weight: lighter;
+      font-size: 13px;
+      height: 40px;
+      svg {
+        align-items: center;
+      }
+    }
+  }
+  .lNav {
+    button {
+      align-items: center;
+      justify-content: center;
+    //   font-weight: lighter;
+      font-size: 13px;
+      height: 40px;
+      svg {
+        align-items: center;
+      }
+    }
+  }
+  button{
+    transition: all 0.3s;
+    &:hover {
+        border: 1px solid #fafafa;
+        background-color: #c8c8c8;
+        border-radius: 30px;
+    }
+  }
+}
+
+.MuiSvgIcon-root {
+  display: inline-block; /* גורם לאייקונים להופיע כבלוקים כדי שנוכל להשתמש ב-text-align */
+  vertical-align: middle; /* יישור אנכי כדי להקטין את הקווים בהתאם לגובה של הטקסט בסביבתם */
+  padding: 0px 10px;
+}

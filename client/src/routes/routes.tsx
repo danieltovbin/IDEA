@@ -13,6 +13,11 @@ export const router = createBrowserRouter([
     {path: "/contentEdit", element: <ContentEdit/>},
     {path: "/Submissions", element: <Submissions/>},
     {path: "/DeveloperDetails", element: <DeveloperDetails/>},
+    { path: "/login", element: <LoginPage/> },
+    { path: "/register", element: <RegisterPage /> },
+    { path: "/homePage", element: <HomePage /> },
+    { path: "/createProject", element: <CreateProject /> },
+    { path: "/", element: <LoginPage /> },
 
 ]);
 

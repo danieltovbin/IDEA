@@ -1,0 +1,28 @@
+.registerPageDiv {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+
+  .div1,
+  .div2 {
+    height: 100vh;
+  }
+  .div1 {
+    width: 60%;
+    // background-color: red;
+    background-image: url(https://cdn.pixabay.com/photo/2023/12/13/03/19/mountains-8446221_1280.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .div2 {
+    width: 40%;
+    background-color: #1a4780;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .registerFormDiv {
+        background-color: rgb(244, 247, 252);
+        position: absolute;
+      }
+  }
+}

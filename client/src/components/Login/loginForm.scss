@@ -1,0 +1,19 @@
+.loginFormDiv {
+  padding: 3rem ;
+  border-radius: 10px;
+  // background-color: white;
+  .TextField {
+    width: calc(100% - 10px);
+    margin: 10px;
+  }
+  .submitBtn {
+    background-color: #9eb2d6;
+    color: black;
+    padding: 20px;
+    margin: 10px;
+    &:hover {
+      background-color: rgb(8, 136, 85);
+      color: white;
+    }
+  }
+}

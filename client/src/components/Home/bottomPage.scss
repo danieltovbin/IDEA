@@ -1,0 +1,47 @@
+.bottomPageDiv {
+  background-color: #f3f3f3;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: rgb(46, 46, 46);
+  .mainDiv {
+    width: 70%;
+    align-items: center;
+  }
+  .top {
+    display: flex;
+    ul {
+      list-style: none;
+      h4 {
+        color: #ff0d91;
+      }
+      li {
+        color: rgb(46, 46, 46);
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+  }
+
+  .ourPolicy {
+    border-top: 1px dashed rgb(144, 144, 144);
+    display: flex;
+    justify-content: space-between;
+    .logo {
+      img {
+        width: 90px;
+      }
+    }
+    .policyLinks {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // margin-top: auto;
+      a {
+        padding: 7px;
+        color: rgb(164, 164, 164);
+        font-size: 12px;
+      }
+    }
+  }
+}
