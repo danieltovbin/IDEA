@@ -5,6 +5,10 @@ import DescriptionProject from '../pages/edit/DescriptionProject';
 import ContentEdit from '../pages/edit/ContentEdit';
 import Submissions from '../pages/edit/Submissions';
 import DeveloperDetails from '../pages/edit/DeveloperDetails';
+import CreateProject from '../pages/CreateProjectPage/CreateProjectPage';
+import HomePage from '../pages/Home/HomePage';
+import LoginPage from '../pages/LoginPage/LoginPage';
+import RegisterPage from '../pages/RegisterPage/RegisterPage';
 
 export const router = createBrowserRouter([
     {path: "/format", element: <Format/>},
