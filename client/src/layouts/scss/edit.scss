@@ -1,0 +1,28 @@
+.edit{
+    direction:rtl;
+    width: 100vw;
+    height: 100vh;
+    
+    .MuiBox-root.css-8atqhb{
+        margin-bottom: 40px;
+    }
+
+    label{
+    color: #424242;
+    display: flex;
+    font-size: 13px;
+    max-height: 20px;
+    font-weight: bold;
+    }
+
+    input{
+        padding: 10px
+    }
+}
+
+
+.MuiTabs-flexContainer.css-heg063-MuiTabs-flexContainer{
+    display: flex;
+    justify-content: center;
+}
+

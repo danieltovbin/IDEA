@@ -1,0 +1,81 @@
+.format{
+    direction:rtl;
+    width: 100vw;
+    height: 100vh;
+    
+    h2{
+        font-family: Open Sans Hebrew, sans-serif !important;
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    label{
+        margin: 40px 0px 0px;
+        color: #424242;
+        display: flex;
+        font-size: 13px;
+        max-height: 20px;
+        font-weight: bold;
+    }
+
+    input{
+        padding: 10px;
+        border: 1px solid gray;
+        color: gray;
+        border-radius: 4px;
+        outline: none;
+    }
+
+    .note{
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+
+    #nameProject{
+        &::placeholder {
+            color:rgb(217, 210, 210);
+        }
+        &:focus {
+            border-color: rgba(72, 173, 2, 0.3);
+        }
+    }
+
+    .contact-us{
+        position: fixed;
+        z-index: 2000;
+        background-color: rgb(255, 13, 144);
+        color: white;
+        font-size: 40px;
+        top: 90%;
+        left: 24%;
+        border-radius: 50%;
+        cursor: pointer;
+        margin: 0;
+        outline: 0;
+        padding: 10px;
+    }
+}
+
+.MuiInputBase-input.MuiOutlinedInput-input.MuiInputBase-inputAdornedEnd.MuiAutocomplete-input.MuiAutocomplete-inputFocused.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input{
+    border: 0px;
+    padding: 0;
+}
+
+
+.MuiInputBase-adornedEnd.MuiAutocomplete-inputRoot.css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root{
+    padding: 9px;
+    font-size: 13px;
+   
+}
+
+.btnNextLevel{
+    margin-top: 62px;
+    padding: 6px 16px;
+    outline: 0;
+    text-transform: none;
+    font-family: Open Sans Hebrew, sans-serif;
+    line-height: 1.75;
+    color: rgb(181, 176, 176);
+}
