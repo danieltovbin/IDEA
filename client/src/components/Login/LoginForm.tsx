@@ -12,12 +12,13 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { login, register } from "../../API/Users/usersCtrl";
 import "./loginForm.scss";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-
+const navigate = useNavigate()
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (
@@ -30,8 +31,8 @@ const LoginForm = () => {
     ev.preventDefault();
     if (password && userName) {
       console.log(password, userName);
-      
-      await login({userName, password });
+      const ok = await login({ userName, password });
+      if(ok){navigate("/descriptionProject")}
     }
   };
 
@@ -45,7 +46,7 @@ const LoginForm = () => {
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <Typography variant="h5" align="center">
-              Login
+              כניסה
             </Typography>
           </Grid>
         </Grid>
@@ -53,7 +54,7 @@ const LoginForm = () => {
           <TextField
             className="TextField"
             fullWidth
-            label="User Name"
+            label="שם משתמש"
             variant="outlined"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
@@ -64,7 +65,7 @@ const LoginForm = () => {
           <TextField
             className="TextField"
             fullWidth
-            label="Password"
+            label="סיסמה"
             type={showPassword ? "text" : "password"}
             variant="outlined"
             // value={password}
@@ -94,7 +95,7 @@ const LoginForm = () => {
             variant="contained"
             color="primary"
           >
-            Login
+            התחברות
           </Button>
         </Grid>
       </form>
