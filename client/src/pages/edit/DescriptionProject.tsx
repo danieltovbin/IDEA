@@ -1,3 +1,4 @@
+
 import { Container, SvgIcon, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import PicProject from '../../components/edit/DescriptionProject/picProject/PicProject';
@@ -5,16 +6,34 @@ import EditLayout from '../../layouts/EditLayout';
 import './scss/description.scss';
 import ShortDescription from '../../components/edit/DescriptionProject/Inputs/ShortDescription';
 import Recruitment from '../../components/edit/DescriptionProject/Inputs/Recruitment';
+import { useRef } from "react";
 
 const DescriptionProject = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  const handleIconClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
 
   return (
     <EditLayout>
       <div className="description">
-        <div className='description-container'>
-          <p>איך מתארים את הפרויקט בצורה הטובה ביותר? המטרה היא לעניין אנשים, למשוך אותם פנימה לתוך הפרויקט, אנחנו רוצים ליצור רושם ראשוני מסקרן ומעניין</p>
-          <form style={{ display: 'flex', flexDirection: "column", maxWidth: "580px" }}>
+        <div className="description-container">
+          <p>
+            איך מתארים את הפרויקט בצורה הטובה ביותר? המטרה היא לעניין אנשים,
+            למשוך אותם פנימה לתוך הפרויקט, אנחנו רוצים ליצור רושם ראשוני מסקרן
+            ומעניין
+          </p>
+          <form
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              maxWidth: "580px",
+            }}
+          >
             <label htmlFor="">שם הפרויקט</label>
             <input type="text" />
             <ShortDescription />
@@ -28,11 +47,13 @@ const DescriptionProject = () => {
             <input type="text" />
             <Recruitment />
             <Container disableGutters style={{ marginBottom: "70px", marginTop: "35px" }} onClick={() => navigate("/contentEdit")}>
+
               <div style={{ display: "flex", color: "green" }}>
                 <Typography style={{ color: "green", cursor: "pointer" }}>
                   שמירה והמשך
                 </Typography>
                 <SvgIcon style={{ width: "2em" }} focusable={false} viewBox="0 0 1 24" aria-hidden="true">
+
                   <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
                 </SvgIcon>
               </div>
@@ -41,11 +62,9 @@ const DescriptionProject = () => {
         </div>
       </div>
     </EditLayout>
-  )
-}
-
-export default DescriptionProject
+  );
+};
 
 
-
+export default DescriptionProject;
 
