@@ -65,14 +65,14 @@ const RegisterForm = () => {
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <Typography variant="h5" align="center">
-              Register
+              הרשמה
             </Typography>
           </Grid>
           <Grid item xs={12}>
             <TextField
               className="TextField"
               fullWidth
-              label="Full Name"
+              label="שם מלא"
               variant="outlined"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
@@ -82,7 +82,7 @@ const RegisterForm = () => {
             <TextField
               className="TextField"
               fullWidth
-              label="User Name"
+              label="שם משתמש"
               variant="outlined"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
@@ -92,7 +92,7 @@ const RegisterForm = () => {
             <TextField
               className="TextField"
               fullWidth
-              label="Email"
+              label="כתובת מייל"
               type="email"
               variant="outlined"
               value={email}
@@ -104,7 +104,7 @@ const RegisterForm = () => {
             <TextField
               className="TextField"
               fullWidth
-              label="Password"
+              label="סיסמה"
               type={showPassword ? "text" : "password"}
               variant="outlined"
               // value={password}
@@ -129,7 +129,7 @@ const RegisterForm = () => {
             <TextField
               className="TextField"
               fullWidth
-              label="Confirm Password"
+              label="אימות סיסמה"
               type={showPassword ? "text" : "password"}
               variant="outlined"
               // value={matchPassword}
@@ -152,9 +152,9 @@ const RegisterForm = () => {
           </Grid>
           {isMatch != null ? (
             isMatch ? (
-              <p className="confirmPass">Confirm password!</p>
+              <p className="confirmPass">סיסמה  מאומתת!</p>
             ) : (
-              <p className="noConfirmPass">Passwords needs to be equal.</p>
+              <p className="noConfirmPass">הסיסמאות צירכות להיות תואמות</p>
             )
           ) : (
             <></>
@@ -167,7 +167,7 @@ const RegisterForm = () => {
               variant="contained"
               color="primary"
             >
-              Register
+              הירשם
             </Button>
           </Grid>
         </Grid>

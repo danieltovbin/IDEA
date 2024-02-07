@@ -11,6 +11,10 @@
   background-size: cover;
   text-align: center;
   align-items: center;
+  background-attachment: fixed;
+  // background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   button {
     background-color: #ff0d91;
     height: 150px;
@@ -19,7 +23,7 @@
     font-size: 35px;
     letter-spacing: 2.5px;
     transition: all 0.3s;
-  
+
     &:hover {
       cursor: pointer;
       scale: 1.05;

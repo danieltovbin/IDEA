@@ -2,9 +2,13 @@
   height: 60px;
   width: 100%;
   background-color: white;
-  position: fixed;
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-around;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.095);
+  z-index: 1000;
+
   img {
     width: 120px;
     padding-left: 30px;
