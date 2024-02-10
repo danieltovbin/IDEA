@@ -1,3 +1,4 @@
+import LabelAndNote from "../../../labelNoteProps/LabelAndNote";
 import ValidationTextFields from "../../../validationTextFields/ValidationTextFields"
 
 const customInputProps = {
@@ -7,7 +8,10 @@ const customInputProps = {
 
 const Recruitment = () => {
     return (
-        <ValidationTextFields labelText={'סכום הגיוס'} labelHtmlFor={'recruitment'} inputId={'recruitment'} placeholder={'יש להזין ספרות בלבד.'} inputProps={customInputProps} customCondition={(value) => Number(value) > 0} customConditionLogic={(value) => Number(value) <= 0} textError={'סכום לגיוס חייב להיות חיובי'} />
+        <>
+        <LabelAndNote textLabel={"סכום הגיוס"} labelHtmlFor={"recruitment"} includeSpan={false} iconToolTip={""} showTooltip={false} />
+        <ValidationTextFields inputId={'recruitment'} placeholder={'יש להזין ספרות בלבד.'} inputProps={customInputProps} customCondition={(value) => Number(value) > 0} customConditionLogic={(value) => Number(value) <= 0} textError={'סכום לגיוס חייב להיות חיובי'} />
+        </>
     )
 }
 

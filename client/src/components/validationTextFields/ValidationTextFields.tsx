@@ -2,7 +2,7 @@ import { Box, StandardTextFieldProps, TextField } from "@mui/material";
 import { ChangeEvent, FC, useState } from "react";
 import { ValidateTextProps } from "./validationModels";
 
-const ValidationTextFields: FC<ValidateTextProps> = ({ labelText, labelHtmlFor, inputId, placeholder, customCondition,customConditionLogic,textError,inputProps }) => {
+const ValidationTextFields: FC<ValidateTextProps> = ({  inputId, placeholder, customCondition,customConditionLogic,textError,inputProps }) => {
     const [inputValue, setInputValue] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
@@ -36,7 +36,6 @@ const ValidationTextFields: FC<ValidateTextProps> = ({ labelText, labelHtmlFor, 
                 noValidate
                 autoComplete="off"
             >
-                <label htmlFor={labelHtmlFor}>{labelText}</label>
                 {customCondition(inputValue) ? (
                     <TextField
                     variant="outlined"

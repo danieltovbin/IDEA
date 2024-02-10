@@ -72,7 +72,7 @@ const PicProject = () => {
                 </>
             )
         }
-        <input type="file" accept={".jpg, .png, .jpeg"} autoComplete="off" style={{ display: "none" }} ref={fileInputRef} onChange={handleFileChange} />
+        <input id='picProject' type="file" accept={".jpg, .png, .jpeg"} autoComplete="off" style={{ display: "none" }} ref={fileInputRef} onChange={handleFileChange} />
         </div>
     )
 }

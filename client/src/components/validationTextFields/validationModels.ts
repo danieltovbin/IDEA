@@ -4,8 +4,6 @@
 }
 
 export interface ValidateTextProps {
-    labelText: string;
-    labelHtmlFor: string;
     inputId: string;
     placeholder: string;
     customCondition: (inputValue:string) => boolean;

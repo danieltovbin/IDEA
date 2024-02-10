@@ -26,12 +26,12 @@
     outline: none;
   }
 
-  .note {
-    display: flex;
-    align-items: center;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-  }
+  // .note {
+  //   display: flex;
+  //   align-items: center;
+  //   flex-direction: row-reverse;
+  //   justify-content: space-between;
+  // }
 
   #nameProject {
     &::placeholder {

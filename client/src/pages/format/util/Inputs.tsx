@@ -1,7 +1,7 @@
-import Autocomplete from '@mui/material/Autocomplete';
-import '../scss/format.scss';
-import AnnouncementOutlinedIcon from '@mui/icons-material/AnnouncementOutlined';
 import { TextField } from '@mui/material';
+import Autocomplete from '@mui/material/Autocomplete';
+import LabelAndNote from '../../../components/labelNoteProps/LabelAndNote';
+import '../scss/format.scss';
 import { options } from './OptionsCategories';
 
 
@@ -14,18 +14,16 @@ const Inputs = () => {
                     <input id="nameProject" name="text" type="text" placeholder="שם יצירתי שייצג את הפרויקט - עד 22 תווים" />
                 </div>
                 <div style={{ display: 'flex', flexDirection: "column" }}>
-                    <div className="note">
-                        <AnnouncementOutlinedIcon sx={{ margin: "40px 0px 0px", color: "#52b110" }} />
-                        <label htmlFor="category">מה הקטגוריה הראשית של הפרויקט שלך?</label>
-                    </div>
+                    <LabelAndNote textLabel={'מה הקטגוריה הראשית של הפרויקט שלך?'} labelHtmlFor={'format'} includeSpan={false} iconToolTip={'מה הקטגוריה שמתארת את הפרויקט שלך בצורה המדויקת ביותר ? חשוב שהפרויקט יופיע במקומות הכי רלוונטים באתר.'} showTooltip={true} />
                     <Autocomplete
-                    sx={{padding:0}}
+                        id='format'
+                        sx={{ padding: 0 }}
                         options={options}
                         groupBy={(option) => option.category}
                         getOptionLabel={(option) => option.title}
-                        renderOption={(props, option)=>(
+                        renderOption={(props, option) => (
                             <li {...props}>
-                                <span style={{color:"green"}}>{option.img}</span>
+                                <span style={{ color: "green" }}>{option.img}</span>
                                 {option.title}
                             </li>
                         )}
@@ -35,7 +33,7 @@ const Inputs = () => {
                             variant="outlined"
                             fullWidth
                             InputProps={{ ...params.InputProps, autoComplete: 'off' }}
-                          />}
+                        />}
                     />
                 </div>
                 <button className='btnNextLevel'>שמירה והמשך לשלב הבא</button>
