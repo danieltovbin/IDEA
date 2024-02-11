@@ -1,8 +1,6 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import "./topProjectStyle.scss";
 // import LinearProgressWithLabel from '@mui/lab/LinearProgressWithLabel';
-import LinearProgress from "@mui/material/LinearProgress";
-import ProgressBar from "react-bootstrap/ProgressBar";
 
 interface TopProjectDivProps {
   projectInfo: {

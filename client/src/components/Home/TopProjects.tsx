@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import TopProjectDiv from "./TopProjectDiv";
 import { project1, project2, project3, project4 } from "./projects";
 import "./topProjectsStyle.scss";
