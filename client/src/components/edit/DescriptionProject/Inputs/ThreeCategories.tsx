@@ -2,7 +2,6 @@ import { Autocomplete, Chip, TextField } from '@mui/material'
 import { useState } from 'react'
 import { options } from '../../../../pages/format/util/OptionsCategories'
 import LabelAndNote from '../../../labelNoteProps/LabelAndNote'
-import './scss/ShortDescription.scss'
 
 interface Option {
     title: string;
@@ -18,7 +17,7 @@ const ThreeCategories = () => {
             setSelectedOptions(value.map((title) => options.find((option) => option.title === title) as Option).slice(0, 3));
     }
     return (
-        <>
+        <div>
             <LabelAndNote includeSpan={true} textLabel='קטגוריות נוספות לפרויקט' textInSpan="(סה''כ ניתן להגדיר עד 3 קטגוריות)" iconToolTip="יש קטגוריות נוספות אשר מתארות את הפרויקט בצורה טובה? ניתן להוסיף עוד שתי קטגוריות משנה שיצטרפו לקטגוריה הראשית שכבר נבחרה" labelHtmlFor={'threeCategories'} showTooltip={true} />
             <Autocomplete
                 size='small'
@@ -46,7 +45,7 @@ const ThreeCategories = () => {
                     />
                 )}
             />
-        </>
+        </div>
     )
 }
 

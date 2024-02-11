@@ -1,0 +1,70 @@
+.PicProfile{
+    display: flex;
+    border: 1px solid gray;
+    border-radius: 50%;
+    width: 24%;
+    height: 140px;
+    position: relative;
+    object-fit: cover;
+    text-align: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 25px;
+
+    img{
+        width: 136px;
+        height: 136px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    p:first-child{
+        font-size: 13px;
+        margin-top: 3px;
+        line-height: 1.38;
+        margin-bottom: 0;
+        white-space: pre-line;
+    }
+
+    p:nth-child(2){
+        color: #9a9a9a;
+        font-size: 11px;
+        line-height: 1.36;
+        margin: 0;
+    }
+
+    
+
+
+button{
+    border-radius: 50%;
+    padding: 0;
+    min-height: 30px;
+    height: 30px;
+    width: 30px;
+    border: none;
+    outline: none;
+    box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12);
+    
+    &:hover {
+        border-color: transparent;
+        background-color: #d7d0d0;
+    }
+
+    
+    &:focus {
+        border: none;
+        outline: none;
+    }
+}
+
+button:first-child{
+top: 0;
+left: 10px;
+}
+
+button:nth-child(2){
+    top: 35px;
+    left: -10px
+}
+}
