@@ -9,6 +9,7 @@ import ThreeCategories from '../../components/edit/DescriptionProject/Inputs/Thr
 import ProjectTags from '../../components/edit/DescriptionProject/Inputs/ProjectTags';
 import LabelAndNote from '../../components/labelNoteProps/LabelAndNote';
 import ProjectVideo from '../../components/edit/DescriptionProject/Inputs/ProjectVideo';
+import ProjectName from '../../components/edit/DescriptionProject/Inputs/ProjectName';
 
 const DescriptionProject = () => {
   const navigate = useNavigate();
@@ -30,8 +31,7 @@ const DescriptionProject = () => {
               maxWidth: "580px",
             }}
           >
-            <label htmlFor="">שם הפרויקט</label>
-            <input type="text" />
+            <ProjectName />
             <ShortDescription />
             <ThreeCategories />
             <ProjectTags />

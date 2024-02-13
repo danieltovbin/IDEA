@@ -1,15 +1,13 @@
-import { ChangeEvent, useRef, useState, DragEvent, FC } from 'react';
+import { ChangeEvent, DragEvent, FC, useRef, useState } from 'react';
 import BtnEditAndDelete from '../btnEditAndDelete/BtnEditAndDelete';
-import SelectFileFromIcon from '../../DescriptionProject/picProject/SelectFileFromIcon';
 
 interface SelectDropProps{
     classname:string;
-    classnameBtn: string;
     inputId: string;
     selectFileComponent: React.ReactNode;
 }
 
-const SelectAndDropImg:FC<SelectDropProps> = ({classname,inputId,selectFileComponent,classnameBtn}) => {
+const SelectAndDropImg:FC<SelectDropProps> = ({classname,inputId,selectFileComponent}) => {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const [isEditMode, setIsEditMode] = useState(false);
     const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -70,7 +68,7 @@ const SelectAndDropImg:FC<SelectDropProps> = ({classname,inputId,selectFileCompo
                 <>
                     <img src={selectedImage} alt="Selected" />
                     {isEditMode && (
-                        <BtnEditAndDelete onEditClick={handleEditClick} onDeleteClick={handleDeleteClick} classname={classnameBtn} />
+                        <BtnEditAndDelete onEditClick={handleEditClick} onDeleteClick={handleDeleteClick} />
                     )}                  
                 </>) : (
                 <>
@@ -85,6 +83,4 @@ const SelectAndDropImg:FC<SelectDropProps> = ({classname,inputId,selectFileCompo
 
 export default SelectAndDropImg
 
-// style={{ height: "160px", position: "relative", cursor: "pointer", border: '1px solid rgb(118, 118, 118)', borderRadius: '5px', padding: '5px', display: 'inline-block', textAlign: 'center' }}
 
-// style={{ width: "40%", height: "100%" }}  //img

@@ -4,7 +4,7 @@ import './scss/PicProfile.scss'
 
 const PicProfile = () => {
   return (
-    <SelectAndDropImg classname={"PicProfile"} inputId={""} selectFileComponent={<SelectFileFromProfile />} classnameBtn={""} />
+    <SelectAndDropImg classname={"PicProfile"} inputId={"picProfile"} selectFileComponent={<SelectFileFromProfile />}  />
     
   )
 }

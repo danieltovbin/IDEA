@@ -1,14 +1,14 @@
 import { FC } from "react"
+import './scss/BtnEditDelete.scss'
 
 interface BtnProps {
-    classname: string;
     onEditClick: () => void;
     onDeleteClick: () => void;
 }
-const BtnEditAndDelete:FC<BtnProps>= ({onEditClick,onDeleteClick,classname}) => {
+const BtnEditAndDelete:FC<BtnProps>= ({onEditClick,onDeleteClick}) => {
    
     return (
-        <div className={classname}>
+        <div className="BtnEditAndDelete">
             <button style={{ position: "absolute", bottom: "60px"}} tabIndex={0} type="button" onClick={onEditClick}>
                 <span >
                     <svg focusable="false" viewBox="0 0 24 24" aria-hidden="true" style={{ width: '24px', height: '24px', fill: 'rgb(56, 134, 2)' }}>

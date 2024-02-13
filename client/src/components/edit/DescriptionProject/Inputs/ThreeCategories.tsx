@@ -20,6 +20,10 @@ const ThreeCategories = () => {
         <div>
             <LabelAndNote includeSpan={true} textLabel='קטגוריות נוספות לפרויקט' textInSpan="(סה''כ ניתן להגדיר עד 3 קטגוריות)" iconToolTip="יש קטגוריות נוספות אשר מתארות את הפרויקט בצורה טובה? ניתן להוסיף עוד שתי קטגוריות משנה שיצטרפו לקטגוריה הראשית שכבר נבחרה" labelHtmlFor={'threeCategories'} showTooltip={true} />
             <Autocomplete
+              sx={{
+                '& .MuiTextField-root': { '& fieldset': { borderColor: '#756e6e' } },
+                '& input::placeholder': { fontSize: "14px" },
+            }}
                 size='small'
                 multiple
                 value={selectedOptions.map(option => option.title) }
@@ -30,14 +34,14 @@ const ThreeCategories = () => {
                 defaultValue={[options[13].title]} // צריכות לשים את הקטגוריה שהמשתמש בחר בעמוד של פורמט כקטגוריה דפולטיבית
                 renderTags={(value: readonly string[], getTagProps) =>
                     value.map((option: string, index: number) => (
-                        <Chip sx={{ height: "22px", width:"17%"}} variant="filled" label={option} {...getTagProps({ index })} />
+                        <Chip sx={{ height: "20px", width:"17%"}} variant="filled" label={option} {...getTagProps({ index })} />
                     ))
                 }
                 renderInput={(params) => (
                     <TextField
                         sx={{
                             '& .MuiInputBase-input': {
-                                fontSize: "12px",
+                                fontSize: "18px",
                             },
                         }}
                         {...params}
