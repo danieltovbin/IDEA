@@ -5,6 +5,7 @@ import cors from "cors";
 import express from "express";
 import mongoose from "mongoose";
 import usersRoutes from "./API/Users/usersRoutes";
+import projectRoutes from "./API/Projects/projectRoutes";
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -16,6 +17,7 @@ app.use(cookieParser());
 
 const { MONGO_URI } = process.env;
 app.use("/API/users", usersRoutes);
+app.use("/API/projects", projectRoutes);
 mongoose
   .connect(MONGO_URI)
   .then(() => {

@@ -35,10 +35,11 @@ export const login = async (userData: {
       userName,
       password,
     });
-    console.log(data.ok);
-    console.log(data);
+    // console.log(data.userToken);
+    // console.log(data);
 
-    if (data.ok) if (!data) throw new Error("connection to server is fail");
+    if (data.ok) return { ok: true, userToken: data.userToken };
+    if (!data) throw new Error("connection to server is fail");
   } catch (error) {
     console.error(error);
   }

@@ -1,3 +1,5 @@
+// import Gifts from '../../components/edit/DescriptionProject/gifts/Gifts'
+
 import { Button, Paper, SvgIcon } from '@mui/material'
 import LabelAndNote from '../../components/labelNoteProps/LabelAndNote'
 import EditLayout from '../../layouts/EditLayout'
@@ -15,6 +17,7 @@ const Submissions = () => {
 
   return (
     <EditLayout>
+
       <div className='submissions' >
         <div style={{ maxWidth: "580px" }}>
           <p>על מנת לשלוח את הפרויקט לאישור יש להכניס תשורה אחת לפחות. ניתן להוסיף ולהוריד תשורות לאורך חיי הפרויקט. התשורות זוהי בעצם הדרך למשוך את קהל התומכים, חשבו רחב ומגוון ככל הניתן</p>

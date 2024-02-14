@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { login, register } from "../../API/Users/usersCtrl";
+import { login, register } from "../../API/Users/usersClientCtrl";
 import "./loginForm.scss";
 import { useNavigate } from "react-router-dom";
 
@@ -18,7 +18,7 @@ const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (
@@ -30,9 +30,17 @@ const navigate = useNavigate()
   const loginForm = async (ev: any) => {
     ev.preventDefault();
     if (password && userName) {
-      console.log(password, userName);
-      const ok = await login({ userName, password });
-      if(ok){navigate("/descriptionProject")}
+      const result = await login({ userName, password });
+
+      if (result) {
+        const { ok, userToken } = result;
+        if (ok && userToken) {
+          sessionStorage.setItem("userToken", userToken);
+          navigate("/descriptionProject");
+        }
+      } else {
+        console.error("No response from server");
+      }
     }
   };
 

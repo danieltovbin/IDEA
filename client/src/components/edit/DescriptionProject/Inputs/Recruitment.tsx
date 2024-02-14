@@ -1,3 +1,4 @@
+import { FC } from "react";
 import LabelAndNote from "../../../labelNoteProps/LabelAndNote";
 import ValidationTextFields from "../../../validationTextFields/ValidationTextFields"
 
@@ -5,8 +6,11 @@ const customInputProps = {
     inputMode: "numeric",
     pattern: "[0-9]*",
 };
-
-const Recruitment = () => {
+interface RecruitmentProps {
+    handleChange:(ev:any) => void;
+}
+const Recruitment:FC<RecruitmentProps> = ({handleChange}) => {
+    
     return (
         <>
         <LabelAndNote textLabel={"סכום הגיוס"} labelHtmlFor={"recruitment"} includeSpan={false} iconToolTip={""} showTooltip={false} />
