@@ -11,7 +11,9 @@
 
     .newSubmission{
         display: flex;
-        margin-top: 40px;
         flex-direction: column;
+        text-align: center;
+        align-items: baseline;
+        margin-right: 140px;
     }
 }

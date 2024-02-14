@@ -1,0 +1,50 @@
+.PicProfile{
+    display: flex;
+    border: 1px solid gray;
+    border-radius: 50%;
+    width: 24%;
+    height: 140px;
+    position: relative;
+    object-fit: cover;
+    text-align: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 25px;
+
+    img{
+        width: 136px;
+        height: 136px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    p:first-child{
+        font-size: 13px;
+        margin-top: 3px;
+        line-height: 1.38;
+        margin-bottom: 0;
+        white-space: pre-line;
+    }
+
+    p:nth-child(2){
+        color: #9a9a9a;
+        font-size: 11px;
+        line-height: 1.36;
+        margin: 0;
+    }
+
+    
+
+
+
+
+button:first-child{
+top: 0;
+left: 10px;
+}
+
+button:nth-child(2){
+    top: 35px;
+    left: -10px
+}
+}
