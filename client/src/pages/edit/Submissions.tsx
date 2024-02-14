@@ -1,19 +1,29 @@
-import { Button, SvgIcon } from '@mui/material'
+import { Button, Paper, SvgIcon } from '@mui/material'
 import LabelAndNote from '../../components/labelNoteProps/LabelAndNote'
 import EditLayout from '../../layouts/EditLayout'
 import './scss/submissions.scss'
 import StillNoOffers from '../../components/edit/Submissions/StillNoOffers'
+import { useState } from 'react'
+import AddGift from '../../components/edit/Submissions/AddGift'
 
 const Submissions = () => {
+  const [showNewSubmission, setShowNewSubmission] = useState(true);
+
+  const handleBtnClick = ()=>{
+    setShowNewSubmission(false)
+  }
+
   return (
     <EditLayout>
       <div className='submissions' >
         <div style={{ maxWidth: "580px" }}>
           <p>על מנת לשלוח את הפרויקט לאישור יש להכניס תשורה אחת לפחות. ניתן להוסיף ולהוריד תשורות לאורך חיי הפרויקט. התשורות זוהי בעצם הדרך למשוך את קהל התומכים, חשבו רחב ומגוון ככל הניתן</p>
+          {showNewSubmission && (
           <div className='newSubmission'>
             <LabelAndNote textLabel={''} labelHtmlFor={''} includeSpan={false} iconToolTip={`אחת הסיבות העיקריות בגללן אנשים יתמכו בפרויקט שלך היא התשורות, ככל שהתשורות יהיו שוות ומגניבות יותר, כך יש פוטנציאל להגדיל את כמות התומכים בפרויקט.
 רוב התשורות כנראה הולכות להיות קשורות בתוצר הסופי (ספר, אלבום מוזיקה, מוצר) אך תמיד כדאי לחשוב גם מחוץ לקופסא. יצירתיות ומקוריות בתשורות - שילובים מעניינים, דברים משעשעים וכמובן שמגלמים הטבה כספית, חשוב להבין שאנשים לא תומכים כדי "לעזור" לך ולכן חשוב לתת הטבה כלשהי ולשקף אותה בתאור התשורה - בזכות התומכים הפרויקט יצא לאור ועל זה שהם מאמינים בך ובזכותם זה הולך לקרות מגיעה להם הטבה שווה`} showTooltip={true} />
             <Button
+            onClick={handleBtnClick}
               tabIndex={0}
               type="button"
               style={{
@@ -37,8 +47,12 @@ const Submissions = () => {
               <span></span>
             </Button>
           </div>
+          )}
         </div>
-        <StillNoOffers />
+        {showNewSubmission ? <StillNoOffers /> : (
+          <AddGift />
+        )}
+        
       </div>
     </EditLayout>
   )

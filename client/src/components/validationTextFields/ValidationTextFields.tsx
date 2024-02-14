@@ -2,14 +2,14 @@ import { Box, StandardTextFieldProps, TextField } from "@mui/material";
 import { ChangeEvent, FC, useState } from "react";
 import { ValidateTextProps } from "./validationModels";
 
-const ValidationTextFields: FC<ValidateTextProps> = ({  inputId, placeholder, customCondition,customConditionLogic,textError,inputProps }) => {
+const ValidationTextFields: FC<ValidateTextProps> = ({  inputId, placeholder, customCondition,isRequired = true, customConditionLogic,textError,inputProps }) => {
     const [inputValue, setInputValue] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const inputValue = e.target.value;
         try {
-            if (inputValue.trim().length === 0) {
+            if (isRequired && inputValue.trim().length === 0) {
                 setErrorMessage('שדה זה מוגדר כשדה חובה')
             } else if (customCondition(inputValue)) {
                 setInputValue(inputValue);

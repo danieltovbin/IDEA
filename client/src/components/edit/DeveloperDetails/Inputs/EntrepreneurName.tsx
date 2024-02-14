@@ -1,4 +1,3 @@
-import React from 'react'
 import LabelAndNote from '../../../labelNoteProps/LabelAndNote'
 import ValidationTextFields from '../../../validationTextFields/ValidationTextFields'
 
