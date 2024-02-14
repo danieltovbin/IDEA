@@ -1,10 +1,11 @@
-import DeliveryDate from './DeliveryDate';
+// import DeliveryDate from './DeliveryDate';
+import DeliveryOptions from './DeliveryOptions/DeliveryOptions';
 import './scss/MoreOptions.scss';
 
 const MoreOptions = () => {
     return (
         <div >
-          <div className="moreOptions" role="button" aria-controls="projectRewardFormAccordion">
+          <div className="moreOptions moreOptions__moreOptionsBtn">
             <div >
               <p >אפשרויות נוספות לתשורה (לא חובה)</p>
             </div>
@@ -14,14 +15,12 @@ const MoreOptions = () => {
                 </svg>
             </div>
           </div>
-          <div style={{ minHeight: 0, height: 0, transitionDuration: '363ms' }}>
-            <div>
-              <div>
-                <div>
-                <DeliveryDate />
-                </div>
-              </div>
-            </div>
+          <div className='moreOptions moreOptions__moreOptionsContainer'>
+           
+              
+                {/* <DeliveryDate /> */}
+                <DeliveryOptions />
+            
           </div>
           
         </div>

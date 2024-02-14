@@ -2,7 +2,7 @@ import { Box, StandardTextFieldProps, TextField } from "@mui/material";
 import { ChangeEvent, FC, useState } from "react";
 import { ValidateTextProps } from "./validationModels";
 
-const ValidationTextFields: FC<ValidateTextProps> = ({  inputId, placeholder, customCondition,isRequired = true, customConditionLogic,textError,inputProps }) => {
+const ValidationTextFields: FC<ValidateTextProps> = ({  inputId, placeholder, customCondition,isRequired = true,name, customConditionLogic,textError,inputProps }) => {
     const [inputValue, setInputValue] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
@@ -41,6 +41,7 @@ const ValidationTextFields: FC<ValidateTextProps> = ({  inputId, placeholder, cu
                     variant="outlined"
                     color="success"
                     focused
+                    name={name}
                     sx={{ width: "100%", '& .MuiFormHelperText-root': { textAlign: "right", margin: 0, fontSize: "11px" } }}
                     error={errorMessage !== ""}
                     id={inputId}
@@ -54,6 +55,7 @@ const ValidationTextFields: FC<ValidateTextProps> = ({  inputId, placeholder, cu
                     sx={{ width: "100%", '& .MuiFormHelperText-root': { textAlign: "right", margin: 0, fontSize: "11px" } }}
                     error={errorMessage !== ""}
                     id={inputId}
+                    name={name}
                     onChange={handleChange}
                     helperText={errorMessage}
                     placeholder={placeholder}

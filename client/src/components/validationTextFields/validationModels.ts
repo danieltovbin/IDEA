@@ -11,4 +11,5 @@ export interface ValidateTextProps {
     customConditionLogic?: (inputValue:string) => boolean;
     textError?: string;
     inputProps?: CustomInputProps | undefined;
+    name?: string;
 }
