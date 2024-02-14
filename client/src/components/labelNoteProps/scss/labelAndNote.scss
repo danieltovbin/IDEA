@@ -1,0 +1,15 @@
+.note {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+
+    label{
+        width: 100%;
+        span{
+            font-size: 13px;
+            font-weight: normal;
+            padding-right: 7px;
+        }
+    }
+  }

@@ -4,14 +4,12 @@
 }
 
 export interface ValidateTextProps {
-    labelText: string;
-    labelHtmlFor: string;
     inputId: string;
     placeholder: string;
     customCondition: (inputValue:string) => boolean;
-    children?: React.ReactNode;
+    isRequired?:boolean;
     customConditionLogic?: (inputValue:string) => boolean;
-    onChange?: () => void;
     textError?: string;
     inputProps?: CustomInputProps | undefined;
+    name?: string;
 }
