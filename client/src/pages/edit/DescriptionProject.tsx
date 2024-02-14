@@ -1,26 +1,19 @@
 
 import { Container, SvgIcon, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import PicProject from "../../components/edit/DescriptionProject/picProject/PicProject";
-import EditLayout from "../../layouts/EditLayout";
-import "./scss/description.scss";
-import ShortDescription from "../../components/edit/DescriptionProject/Inputs/ShortDescription";
-import Recruitment from "../../components/edit/DescriptionProject/Inputs/Recruitment";
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getProjectById, updateProject } from "../../API/Projects/projectClientCtrl";
 import ConnectWithUs from "../../components/Popups/ConnectWithUs";
-import { Container, SvgIcon, Typography } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import PicProject from '../../components/edit/DescriptionProject/picProject/PicProject';
-import EditLayout from '../../layouts/EditLayout';
-import './scss/description.scss';
-import ShortDescription from '../../components/edit/DescriptionProject/Inputs/ShortDescription';
-import Recruitment from '../../components/edit/DescriptionProject/Inputs/Recruitment';
-import ThreeCategories from '../../components/edit/DescriptionProject/Inputs/ThreeCategories';
-import ProjectTags from '../../components/edit/DescriptionProject/Inputs/ProjectTags';
-import LabelAndNote from '../../components/labelNoteProps/LabelAndNote';
-import ProjectVideo from '../../components/edit/DescriptionProject/Inputs/ProjectVideo';
 import ProjectName from '../../components/edit/DescriptionProject/Inputs/ProjectName';
+import ProjectTags from '../../components/edit/DescriptionProject/Inputs/ProjectTags';
+import ProjectVideo from '../../components/edit/DescriptionProject/Inputs/ProjectVideo';
+import Recruitment from "../../components/edit/DescriptionProject/Inputs/Recruitment";
+import ShortDescription from "../../components/edit/DescriptionProject/Inputs/ShortDescription";
+import ThreeCategories from '../../components/edit/DescriptionProject/Inputs/ThreeCategories';
+import PicProject from "../../components/edit/DescriptionProject/picProject/PicProject";
+import LabelAndNote from '../../components/labelNoteProps/LabelAndNote';
+import EditLayout from "../../layouts/EditLayout";
+import "./scss/description.scss";
 
 const DescriptionProject = () => {
   const navigate = useNavigate();
@@ -93,7 +86,7 @@ const DescriptionProject = () => {
               maxWidth: "580px",
             }}
           >
-<!--             <label htmlFor="">שם הפרויקט</label>
+            {/* <label htmlFor="">שם הפרויקט</label>
             <input
               type="text"
               value={currentProject?.projectName}
@@ -140,7 +133,7 @@ const DescriptionProject = () => {
                   focusable={false}
                   viewBox="0 0 1 24"
                   aria-hidden="true"
-                > -->
+                > --> */}
             <ProjectName />
             <ShortDescription />
             <ThreeCategories />
