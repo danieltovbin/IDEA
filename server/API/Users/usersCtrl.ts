@@ -32,10 +32,10 @@ export const login = async (req, res) => {
     if (!match) throw new Error("password are incorrect");
     const cookie = {
       userId: userDB._id,
-    };    
+    };
     const token = jwt.encode(cookie, SECRET_KEY);
     res.cookie("user", token, { httpOnly: true, maxAge: 1000 * 60 * 60 * 3 });
-    res.send({ userDB, ok: true });
+    res.send({ userDB, ok: true , userToken: token });
   } catch (error) {
     console.error(error);
     res.status(400).send({ error: "Bad Request", message: error.message });

@@ -15,7 +15,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import "./register.scss";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { register } from "../../API/Users/usersCtrl";
+import { register } from "../../API/Users/usersClientCtrl";
 
 const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -152,7 +152,7 @@ const RegisterForm = () => {
           </Grid>
           {isMatch != null ? (
             isMatch ? (
-              <p className="confirmPass">סיסמה  מאומתת!</p>
+              <p className="confirmPass">סיסמה מאומתת!</p>
             ) : (
               <p className="noConfirmPass">הסיסמאות צירכות להיות תואמות</p>
             )

@@ -21,7 +21,7 @@ const ProcessNav = () => {
             ></path>
           </svg>
           <div
-            className="MuiDivider-root dashed jss1132 dashed"
+            className="MuiDivider-root dashedEmpty jss1132 "
             role="separator"
           ></div>
         </div>

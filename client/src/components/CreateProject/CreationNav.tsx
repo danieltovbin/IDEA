@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./creationNav.scss";
 import ProcessNav from "./ProcessNav";
 const CreationNav = () => {
-  const [processPresent, setProcessPresent] = useState(true);
+  const [processPresent, setProcessPresent] = useState(false);
 
   return (
     <div>
@@ -146,7 +146,7 @@ const CreationNav = () => {
       </div>
       {processPresent ? (
         <div className="processPresent">
-          <ProcessNav/>
+          <ProcessNav />
         </div>
       ) : (
         <></>
