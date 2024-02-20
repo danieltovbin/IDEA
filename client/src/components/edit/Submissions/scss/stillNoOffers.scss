@@ -6,3 +6,24 @@
 
 }
 
+.AddBtn{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 40px;
+
+    button{
+        width: 100%;
+    }
+
+    a{
+    color: rgb(125, 125, 125);
+    cursor: pointer;
+    display: inherit;
+    padding: 0px 3px;
+    font-size: 13px;
+    white-space: inherit;
+    text-decoration: underline;
+    }
+}

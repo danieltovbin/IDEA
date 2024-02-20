@@ -1,18 +1,20 @@
-// import Gifts from '../../components/edit/DescriptionProject/gifts/Gifts'
-
-import { Button, Paper, SvgIcon } from '@mui/material'
+import { Button, SvgIcon } from '@mui/material'
+import { useState } from 'react'
+import AddGift from '../../components/edit/Submissions/AddGift'
+import StillNoOffers from '../../components/edit/Submissions/StillNoOffers'
 import LabelAndNote from '../../components/labelNoteProps/LabelAndNote'
 import EditLayout from '../../layouts/EditLayout'
 import './scss/submissions.scss'
-import StillNoOffers from '../../components/edit/Submissions/StillNoOffers'
-import { useState } from 'react'
-import AddGift from '../../components/edit/Submissions/AddGift'
 
 const Submissions = () => {
   const [showNewSubmission, setShowNewSubmission] = useState(true);
 
   const handleBtnClick = ()=>{
     setShowNewSubmission(false)
+  }
+
+  const showAddGift = () => {
+    setShowNewSubmission(true)
   }
 
   return (
@@ -53,7 +55,7 @@ const Submissions = () => {
           )}
         </div>
         {showNewSubmission ? <StillNoOffers /> : (
-          <AddGift />
+          <AddGift showAddGift={showAddGift}/>
         )}
         
       </div>
