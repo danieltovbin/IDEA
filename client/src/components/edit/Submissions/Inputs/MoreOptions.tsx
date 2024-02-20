@@ -14,7 +14,7 @@ const MoreOptions = () => {
         <div >
           <div className="moreOptions moreOptions__moreOptionsBtn" onClick={handleMoreOptionsClick}>
             <div >
-              <p >אפשרויות נוספות לתשורה (לא חובה)</p>
+              <p style={{margin:'auto'}}>אפשרויות נוספות לתשורה (לא חובה)</p>
             </div>
             <div style={{width: "20px", height:"20px"}} >
                 <svg focusable="false" viewBox="0 0 24 24" >

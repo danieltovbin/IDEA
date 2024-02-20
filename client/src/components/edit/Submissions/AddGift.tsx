@@ -5,6 +5,7 @@ import DescriptionGift from './Inputs/DescriptionGift'
 import MoreOptions from './Inputs/MoreOptions'
 import { FC } from 'react'
 import './scss/stillNoOffers.scss'
+import SavedGifts from './SavedGifts'
 
 interface AddGiftProps {
     showAddGift: () => void;
@@ -34,6 +35,7 @@ const AddGift: FC<AddGiftProps> = ({ showAddGift }) => {
                     <a onClick={showAddGift}>ביטול</a>
                 </div>
             </Paper>
+            <SavedGifts nameGift={''} priceGift={0} descriptionGift={''}/>
         </div>
     )
 }
