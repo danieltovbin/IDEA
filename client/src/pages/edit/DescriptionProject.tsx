@@ -144,7 +144,7 @@ const DescriptionProject = () => {
             <Recruitment />
             <Container disableGutters style={{ marginBottom: "70px", marginTop: "35px" }} onClick={() => navigate("/contentEdit")}>
               <div style={{ display: "flex", color: "green" }}>
-                <Typography style={{ color: "green", cursor: "pointer" }}>
+                <Typography style={{ color: "green", cursor: "pointer",fontSize:"15px", fontWeight:"bold" }}>
                   שמירה והמשך
                 </Typography>
                 <SvgIcon style={{ width: "2em" }} focusable={false} viewBox="0 0 1 24" aria-hidden="true">
