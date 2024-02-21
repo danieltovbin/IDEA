@@ -1,0 +1,173 @@
+* {
+    padding: 0;
+    margin: 0;
+  }
+  .topProject {
+    margin: 1rem;
+    padding: 1rem;
+    display: flex;
+    .rSide {
+      margin-left: 16px;
+      .rbIcons {
+        display: flex;
+  
+        .label {
+          display: flex;
+          height: 30px;
+          vertical-align: middle; /* יישור אנכי כדי להקטין את הקווים בהתאם לגובה של הטקסט בסביבתם */
+          margin: 5px 10px;
+          align-items: center;
+          padding-left: 10px;
+          p {
+            margin: 0px 4px;
+            font-size: 11px;
+          }
+          &:hover {
+            background-color: rgb(236, 246, 229);
+            border-radius: 40px;
+          }
+          .LocationIcon,
+          .icon1 {
+            width: 30px;
+            height: 30px;
+            padding: 3px;
+            border-radius: 100%;
+            background-color: rgb(236, 246, 229);
+          }
+        }
+      }
+    }
+    .lSide {
+      position: relative;
+      width: 350px;
+      h2 {
+        font-size: 24px;
+      }
+      .owner {
+        display: flex;
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 100%;
+          margin: 0px 10px;
+        }
+        .ownerName {
+          p {
+            font-size: 13px;
+          }
+          .name {
+            display: flex;
+            font-size: 13px;
+            .mailIcon {
+              // margin: 0px 5px;
+              height: 24px;
+            }
+          }
+        }
+      }
+      .description {
+        height: 75px;
+  
+        max-height: 75px;
+        padding: 10px 0px !important;
+        font-size: 13px;
+        line-height: 21px;
+        position: relative;
+        overflow: hidden;
+        overflow-wrap: break-word;
+        white-space: pre-line;
+        p {
+          font-size: 13px;
+        }
+      }
+      .progressBar {
+        margin-top: 50px;
+  
+        width: 100%;
+        // overflow: hidden;
+  
+        background-color: rgb(209, 209, 209);
+        border-radius: 20px;
+        height: 4px;
+        .progress {
+          max-width: 100%;
+          height: 4px;
+          background-color: rgb(40, 138, 21);
+          border-radius: 0px 20px 20px 0px;
+        }
+        p {
+          color: rgb(40, 138, 21);
+          font-size: 13px;
+          font-weight: bold;
+        }
+        .percentPCompleted {
+          color: #ff0d91;
+          right: 10px !important;
+          position: none;
+        }
+        .projectCompleted {
+          background-color: #ff0d91;
+          border-radius: 20px;
+        }
+      }
+  
+      .projectStatus {
+        display: flex;
+        justify-content: space-between;
+        padding: 18px 0px;
+        div {
+          //   text-align: center;
+          h4 {
+            font-size: 18px;
+          }
+          p {
+            font-size: 11px;
+          }
+        }
+      }
+      .enterToProjectDiv {
+        padding: 16px;
+        .enterToProjectBtn {
+          background-color: #ff0d91;
+          color: white;
+          width: 100%;
+          height: 48px;
+          padding: 16px 16px;
+          margin-top: 10px;
+          text-align: center;
+        }
+      }
+      .mediaIcons {
+        display: flex;
+        -webkit-box-pack: justify;
+        padding: 0px 8px;
+        margin-top: 8px;
+        font-family: Open Sans Hebrew, sans-serif !important;
+        direction: rtl;
+        -webkit-tap-highlight-color: #0000;
+        display: flex;
+        -webkit-box-pack: justify;
+        padding: 0px 8px;
+        padding-bottom: 16px;
+        div {
+          margin: 10px;
+          border-radius: 100%;
+          display: flex;
+          -webkit-box-align: center;
+          align-items: center;
+          text-align: center;
+          svg {
+            vertical-align: middle; /* יישור אנכי כדי להקטין את הקווים בהתאם לגובה של הטקסט בסביבתם */
+          }
+          a {
+            height: 24px;
+            width: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+      }
+    }
+  }
+  
