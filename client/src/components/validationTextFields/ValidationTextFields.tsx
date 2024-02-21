@@ -20,6 +20,7 @@ const ValidationTextFields: FC<ValidateTextProps> = ({  inputId, placeholder, cu
                 setInputValue(inputValue);  
                 setErrorMessage('');
               }
+            addChangeToProject(e)
         } catch (error) {
             console.error("Something wrong with handleChange function",error)
         }
@@ -58,7 +59,7 @@ const ValidationTextFields: FC<ValidateTextProps> = ({  inputId, placeholder, cu
                     sx={{ width: "100%", '& .MuiFormHelperText-root': { textAlign: "right", margin: 0, fontSize: "11px" } }}
                     error={errorMessage !== ""}
                     id={inputId}
-                    onChange={(e)=>{handleChange ; addChangeToProject(e)}}
+                    onChange={handleChange }
                     helperText={errorMessage}
                     placeholder={placeholder}
                 />)
