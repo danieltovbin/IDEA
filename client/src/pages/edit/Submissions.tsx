@@ -5,6 +5,7 @@ import StillNoOffers from '../../components/edit/Submissions/StillNoOffers'
 import LabelAndNote from '../../components/labelNoteProps/LabelAndNote'
 import EditLayout from '../../layouts/EditLayout'
 import './scss/submissions.scss'
+import PrevNextPage from '../../components/edit/util/prevNextPage/PrevNextPage'
 
 const Submissions = () => {
   const [showNewSubmission, setShowNewSubmission] = useState(true);
@@ -59,6 +60,7 @@ const Submissions = () => {
         )}
         
       </div>
+      <PrevNextPage prevPageName={'contentEdit'} nextPageName={'DeveloperDetails'} showContinuation={true} showContinuationIcon={true}/>
     </EditLayout>
   )
 }
