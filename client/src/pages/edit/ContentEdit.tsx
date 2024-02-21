@@ -1,4 +1,3 @@
-
 import "primeicons/primeicons.css";
 import { Editor } from "primereact/editor";
 import "primereact/resources/themes/lara-dark-indigo/theme.css";
@@ -8,21 +7,22 @@ import "./scss/content.scss";
 import { Container, Divider, SvgIcon, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import LabelAndNote from "../../components/labelNoteProps/LabelAndNote";
-import { getProjectById, updateOneOnProject } from "../../API/Projects/projectClientCtrl";
+import {
+  getProjectById,
+  updateOneOnProject,
+} from "../../API/Projects/projectClientCtrl";
+import PrevNextPage from "../../components/edit/util/prevNextPage/PrevNextPage";
 
 const ContentEdit = () => {
-
   const navigate = useNavigate();
   const [text, setText] = useState("");
-  
+
   const editorRef = useRef<Editor>(null);
 
-
-  const handleGetContent = async() => {
+  const handleGetContent = async () => {
     if (editorRef.current) {
       const content = editorRef.current.getContent().innerHTML;
       await updateOneOnProject("projectStory", content);
-   
     }
   };
 
@@ -115,7 +115,12 @@ const ContentEdit = () => {
           </SvgIcon>
         </div>
       </Container>
-      <PrevNextPage prevPageName={'descriptionProject'} nextPageName={'Submissions'} showContinuation={true} showContinuationIcon={true}/>
+      <PrevNextPage
+        prevPageName={"descriptionProject"}
+        nextPageName={"Submissions"}
+        showContinuation={true}
+        showContinuationIcon={true}
+      />
     </EditLayout>
   );
 };

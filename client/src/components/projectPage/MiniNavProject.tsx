@@ -20,7 +20,7 @@ const MiniNavProject = () => {
           case 2:
             return <div>עדכונים</div>;
           case 3:
-            return <div>תגוובת</div>;
+            return <div>תגובות</div>;
           default:
             return <div>על הפרוייקט</div>;
         }
