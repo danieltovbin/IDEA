@@ -58,7 +58,7 @@ const ContentEdit = () => {
           style={{ height: "320px", marginBottom: "35px", minHeight: "360px" }}
         />
       </div>
-      <Container
+      {/* <Container
         sx={{ padding: "0 calc((100% - 818px) / 2) !important", margin: 0 }}
       >
         <div style={{ display: "flex", maxWidth: "580px" }}>
@@ -114,7 +114,7 @@ const ContentEdit = () => {
             <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41"></path>
           </SvgIcon>
         </div>
-      </Container>
+      </Container> */}
       <PrevNextPage
         prevPageName={"descriptionProject"}
         nextPageName={"Submissions"}
