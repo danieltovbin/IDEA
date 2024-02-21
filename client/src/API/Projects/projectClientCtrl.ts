@@ -40,9 +40,27 @@ export async function updateProject(projectForm: Project) {
   try {
     console.log(projectForm);
     const projectId = sessionStorage.getItem("projectId");
-    const {data} = await axios.put("/API/projects/updateProject", {projectForm, projectId});
-    if(!data.ok) throw new Error ("project update failed on server side");
-} catch (error) {
+    const { data } = await axios.put("/API/projects/updateProject", {
+      projectForm,
+      projectId,
+    });
+    if (!data.ok) throw new Error("project update failed on server side");
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function updateOneOnProject(key: string, value:any) {
+  try {
+    console.log(key , value);
+    const projectId = sessionStorage.getItem("projectId");
+    const { data } = await axios.patch("/API/projects/updateOne", {
+      value,
+      key,
+      projectId,
+    });
+    if (!data.ok) throw new Error("project update failed on server side");
+  } catch (error) {
     console.error(error);
   }
 }

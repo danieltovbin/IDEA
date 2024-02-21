@@ -1,5 +1,6 @@
 import { ChangeEvent, DragEvent, FC, useRef, useState } from 'react';
 import BtnEditAndDelete from '../btnEditAndDelete/BtnEditAndDelete';
+import axios from 'axios';
 
 interface SelectDropProps{
     classname:string;
@@ -62,6 +63,25 @@ const SelectAndDropImg:FC<SelectDropProps> = ({classname,inputId,selectFileCompo
         event.preventDefault();
     }
 
+    const handleSubmit = async (event:any) => {
+        event.preventDefault();
+        if (!selectedImage) {
+            alert('Please select an image to upload');
+            return;
+        }
+        // יצירת אובייקט FormData והוספת התמונה אליו
+        const formData = new FormData();
+        formData.append('imageData', selectedImage);
+        try {
+            // שליחת בקשת POST לשרת
+            // const response = await axios.post('/uploadImage', formData);
+            // console.log(response.data.message); // הודעת התגובה מהשרת
+        } catch (error) {
+            console.error('Error uploading image:', error);
+            // טיפול בשגיאה
+        }
+    };
+
     return (
         <div className={classname} onClick={handleIconClick} onDragOver={preventDefault} onDrop={handleImageDrop} >
             {selectedImage ? (
@@ -76,7 +96,7 @@ const SelectAndDropImg:FC<SelectDropProps> = ({classname,inputId,selectFileCompo
                 </>
             )
         }
-        <input id={inputId} type="file" accept={".jpg, .png, .jpeg"} autoComplete="off" style={{ display: "none" }} ref={fileInputRef} onChange={handleFileChange} />
+        <input id={inputId} name='images' type="file" accept={".jpg, .png, .jpeg"} autoComplete="off" style={{ display: "none" }} ref={fileInputRef} onChange={handleFileChange} />
         </div>
     )
 }
