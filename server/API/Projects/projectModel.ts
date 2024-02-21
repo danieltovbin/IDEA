@@ -10,15 +10,17 @@ interface Gifts {
 }
 
 export const ProjectSchema = new Schema({
-  ownerId:String,
+  ownerId: String,
   projectName: String,
   projectCategory: [String],
   shortDescription: String,
   tags: [String],
   images: [String],
   videoLink: String,
-  aid: Number,
   projectStory: String,
+  aid: Number,
+  location: String,
+  limitDate: Date,
   gifts: [
     {
       name: String,

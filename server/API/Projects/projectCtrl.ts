@@ -55,3 +55,20 @@ export async function updateProject(req, res) {
     console.error(error);
   }
 }
+
+export async function updateOneOnProject(req, res) {
+  try {
+    const { projectId, key, value } = req.body;
+    if (!projectId || !key || !value)
+      throw new Error("some details are missing");
+    const projectDB = await ProjectModel.updateOne(
+      { _id: projectId },
+      { [key]: value }
+    );
+    if (!projectDB)
+      throw new Error("not found project with this id in database");
+    res.send({ ok: true });
+  } catch (error) {
+    console.error(error);
+  }
+}

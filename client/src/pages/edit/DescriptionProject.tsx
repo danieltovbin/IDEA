@@ -1,22 +1,27 @@
-
 import { Container, SvgIcon, Typography } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getProjectById, updateProject } from "../../API/Projects/projectClientCtrl";
+import {
+  getProjectById,
+  updateProject,
+} from "../../API/Projects/projectClientCtrl";
 import ConnectWithUs from "../../components/Popups/ConnectWithUs";
-import ProjectName from '../../components/edit/DescriptionProject/Inputs/ProjectName';
-import ProjectTags from '../../components/edit/DescriptionProject/Inputs/ProjectTags';
-import ProjectVideo from '../../components/edit/DescriptionProject/Inputs/ProjectVideo';
+import ProjectName from "../../components/edit/DescriptionProject/Inputs/ProjectName";
+import ProjectTags from "../../components/edit/DescriptionProject/Inputs/ProjectTags";
+import ProjectVideo from "../../components/edit/DescriptionProject/Inputs/ProjectVideo";
 import Recruitment from "../../components/edit/DescriptionProject/Inputs/Recruitment";
 import ShortDescription from "../../components/edit/DescriptionProject/Inputs/ShortDescription";
-import ThreeCategories from '../../components/edit/DescriptionProject/Inputs/ThreeCategories';
+import ThreeCategories from "../../components/edit/DescriptionProject/Inputs/ThreeCategories";
 import PicProject from "../../components/edit/DescriptionProject/picProject/PicProject";
-import LabelAndNote from '../../components/labelNoteProps/LabelAndNote';
+import LabelAndNote from "../../components/labelNoteProps/LabelAndNote";
 import EditLayout from "../../layouts/EditLayout";
 import "./scss/description.scss";
+import { ProjectContext } from "../../Contexts/projectContext";
 
 const DescriptionProject = () => {
   const navigate = useNavigate();
+  // const [project, setProject] = useContext(ProjectContext);
+
   const [currentProject, setCurrentProject] = useState<Project>({
     ownerId: "",
     projectName: "",
@@ -34,6 +39,7 @@ const DescriptionProject = () => {
       },
     ],
   });
+
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleIconClick = () => {
@@ -41,34 +47,54 @@ const DescriptionProject = () => {
       fileInputRef.current.click();
     }
   };
+
   const getProject = async () => {
     setCurrentProject(await getProjectById());
+    console.log("get project from DB", currentProject);
   };
+
   useEffect(() => {
     getProject();
   }, []);
 
-  const handleChange = (event: any): void => {
+  const handleChangeInput = (event: any): void => {
     const { name, value } = event.target;
     setCurrentProject((prevFormData) => ({
       ...prevFormData,
       [name]: value,
     }));
+  };
 
+  const handleChangeTags = (selectedTags:[string]): void => {
+    console.log(selectedTags+"---");
+    
+    setCurrentProject((prevFormData) => {
+      return {
+        ...prevFormData,
+        tags: selectedTags,
+      };
+    });
+    console.log(currentProject);
+    
+  };
+  
+  const handleChangeCategories = (selectedCategories:[string]): void => {
+    setCurrentProject((prevFormData) => {
+      return {
+        ...prevFormData,
+        projectCategory: selectedCategories,
+      };
+    });
     console.log(currentProject);
   };
+  
 
   const handleSubmit = () => {
     console.log("form complete!");
     console.log(currentProject);
-    updateProject(currentProject)
-    
+    updateProject(currentProject);
+    navigate("/contentEdit");
   };
-
-
-const DescriptionProject = () => {
-  const navigate = useNavigate();}
-
 
   return (
     <EditLayout>
@@ -86,46 +112,47 @@ const DescriptionProject = () => {
               maxWidth: "580px",
             }}
           >
-            {/* <label htmlFor="">שם הפרויקט</label>
-            <input
-              type="text"
-              value={currentProject?.projectName}
-              name="projectName"
-              onChange={handleChange}
+            <ProjectName
+              value={currentProject.projectName}
+              addChangeToProject={handleChangeInput}
             />
-            <ShortDescription />
-            <p className="title">
-              קטגוריות נוספות לפרויקט
-              <span> (סה''כ ניתן להגדיר עד 3 קטגוריות)</span>
-            </p>
-            <input  name="projectCategory" onChange={handleChange} value={currentProject.projectCategory} style={{ height: "40px" }} type="text" />
-            <label htmlFor="">תגיות הפרויקט(לא חובה)</label>
-            <input
-              name="tags"
-              onChange={handleChange}
-              value={currentProject.tags}
-              type="text"
+            <ShortDescription
+              value={currentProject.shortDescription || ""}
+              addChangeToProject={handleChangeInput}
             />
-            <label htmlFor="">תמונת הפרויקט</label>
+            <ThreeCategories
+              value={currentProject.projectCategory || ""}
+              addChangeToProject={handleChangeCategories}
+            />
+            <ProjectTags
+              value={currentProject.tags || ""}
+              addChangeToProject={handleChangeTags}
+            />
+            <LabelAndNote
+              textLabel={"תמונת הפרויקט"}
+              labelHtmlFor={"picProject"}
+              includeSpan={false}
+              iconToolTip={
+                "תמונת הפרויקט היא כרטיס הביקור של הפרויקט שלך באתר, ולכן היא חשובה מאוד. כדאי להעלות תמונה טובה ומעניינת שמייצגת היטב את הפרויקט."
+              }
+              showTooltip={true}
+            />
             <PicProject />
-            <label htmlFor="">סרטון הפרויקט(לא חובה)</label>
-            <input
-              name="videoLink"
-              value={currentProject.videoLink}
-              onChange={handleChange}
-              type="text"
+            <ProjectVideo
+              value={currentProject.videoLink || ""}
+              addChangeToProject={handleChangeInput}
             />
-            <Recruitment handleChange={handleChange} />
+            <Recruitment
+              value={currentProject.aid || ""}
+              addChangeToProject={handleChangeInput}
+            />
             <Container
               disableGutters
               style={{ marginBottom: "70px", marginTop: "35px" }}
-              onClick={() => navigate("/contentEdit")}
+              onClick={handleSubmit}
             >
-              <div 
-                onClick={handleSubmit}
-                style={{ display: "flex", color: "green" }}
-              >
-                <Typography style={{ color: "green", cursor: "pointer" }}>
+              <div style={{ display: "flex", color: "green" }}>
+                <Typography style={{ color: "green", cursor: "pointer",fontSize:"15px", fontWeight:"bold" }}>
                   שמירה והמשך
                 </Typography>
                 <SvgIcon
@@ -133,21 +160,7 @@ const DescriptionProject = () => {
                   focusable={false}
                   viewBox="0 0 1 24"
                   aria-hidden="true"
-                > --> */}
-            <ProjectName />
-            <ShortDescription />
-            <ThreeCategories />
-            <ProjectTags />
-            <LabelAndNote textLabel={'תמונת הפרויקט'} labelHtmlFor={'picProject'} includeSpan={false} iconToolTip={'תמונת הפרויקט היא כרטיס הביקור של הפרויקט שלך באתר, ולכן היא חשובה מאוד. כדאי להעלות תמונה טובה ומעניינת שמייצגת היטב את הפרויקט.'} showTooltip={true} />
-            <PicProject />
-            <ProjectVideo />
-            <Recruitment />
-            <Container disableGutters style={{ marginBottom: "70px", marginTop: "35px" }} onClick={() => navigate("/contentEdit")}>
-              <div style={{ display: "flex", color: "green" }}>
-                <Typography style={{ color: "green", cursor: "pointer",fontSize:"15px", fontWeight:"bold" }}>
-                  שמירה והמשך
-                </Typography>
-                <SvgIcon style={{ width: "2em" }} focusable={false} viewBox="0 0 1 24" aria-hidden="true">
+                >
                   <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
                 </SvgIcon>
               </div>

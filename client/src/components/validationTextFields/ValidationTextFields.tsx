@@ -2,7 +2,7 @@ import { Box, StandardTextFieldProps, TextField } from "@mui/material";
 import { ChangeEvent, FC, useState } from "react";
 import { ValidateTextProps } from "./validationModels";
 
-const ValidationTextFields: FC<ValidateTextProps> = ({  inputId, placeholder, customCondition,isRequired = true,name, customConditionLogic,textError,inputProps }) => {
+const ValidationTextFields: FC<ValidateTextProps> = ({  inputId, placeholder, customCondition,isRequired = true,name, customConditionLogic,textError,inputProps, value , addChangeToProject}) => {
     const [inputValue, setInputValue] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
@@ -42,6 +42,7 @@ const ValidationTextFields: FC<ValidateTextProps> = ({  inputId, placeholder, cu
                     color="success"
                     focused
                     name={name}
+                    value={value}
                     sx={{ width: "100%", '& .MuiFormHelperText-root': { textAlign: "right", margin: 0, fontSize: "11px" } }}
                     error={errorMessage !== ""}
                     id={inputId}
@@ -49,14 +50,15 @@ const ValidationTextFields: FC<ValidateTextProps> = ({  inputId, placeholder, cu
                     helperText={errorMessage}
                     placeholder={placeholder}
                     inputProps={inputProps as StandardTextFieldProps["inputProps"]}
-                />
-            ) : (
-                <TextField
+                    />
+                    ) : (
+                        <TextField
+                        name={name}
+                        value={value}
                     sx={{ width: "100%", '& .MuiFormHelperText-root': { textAlign: "right", margin: 0, fontSize: "11px" } }}
                     error={errorMessage !== ""}
                     id={inputId}
-                    name={name}
-                    onChange={handleChange}
+                    onChange={(e)=>{handleChange ; addChangeToProject(e)}}
                     helperText={errorMessage}
                     placeholder={placeholder}
                 />)
