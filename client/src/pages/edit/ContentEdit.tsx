@@ -1,3 +1,4 @@
+
 import "primeicons/primeicons.css";
 import { Editor } from "primereact/editor";
 import "primereact/resources/themes/lara-dark-indigo/theme.css";
@@ -114,6 +115,7 @@ const ContentEdit = () => {
           </SvgIcon>
         </div>
       </Container>
+      <PrevNextPage prevPageName={'descriptionProject'} nextPageName={'Submissions'} showContinuation={true} showContinuationIcon={true}/>
     </EditLayout>
   );
 };

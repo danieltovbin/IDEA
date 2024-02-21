@@ -1,0 +1,31 @@
+.checkboxList{
+    border: 1px solid rgb(118, 118, 118);
+    width: 100%;
+    border-radius: 4px;
+
+    p{
+        font-size: 13px;
+        font-weight: normal;
+        margin-right: 8px;
+    }
+
+}
+
+.CheckboxContainer{
+
+    display: flex;
+    margin-top: 10px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.inputDeliveryPrice{
+    margin-right: 15px;
+    input{
+        
+        border: 1px solid rgb(118, 118, 118);
+        border-radius: 4px;
+        outline: none;
+        height: 44px
+    }
+}

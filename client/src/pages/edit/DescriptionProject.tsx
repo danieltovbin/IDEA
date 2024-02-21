@@ -152,7 +152,7 @@ const DescriptionProject = () => {
               onClick={handleSubmit}
             >
               <div style={{ display: "flex", color: "green" }}>
-                <Typography style={{ color: "green", cursor: "pointer" }}>
+                <Typography style={{ color: "green", cursor: "pointer",fontSize:"15px", fontWeight:"bold" }}>
                   שמירה והמשך
                 </Typography>
                 <SvgIcon

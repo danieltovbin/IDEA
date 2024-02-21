@@ -4,6 +4,7 @@ import Phone from '../../components/edit/DeveloperDetails/Inputs/Phone';
 import Residence from '../../components/edit/DeveloperDetails/Inputs/Residence';
 import WordsAboutYou from '../../components/edit/DeveloperDetails/Inputs/WordsAboutYou';
 import PicProfile from '../../components/edit/DeveloperDetails/picProfile/PicProfile';
+import PrevNextPage from '../../components/edit/util/prevNextPage/PrevNextPage';
 import EditLayout from '../../layouts/EditLayout';
 import './scss/description.scss';
 
@@ -11,7 +12,7 @@ const DeveloperDetails = () => {
 
   return (
     <EditLayout>
-      <div className="description">
+      <div className="description" style={{marginBottom:"40px"}}>
         <div className='description-container'>
           <form style={{ display: 'flex', flexDirection: "column", maxWidth: "580px" }}>
             <p>גם כאן כמו בכל מקום, אנשים מתחברים לאנשים. לכן, ההיכרות איתך חשובה - מי האדם מאחורי הפרויקט, מה הביא אותך לכאן וכל פרט שיחבר למקום האישי ולהיכרות אמיתית איתך.</p>
@@ -28,6 +29,7 @@ const DeveloperDetails = () => {
           </form>
         </div>
       </div>
+      <PrevNextPage prevPageName={'Submissions'} nextPageName={''}/>
     </EditLayout>
   )
 }
