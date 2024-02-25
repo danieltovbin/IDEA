@@ -3,7 +3,7 @@ import NameGift from './Inputs/NameGift'
 import PriceGift from './Inputs/PriceGift'
 import DescriptionGift from './Inputs/DescriptionGift'
 import MoreOptions from './Inputs/MoreOptions'
-import { FC } from 'react'
+import { ChangeEvent, FC, useState } from 'react'
 import './scss/stillNoOffers.scss'
 import SavedGifts from './SavedGifts'
 
@@ -12,6 +12,36 @@ interface AddGiftProps {
 }
 
 const AddGift: FC<AddGiftProps> = ({ showAddGift }) => {
+    const [isFormComplete, setIsFormComplete] = useState(false);
+    const [nameValue, setNameValue] = useState(''); 
+    const [priceValue, setPriceValue] = useState(''); 
+    const [descriptionValue, setDescriptionValue] = useState('');
+    const [nameIsValid, setNameIsValid] = useState(false);
+    const [priceIsValid, setPriceIsValid] = useState(false);
+    const [descriptionIsValid, setDescriptionIsValid] = useState(false);
+
+    const handleInputChange = (inputName: string, inputValue: string) => {
+        const isInputValid = inputValue.trim() !== '';
+
+        switch (inputName){
+            case 'name':
+                setNameValue(inputValue)
+                setNameIsValid(isInputValid);
+                break;
+            case 'price':
+                setPriceValue(inputValue)
+                setPriceIsValid(isInputValid);
+                break;
+            case 'description':
+                setDescriptionValue(inputValue)
+            setDescriptionIsValid(isInputValid);
+                break;            
+        }
+
+        setIsFormComplete(nameIsValid && priceIsValid && descriptionIsValid);
+    }
+
+
     return (
         <div>
             <Paper elevation={2} style={{ maxWidth: "580px", padding: "0 25px",paddingBottom:"20px" }}>
@@ -26,12 +56,12 @@ const AddGift: FC<AddGiftProps> = ({ showAddGift }) => {
                         </span>
                     </IconButton>
                 </div>
-                <NameGift />
-                <PriceGift />
-                <DescriptionGift />
+                <NameGift  onChange={(e: ChangeEvent<HTMLInputElement>) => handleInputChange('name', e.target.value)}  />
+                <PriceGift  onChange={(e: ChangeEvent<HTMLInputElement>) => handleInputChange('price', e.target.value)}  />
+                <DescriptionGift  onChange={(e: ChangeEvent<HTMLInputElement>) => handleInputChange('description', e.target.value)}  />
                 <MoreOptions />
                 <div className='AddBtn'>
-                    <button tabIndex={-1} type="button" disabled><span>הוספת תשורה זו לפרויקט</span></button>
+                    <button tabIndex={-1} type="button" disabled={!isFormComplete} style={{backgroundColor: isFormComplete ? 'green' : 'gray'}}><span>הוספת תשורה זו לפרויקט</span></button>
                     <a onClick={showAddGift}>ביטול</a>
                 </div>
             </Paper>
