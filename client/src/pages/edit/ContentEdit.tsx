@@ -121,6 +121,7 @@ const ContentEdit = () => {
         showContinuation={true}
         showContinuationIcon={true}
       />
+      <div style={{marginBottom:'250px'}}></div>
     </EditLayout>
   );
 };

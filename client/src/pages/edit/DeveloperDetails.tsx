@@ -30,6 +30,7 @@ const DeveloperDetails = () => {
         </div>
       </div>
       <PrevNextPage prevPageName={'Submissions'} nextPageName={''}/>
+      <div style={{marginBottom:"70px"}}></div>
     </EditLayout>
   )
 }
