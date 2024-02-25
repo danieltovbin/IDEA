@@ -13,19 +13,20 @@ interface AddGiftProps {
 
 const AddGift: FC<AddGiftProps> = ({ showAddGift }) => {
     const [isFormComplete, setIsFormComplete] = useState(false);
-    const [nameValue, setNameValue] = useState(''); 
-    const [priceValue, setPriceValue] = useState(''); 
+    const [nameGift, setNameGift] = useState('');
+    const [priceValue, setPriceValue] = useState('');
     const [descriptionValue, setDescriptionValue] = useState('');
     const [nameIsValid, setNameIsValid] = useState(false);
     const [priceIsValid, setPriceIsValid] = useState(false);
     const [descriptionIsValid, setDescriptionIsValid] = useState(false);
+    const [giftAdded, setGiftAdded] = useState(false)
 
     const handleInputChange = (inputName: string, inputValue: string) => {
         const isInputValid = inputValue.trim() !== '';
 
-        switch (inputName){
+        switch (inputName) {
             case 'name':
-                setNameValue(inputValue)
+                setNameGift(inputValue)
                 setNameIsValid(isInputValid);
                 break;
             case 'price':
@@ -34,17 +35,21 @@ const AddGift: FC<AddGiftProps> = ({ showAddGift }) => {
                 break;
             case 'description':
                 setDescriptionValue(inputValue)
-            setDescriptionIsValid(isInputValid);
-                break;            
+                setDescriptionIsValid(isInputValid);
+                break;
         }
-
         setIsFormComplete(nameIsValid && priceIsValid && descriptionIsValid);
     }
-
+const handleAddGift = ()=>{
+    if(isFormComplete){
+        setGiftAdded(true)
+        showAddGift
+    }
+}
 
     return (
         <div>
-            <Paper elevation={2} style={{ maxWidth: "580px", padding: "0 25px",paddingBottom:"20px" }}>
+            <Paper elevation={2} style={{ maxWidth: "580px", padding: "0 25px", paddingBottom: "20px" }}>
                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                     <p style={{ fontSize: "16px", fontWeight: "bold", lineHeight: "22px" }}>הוספת תשורה לפרויקט:</p>
                     <IconButton style={{ outline: "none" }} tabIndex={0} type="button" onClick={showAddGift}>
@@ -56,16 +61,16 @@ const AddGift: FC<AddGiftProps> = ({ showAddGift }) => {
                         </span>
                     </IconButton>
                 </div>
-                <NameGift  onChange={(e: ChangeEvent<HTMLInputElement>) => handleInputChange('name', e.target.value)}  />
-                <PriceGift  onChange={(e: ChangeEvent<HTMLInputElement>) => handleInputChange('price', e.target.value)}  />
-                <DescriptionGift  onChange={(e: ChangeEvent<HTMLInputElement>) => handleInputChange('description', e.target.value)}  />
+                <NameGift addChangeToProject={(e: ChangeEvent<HTMLInputElement>) => handleInputChange('name', e.target.value)} value={nameGift} />
+                <PriceGift addChangeToProject={(e: ChangeEvent<HTMLInputElement>) => handleInputChange('price', e.target.value)} value={priceValue} />
+                <DescriptionGift addChangeToProject={(e: ChangeEvent<HTMLInputElement>) => handleInputChange('description', e.target.value)} value={descriptionValue} />
                 <MoreOptions />
                 <div className='AddBtn'>
-                    <button tabIndex={-1} type="button" disabled={!isFormComplete} style={{backgroundColor: isFormComplete ? 'green' : 'gray'}}><span>הוספת תשורה זו לפרויקט</span></button>
+                    <button onClick={handleAddGift} type="button" disabled={!isFormComplete} style={{ backgroundColor: isFormComplete ? '#48ad02' : 'white', color: isFormComplete ? 'white' : 'gray', fontSize: "13px",height:"40px" }}><span>הוספת תשורה זו לפרויקט</span></button>
                     <a onClick={showAddGift}>ביטול</a>
                 </div>
             </Paper>
-            <SavedGifts nameGift={''} priceGift={0} descriptionGift={''}/>
+            {giftAdded && <SavedGifts nameGift={nameGift} priceGift={priceValue} descriptionGift={descriptionValue} />}
         </div>
     )
 }

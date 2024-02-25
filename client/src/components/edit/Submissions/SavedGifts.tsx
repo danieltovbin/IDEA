@@ -3,9 +3,10 @@ import './scss/savedGifts.scss';
 import SavedGiftsBtn from './util/SavedGiftsBtn';
 import {FC} from 'react';
 
+
 interface SavedGiftsProps{
     nameGift:string;
-    priceGift: number;
+    priceGift: string;
     descriptionGift: string;
 }
 
