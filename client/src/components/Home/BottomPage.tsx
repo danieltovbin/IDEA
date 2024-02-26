@@ -2,35 +2,37 @@ import React from "react";
 import "./bottomPage.scss";
 const BottomPage = () => {
   return (
-    <div className="bottomPageDiv">
+    <div className="bottomPageDiv " dir="rtl">
       <div className="mainDiv">
         <div className="top">
           <div className="list1">
             <ul>
-              <h4>Nice to Meet</h4>
-              <li>About Us</li>
-              <li>Contact Us</li>
-              <li>The Start Academy</li>
-              <li>Accessibility arrangements</li>
-              <li>Our podcast</li>
+              <h4>נעים להכיר</h4>
+              <li>קצת עלינו</li>
+              <li>צור קשר</li>
+              <li>אקדמיית הדסטארט</li>
+              <li>הסדרי נגישות</li>
+              <li style={{ color: "#ff0d91", fontWeight: "bold" }}>
+                הפודקאסט שלנו
+              </li>
             </ul>
           </div>
           <div className="list2">
             <ul>
-              <h4> Entrepreneurs</h4>
+              <h4>יזמים</h4>
 
-              <li>Questions and Answers</li>
-              <li>Collaborations</li>
-              <li>Marketing aids</li>
-              <li>How It Works?</li>
-              <li>Why the start?</li>
-              <li>Guide for entrepreneurs</li>
-              <li>Our workshops</li>
+              <li>שאלות ותשובות</li>
+              <li>שיתופי פעולה</li>
+              <li>עזרי שיווק</li>
+              <li>איך זה עובד?</li>
+              <li>למה הדסטארט?</li>
+              <li>המדריך ליזמים</li>
+              <li>הסדנאות שלנו</li>
             </ul>
           </div>
           <div className="list3">
             <ul>
-              <h4> Idea group</h4>
+              <h4>קבוצת הדסטארט</h4>
               <li>fundit</li>
               <li>giveback</li>
               <li>beactive</li>

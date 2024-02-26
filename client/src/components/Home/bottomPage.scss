@@ -12,13 +12,20 @@
     display: flex;
     ul {
       list-style: none;
+      margin: 30px;
       h4 {
         color: #ff0d91;
+        font-size: 16px;
       }
       li {
         color: rgb(46, 46, 46);
-        font-size: 14px;
-        padding: 10px;
+        font-size: 13px;
+        padding: 10px 0;
+        align-items: right;
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
       }
     }
   }
@@ -33,10 +40,10 @@
       }
     }
     .policyLinks {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        // margin-top: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // margin-top: auto;
       a {
         padding: 7px;
         color: rgb(164, 164, 164);

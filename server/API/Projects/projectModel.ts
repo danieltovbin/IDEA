@@ -21,6 +21,14 @@ export const ProjectSchema = new Schema({
   aid: Number,
   location: String,
   limitDate: Date,
+  ownerInfo: {
+    ownerName: String,
+    location: String,
+    ownerDescription: String,
+    phoneNumber: String,
+    linkToFacebook: String,
+    profileImageUrl: String
+  },
   gifts: [
     {
       name: String,

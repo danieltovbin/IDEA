@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getProjectById } from "../../API/Projects/projectClientCtrl";
-import TopProjectDiv from "../Home/TopProjectDiv";
-import TopProjects from "../Home/TopProjects";
-import { project1, project2, project3, project4 } from "../Home/projects";
-import ProjectHeader from "./projectHeader";
+import { project1 } from "../Home/projects";
+import MiniNavProject from "./MiniNavProject";
+import ProjectHeader from "./ProjectHeader";
 
 const Header = () => {
   const [projectInformation, setProjectInformation] = useState(null);

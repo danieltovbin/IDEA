@@ -50,9 +50,9 @@ export async function updateProject(projectForm: Project) {
   }
 }
 
-export async function updateOneOnProject(key: string, value:any) {
+export async function updateOneOnProject(key: string, value: any) {
   try {
-    console.log(key , value);
+    console.log(key, value);
     const projectId = sessionStorage.getItem("projectId");
     const { data } = await axios.patch("/API/projects/updateOne", {
       value,
@@ -60,6 +60,49 @@ export async function updateOneOnProject(key: string, value:any) {
       projectId,
     });
     if (!data.ok) throw new Error("project update failed on server side");
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function uploadImage(file: any, key: string) {
+  try {
+    if (!file || !key)
+      throw new Error(
+        "uploadImage in client side failed - file or key not provided"
+      );
+    const formData = new FormData();
+    formData.append("image", file);
+
+    const projectId = sessionStorage.getItem("projectId");
+    formData.append("projectId", projectId!);
+    formData.append("key", key);
+
+    const response = await axios
+      .post("API/cloudinary/upload", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        console.log("Image uploaded successfully:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error uploading image:", error);
+      });
+    //@ts-ignore
+    console.log("Image uploaded successfully:", response.data.imageUrl);
+  } catch (error) {
+    console.error("Error uploading image:", error);
+  }
+}
+
+export async function getLast4projects() {
+  try {
+    const { data } = await axios.get("/API/projects/get4latestProjects");
+    console.log(data);
+    if (data) return data;
+    else return [];
   } catch (error) {
     console.error(error);
   }

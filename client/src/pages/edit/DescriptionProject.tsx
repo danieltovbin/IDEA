@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {
   getProjectById,
   updateProject,
+  uploadImage,
 } from "../../API/Projects/projectClientCtrl";
 import ConnectWithUs from "../../components/Popups/ConnectWithUs";
 import ProjectName from "../../components/edit/DescriptionProject/Inputs/ProjectName";
@@ -16,12 +17,11 @@ import PicProject from "../../components/edit/DescriptionProject/picProject/PicP
 import LabelAndNote from "../../components/labelNoteProps/LabelAndNote";
 import EditLayout from "../../layouts/EditLayout";
 import "./scss/description.scss";
-import { ProjectContext } from "../../Contexts/projectContext";
 
 const DescriptionProject = () => {
   const navigate = useNavigate();
   // const [project, setProject] = useContext(ProjectContext);
-
+  const [images, setImages] = useState()
   const [currentProject, setCurrentProject] = useState<Project>({
     ownerId: "",
     projectName: "",
@@ -65,6 +65,10 @@ const DescriptionProject = () => {
     }));
   };
 
+  const handleSelectedImages=(event:any)=>{
+      setImages(event.target.files[0]);
+  }
+
   const handleChangeTags = (selectedTags:[string]): void => {
     console.log(selectedTags+"---");
     
@@ -93,6 +97,7 @@ const DescriptionProject = () => {
     console.log("form complete!");
     console.log(currentProject);
     updateProject(currentProject);
+    uploadImage(images, "images")
     navigate("/contentEdit");
   };
 
@@ -137,7 +142,7 @@ const DescriptionProject = () => {
               }
               showTooltip={true}
             />
-            <PicProject />
+            <PicProject imageFromDB={currentProject.images ? currentProject.images[0] : null} handleChangeToForm={handleSelectedImages} />
             <ProjectVideo
               value={currentProject.videoLink || ""}
               addChangeToProject={handleChangeInput}

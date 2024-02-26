@@ -1,12 +1,23 @@
-import SelectAndDropImg from "../../util/selectAndDropImg/SelectAndDropImg"
-import SelectFileFromProfile from "./SelectFileFromProfile"
-import './scss/PicProfile.scss'
+import { FC, useState } from "react";
+import SelectAndDropImg from "../../util/selectAndDropImg/SelectAndDropImg";
+import SelectFileFromProfile from "./SelectFileFromProfile";
+import "./scss/PicProfile.scss";
 
-const PicProfile = () => {
-  return (
-    <SelectAndDropImg classname={"PicProfile"} inputId={"picProfile"} selectFileComponent={<SelectFileFromProfile />}  />
-    
-  )
+interface PicProps{
+  handleChangeToForm:(e:any)=>void;
+  imageFromDB?:string|null;
 }
 
-export default PicProfile
+const PicProfile:FC<PicProps> = ({handleChangeToForm, imageFromDB}) => {
+  return (
+    <SelectAndDropImg
+      classname={"PicProfile"}
+      inputId={"picProfile"}
+      handleChangeToForm={handleChangeToForm}
+      imageFromDB={imageFromDB}
+      selectFileComponent={<SelectFileFromProfile />}
+    />
+  );
+};
+
+export default PicProfile;
