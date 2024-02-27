@@ -14,13 +14,6 @@ const SavedGifts:FC<SavedGiftsProps> = ({nameGift,priceGift,descriptionGift}) =>
     return (
         <div style={{ maxWidth: "580px" }}>
             <Container disableGutters >
-                <div style={{ display: "flex", justifyContent: "space-between" }}>
-                    <p className='title'>
-                        תשורות שנשמרו
-                    </p>
-                    <Divider sx={{ width: "calc(100% - 275px)", borderBottom: "1px solid #d6d6d6", marginBottom: "9px" }} />
-                </div>
-
                 <Container disableGutters>
                     <List >
                         <div>
