@@ -8,9 +8,11 @@ interface SavedGiftsProps{
     nameGift:string;
     priceGift: string;
     descriptionGift: string;
+    onDelete: ()=> void;
+    onEdit: ()=> void;
 }
 
-const SavedGifts:FC<SavedGiftsProps> = ({nameGift,priceGift,descriptionGift}) => {
+const SavedGifts:FC<SavedGiftsProps> = ({nameGift,priceGift,descriptionGift,onDelete,onEdit}) => {
     return (
         <div style={{ maxWidth: "580px" }}>
             <Container disableGutters >
@@ -48,7 +50,7 @@ const SavedGifts:FC<SavedGiftsProps> = ({nameGift,priceGift,descriptionGift}) =>
                                                 <Container disableGutters ></Container>
                                                 <Divider sx={{borderBottom: "1px dashed #d6d6d6"}}/>
                                                 <Container disableGutters >
-                                                    <SavedGiftsBtn />
+                                                    <SavedGiftsBtn onDelete={onDelete} onEdit={onEdit} />
                                                 </Container>
                                             </AccordionDetails>
                                         </Accordion>

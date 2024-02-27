@@ -6,9 +6,11 @@ import LabelAndNote from '../../components/labelNoteProps/LabelAndNote'
 import EditLayout from '../../layouts/EditLayout'
 import './scss/submissions.scss'
 import PrevNextPage from '../../components/edit/util/prevNextPage/PrevNextPage'
+import { useGiftContext } from '../../context/GiftContext'
 
 const Submissions = () => {
   const [showNewSubmission, setShowNewSubmission] = useState(true);
+  const { giftAdded} = useGiftContext();
 
   const handleBtnClick = () => {
     setShowNewSubmission(false)
@@ -55,9 +57,14 @@ const Submissions = () => {
             </div>
           )}
         </div>
-        {showNewSubmission ? <StillNoOffers /> : (
-          <AddGift showAddGift={showAddGift} />
+        {!showNewSubmission && (
+          <AddGift showAddGift={showAddGift} showForm={true} />
         )}
+        
+        {giftAdded.length > 0 ? (
+          <AddGift showAddGift={showAddGift} showForm={false} />
+        ):<StillNoOffers />}
+
 
       </div>
       <PrevNextPage prevPageName={'contentEdit'} nextPageName={'DeveloperDetails'} showContinuation={true} showContinuationIcon={true} />
