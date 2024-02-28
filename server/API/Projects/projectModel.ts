@@ -1,16 +1,43 @@
-import { Schema, model } from "mongoose";
-import UserModel from "../Users/usersModel";
+import { Schema, model, Document, Types } from "mongoose";
 
-interface Gifts {
+interface IGift {
   name: string;
   description: string;
   coast: number;
-  deliveryOption: [String];
+  deliveryOption: string[];
   date: Date;
 }
 
-export const ProjectSchema = new Schema({
+interface IOwnerInfo {
+  ownerName: string;
+  location: string;
+  ownerDescription: string;
+  phoneNumber: string;
+  linkToFacebook: string;
+  profileImageUrl: string;
+}
+
+interface IProject extends Document {
+  ownerId: string;
+  createdAt:Date,
+  projectName: string;
+  projectCategory: string[];
+  shortDescription: string;
+  tags: string[];
+  images: string[];
+  videoLink: string;
+  projectStory: string;
+  aid: number;
+  raised: number;
+  location: string;
+  limitDate: Date;
+  ownerInfo: IOwnerInfo;
+  gifts: IGift[];
+}
+
+const projectSchema = new Schema<IProject>({
   ownerId: String,
+  createdAt: { type: Date, default: Date.now }, 
   projectName: String,
   projectCategory: [String],
   shortDescription: String,
@@ -18,9 +45,18 @@ export const ProjectSchema = new Schema({
   images: [String],
   videoLink: String,
   projectStory: String,
-  aid: Number,
+  aid: {type:Number, default: 0},
+  raised: Number,
   location: String,
   limitDate: Date,
+  ownerInfo: {
+    ownerName: String,
+    location: String,
+    ownerDescription: String,
+    phoneNumber: String,
+    linkToFacebook: String,
+    profileImageUrl: String
+  },
   gifts: [
     {
       name: String,
@@ -32,5 +68,5 @@ export const ProjectSchema = new Schema({
   ],
 });
 
-const ProjectModel = model("projects", ProjectSchema);
+const ProjectModel = model<IProject>("projects", projectSchema);
 export default ProjectModel;

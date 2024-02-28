@@ -2,9 +2,20 @@ import { Box, StandardTextFieldProps, TextField } from "@mui/material";
 import { ChangeEvent, FC, useState } from "react";
 import { ValidateTextProps } from "./validationModels";
 
-const ValidationTextFields: FC<ValidateTextProps> = ({  inputId, placeholder, customCondition,isRequired = true,name, customConditionLogic,textError,inputProps, value , addChangeToProject}) => {
-    const [inputValue, setInputValue] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
+const ValidationTextFields: FC<ValidateTextProps> = ({
+  inputId,
+  placeholder,
+  customCondition,
+  isRequired = true,
+  name,
+  customConditionLogic,
+  textError,
+  inputProps,
+  value,
+  addChangeToProject,
+}) => {
+  const [inputValue, setInputValue] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const inputValue = e.target.value;
@@ -26,8 +37,67 @@ const ValidationTextFields: FC<ValidateTextProps> = ({  inputId, placeholder, cu
             console.error("Something wrong with handleChange function",error)
         }
     }
+  };
 
-    return (
+
+  return (
+    <>
+      <Box
+        component="form"
+        sx={{
+          "& .MuiTextField-root": { "& fieldset": { borderColor: "#756e6e" } },
+          "& input::placeholder": { fontSize: "14px" },
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        {customCondition(inputValue) ? (
+          <TextField
+            variant="outlined"
+            color="success"
+            focused
+            name={name}
+            value={value}
+            sx={{
+              width: "100%",
+              "& .MuiFormHelperText-root": {
+                textAlign: "right",
+                margin: 0,
+                fontSize: "11px",
+              },
+            }}
+            error={errorMessage !== ""}
+            id={inputId}
+            onChange={handleChange}
+            helperText={errorMessage}
+            placeholder={placeholder}
+            inputProps={inputProps as StandardTextFieldProps["inputProps"]}
+          />
+        ) : (
+          <TextField
+            name={name}
+            value={value}
+            sx={{
+              width: "100%",
+              "& .MuiFormHelperText-root": {
+                textAlign: "right",
+                margin: 0,
+                fontSize: "11px",
+              },
+            }}
+            error={errorMessage !== ""}
+            id={inputId}
+            onChange={handleChange}
+            helperText={errorMessage}
+            placeholder={placeholder}
+          />
+        )}
+      </Box>
+    </>
+  );
+};
+
+<!--     return (
         <>
             <Box
                 component="form"
@@ -68,6 +138,5 @@ const ValidationTextFields: FC<ValidateTextProps> = ({  inputId, placeholder, cu
             </Box>
         </>
     )
-}
-
-export default ValidationTextFields
+} -->
+export default ValidationTextFields;

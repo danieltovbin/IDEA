@@ -1,28 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { getProjectById } from "../../API/Projects/projectClientCtrl";
-import TopProjectDiv from "../Home/TopProjectDiv";
-import TopProjects from "../Home/TopProjects";
-import { project1, project2, project3, project4 } from "../Home/projects";
-import ProjectHeader from "./projectHeader";
+import { FC } from "react";
+import ProjectHeader from "./ProjectHeader";
 
-const Header = () => {
-  const [projectInformation, setProjectInformation] = useState(null);
 
-  useEffect(() => {
-    const fetchProject = async () => {
-      try {
-        const projectInfo = await getProjectById();
-        setProjectInformation(projectInfo);
-      } catch (error) {
-        console.error("Error fetching project:", error);
-      }
-    };
+interface HeaderProps{
+  project:Project;
+  loading?:boolean;
+}
+const Header:FC<HeaderProps> = ({project, loading}) => {
+ 
 
-    fetchProject();
-  }, []);
   return (
     <div>
-      <ProjectHeader projectInfo={project1} />
+      {loading ? (
+        <div className="loadingDiv">
+          <img src="/image/Ellipsis-3.8s-203px.gif" alt="loading..." />
+        </div>
+      ) : (
+        <ProjectHeader projectInfo={project} />
+      )}
     </div>
   );
 };

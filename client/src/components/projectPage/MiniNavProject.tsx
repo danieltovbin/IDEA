@@ -1,30 +1,49 @@
-import { useState } from "react";
+import { FC, useState } from "react";
+import "./miniNavProject.scss";
+import { Box, Tab } from "@mui/material";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+import TabPanel from "@mui/lab/TabPanel";
 
-const MiniNavProject = () => {
+interface miniNavDivProps {
+  project: Project;
+}
+
+const MiniNavProject: FC<miniNavDivProps> = ({ project }) => {
   const [navigateNum, setNavigateNum] = useState(0);
-
+  const [value, setValue] = useState("1");
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    setValue(newValue);
+  };
   return (
-    <div>
-      <nav>
-        <li onClick={()=>{setNavigateNum(0)}}>על הפרוייקט</li>
-        <li onClick={()=>{setNavigateNum(1)}}>תומכים.ות</li>
-        <li onClick={()=>{setNavigateNum(2)}}>עדכונים</li>
-        <li onClick={()=>{setNavigateNum(3)}}>תגובות</li>
-      </nav>
-      {(() => {
-        switch (navigateNum) {
-          case 0:
-            return <>על הפרוייקט</>;
-          case 1:
-            return <div>תומכים.ות</div>;
-          case 2:
-            return <div>עדכונים</div>;
-          case 3:
-            return <div>תגובות</div>;
-          default:
-            return <div>על הפרוייקט</div>;
-        }
-      })()}
+    <div className="miniNavDiv" dir="rtl">
+      <TabContext value={value}>
+        <Box
+          className="navBarInProject"
+          sx={{ borderBottom: 1, borderColor: "divider" }}
+        >
+          <TabList onChange={handleChange} aria-label="lab API tabs example">
+            <Tab label="על הפרוייקט" value="1" />
+            <Tab label="תומכים.ות" value="2" />
+            <Tab label="עדכונים" value="3" />
+            <Tab label="תגובות" value="4" />
+            <Tab
+              className="imageIcon"
+              icon={<img src="/image/IDEA ICON .png" alt="logo-idea" />}
+              disabled
+              value="5"
+            />
+          </TabList>
+        </Box>
+        <TabPanel value="1">
+          <div role="tabpanel" hidden={value !== "1"}>
+            <div dangerouslySetInnerHTML={{ __html: project.projectStory }} />
+          </div>{" "}
+        </TabPanel>
+        <TabPanel value="2">תומכים.ות</TabPanel>
+        <TabPanel value="3">עדכונים</TabPanel>
+        <TabPanel value="4">תגוובת</TabPanel>
+      </TabContext>
     </div>
   );
 };

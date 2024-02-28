@@ -81,6 +81,17 @@
   animation-duration: 1.5s;
 }
 
+.loadingDiv {
+  width: 100vw;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 100px;
+  }
+}
+
 @keyframes fade {
   from {
     opacity: 0.4;

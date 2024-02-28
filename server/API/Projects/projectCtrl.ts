@@ -1,6 +1,7 @@
 import jwt from "jwt-simple";
 import ProjectModel from "./projectModel";
 import UserModel from "../Users/usersModel";
+import { uploadImageController } from "../Cloudinary/cloudinaryCtrl";
 const { SECRET_KEY } = process.env;
 
 export async function startProject(req, res) {
@@ -59,8 +60,17 @@ export async function updateProject(req, res) {
 export async function updateOneOnProject(req, res) {
   try {
     const { projectId, key, value } = req.body;
+    const updatedFields = {};
+
     if (!projectId || !key || !value)
       throw new Error("some details are missing");
+    if (typeof value === "object" && !Array.isArray(value) && value !== null) {
+      for (const key in value) {
+        if (value[key] !== null && value[key] !== "") {
+          updatedFields[key] = value[key];
+        }
+      }
+    }
     const projectDB = await ProjectModel.updateOne(
       { _id: projectId },
       { [key]: value }
@@ -68,6 +78,18 @@ export async function updateOneOnProject(req, res) {
     if (!projectDB)
       throw new Error("not found project with this id in database");
     res.send({ ok: true });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function get4latestProjects(req, res) {
+  try {
+    const latestProjects = await ProjectModel.find()
+      .sort({ createdAt: -1 })
+      .limit(1);
+    console.log(latestProjects);
+    res.send({ ok: true, latestProjects });
   } catch (error) {
     console.error(error);
   }
