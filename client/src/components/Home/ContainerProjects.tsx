@@ -29,26 +29,26 @@ const ContainerProjects = () => {
             <StyledCard><ProjectCard /></StyledCard>
             </div>
         </div>
-        {/* <div className='new'>
+        <div className='new'>
         <CategoryAndBtnMore categoryName={'פרויקטים חדשים'} />
         <Divider />
             <div className='cards'>
-            <StyledCard></StyledCard>
-            <StyledCard></StyledCard>
-            <StyledCard></StyledCard>
-            <StyledCard></StyledCard>
+            <StyledCard><ProjectCard /></StyledCard>
+            <StyledCard><ProjectCard /></StyledCard>
+            <StyledCard><ProjectCard /></StyledCard>
+            <StyledCard><ProjectCard /></StyledCard>
             </div>
         </div>
         <div className='endedSuccessfully'>
         <CategoryAndBtnMore categoryName={'הסתיימו בהצלחה'} />
         <Divider />
             <div className='cards'>
-            <StyledCard></StyledCard>
-            <StyledCard></StyledCard>
-            <StyledCard></StyledCard>
-            <StyledCard></StyledCard>
+            <StyledCard><ProjectCard /></StyledCard>
+            <StyledCard><ProjectCard /></StyledCard>
+            <StyledCard><ProjectCard /></StyledCard>
+            <StyledCard><ProjectCard /></StyledCard>
             </div>
-        </div> */}
+        </div>
     </div>
   )
 }

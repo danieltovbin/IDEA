@@ -77,7 +77,7 @@ const TopProjects = () => {
         <span className="dot" onClick={() => currentSlide(5)}></span>
       </div>
     </div>
-    <ContainerProjects/>
+    
     </>
   );
 };
