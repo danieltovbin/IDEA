@@ -1,5 +1,9 @@
 import React, { FC } from 'react'
 import './scss/projectCard.scss'
+import { he, fakerHE } from '@faker-js/faker';
+// const randomName = fakerHE.person.fullName(); // Rowan Nikolaus
+// const randomImage = fakerHE.image.urlLoremFlickr({ category: 'nature' })
+// const randomAvatar = fakerHE.image.avatar()
 
 export interface TopProjectProps {
   projectInfo?: {
@@ -15,7 +19,7 @@ export interface TopProjectProps {
   };
 }
 
-const ProjectCard:FC<TopProjectProps> = ({projectInfo}) => {
+const ProjectCard = () => {
   // const percentRaised = parseInt(((raised / aid) * 100).toString());
   return (
     <div
@@ -26,22 +30,24 @@ const ProjectCard:FC<TopProjectProps> = ({projectInfo}) => {
         borderRadius: '3px',
         overflow: 'hidden',
         position: 'relative',
+        lineHeight: '21px',
         minWidth: '242px',
         width: '242px',
         backgroundColor: 'rgb(255, 255, 255)',
         margin: '0px',
         cursor:'pointer',
         fontFamily: 'Open Sans Hebrew, sans-serif',
+        whiteSpace: 'pre-line',
+        overflowWrap: 'break-word'
         
       }}
     >
-      <div className="jsx-2612550306 card-image can-blur">
+      <div style={{overflow:'hidden', height:'133px'}}>
         <img
-          data-src="/image/629f2481-01d9-6da3-947d-73405b52fd06.PNG/300"
-          className="jss970 ls-is-cached lazyloaded"
+          className="card-image"
           width="100%"
           height="133px"
-          src="/image/629f2481-01d9-6da3-947d-73405b52fd06.PNG/300"
+          src={fakerHE.image.urlLoremFlickr({ category: 'nature' })}
         />
       </div>
       <div>
@@ -62,57 +68,52 @@ const ProjectCard:FC<TopProjectProps> = ({projectInfo}) => {
         style={{
           width: 'calc(100% - 16px)',
           padding: '8px 16px 0px',
-          display:"flex"
+          display:"flex",
+          alignItems: 'center'
         }}
       >
-        <div>
+        <div className='btn-avatar'>
           <button
-            tabIndex={-1}
             type="button"
             disabled
-            style={{
-              padding: '0px',
-              cursor: 'unset',
-              width: '24px',
-              height: '24px',
-            }}
           >
             <span>
               <img
-                data-src="/image/55210f62-19f9-0997-4589-d8e946b56266.jpg/50"
-                className="jss791 jss1104 undefined ls-is-cached lazyloaded"
                 width="24px"
                 height="24px"
                 style={{ borderRadius: '50%' }}
-                src="/image/55210f62-19f9-0997-4589-d8e946b56266.jpg/50"
+                src={fakerHE.image.avatar()}
               />
             </span>
           </button>
         </div>
         <div>
           <div style={{ fontWeight: 'normal',padding: '0px 5px',fontSize: '13px', lineHeight: '17px' }}>
-            בועז דרייר
+          {fakerHE.person.fullName()}
           </div>
         </div>
       </div>
       <div
-        style={{
-          fontSize: '15px',
-          height: '78px',
-          position: 'relative',
-          overflow: 'hidden',
-          overflowWrap: 'break-word',
-          whiteSpace: 'pre-lin',
-          padding: '10px 16px'
-        }}
+      className='containerCardProject'
+        // style={{
+        //   fontSize: '15px',
+        //   height: '78px',
+        //   position: 'relative',
+        //   overflow: 'hidden',
+        //   overflowWrap: 'break-word',
+        //   whiteSpace: 'pre-lin',
+        //   padding: '10px 16px',
+        //   lineHeight:'21px',
+        // }}
       >
         אנחנו מזמינים אתכם לקחת חלק ולתמוך בכרם בוטיק אשר ניזון מחומרים אורגנים וללא ריסוסים.
         אנו מייצרים יין טבעי כפי שאבותינו עשו לפנינו.
         <div
-          style={{ filter: 'none', backgroundColor: 'rgba(255, 255, 255, 0.6)', bottom: '6px' }}
+          style={{  backgroundColor: 'rgba(255, 255, 255, 0.6)', bottom: '6px',position: 'absolute',height: '17px',left:' 0px', right: '0px'
+       }}
         ></div>
       </div>
-      <div>
+      <div style={{paddingBottom: '16px',paddingTop: '16px'}}>
         <div>
         {/* <div className="progressBar">
             <div
