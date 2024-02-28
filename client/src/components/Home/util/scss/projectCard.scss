@@ -1,0 +1,13 @@
+.number{
+    p:nth-child(1){
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: bold;
+    }
+
+    p:nth-child(2){
+        font-size: 11px;
+        line-height: 17px;
+        color: rgb(125, 125, 125);
+    }
+}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import TopProjectDiv from "./TopProjectDiv";
 import { project1, project2, project3, project4 } from "./projects";
 import "./topProjectsStyle.scss";
+import ContainerProjects from "./ContainerProjects";
 
 const TopProjects = () => {
   const [slideIndex, setSlideIndex] = useState(1);
@@ -53,6 +54,7 @@ const TopProjects = () => {
   };
 
   return (
+    <>
     <div className="slideshow-container">
       <TopProjectDiv projectInfo={project1} />
       <TopProjectDiv projectInfo={project2} />
@@ -75,6 +77,8 @@ const TopProjects = () => {
         <span className="dot" onClick={() => currentSlide(5)}></span>
       </div>
     </div>
+    <ContainerProjects/>
+    </>
   );
 };
 

@@ -1,0 +1,10 @@
+.categoryAndBtnMore{
+    margin-top: 33px;
+    button{
+        border: none;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
