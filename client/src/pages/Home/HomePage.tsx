@@ -1,6 +1,7 @@
 import BottomPage from "../../Components/Home/BottomPage";
 import BtnStart from "../../Components/Home/BtnStart";
 import Navbar from "../../Components/Navbar/Navbar";
+import ContainerProjects from "../../components/Home/ContainerProjects";
 import TopProjects from "../../components/Home/TopProjects";
 import "./homePage.scss";
 const HomePage = () => {
@@ -9,7 +10,7 @@ const HomePage = () => {
       <Navbar />
       <BtnStart />
       <TopProjects />
-      {/* <AllProjects /> */}
+      <ContainerProjects/>
       <BottomPage />
     </div>
   );

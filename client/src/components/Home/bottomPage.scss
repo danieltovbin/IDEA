@@ -1,6 +1,7 @@
 .bottomPageDiv {
   background-color: #f3f3f3;
   width: 100%;
+  direction: rtl;
   display: flex;
   justify-content: center;
   color: rgb(46, 46, 46);
@@ -10,6 +11,7 @@
   }
   .top {
     display: flex;
+    justify-content: space-around;
     ul {
       list-style: none;
       h4 {
@@ -18,7 +20,12 @@
       li {
         color: rgb(46, 46, 46);
         font-size: 14px;
-        padding: 10px;
+        padding: 10px 0;
+        cursor: pointer;
+
+        &:hover{
+          text-decoration:underline;
+        }
       }
     }
   }

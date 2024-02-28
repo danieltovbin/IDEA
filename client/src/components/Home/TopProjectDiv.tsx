@@ -2,7 +2,7 @@ import { FC } from "react";
 import "./topProjectStyle.scss";
 // import LinearProgressWithLabel from '@mui/lab/LinearProgressWithLabel';
 
-interface TopProjectDivProps {
+export interface TopProjectDivProps {
   projectInfo: {
     location: string;
     category: string;

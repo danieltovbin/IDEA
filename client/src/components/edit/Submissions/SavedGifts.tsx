@@ -3,23 +3,19 @@ import './scss/savedGifts.scss';
 import SavedGiftsBtn from './util/SavedGiftsBtn';
 import {FC} from 'react';
 
+
 interface SavedGiftsProps{
     nameGift:string;
-    priceGift: number;
+    priceGift: string;
     descriptionGift: string;
+    onDelete: ()=> void;
+    onEdit: ()=> void;
 }
 
-const SavedGifts:FC<SavedGiftsProps> = ({nameGift,priceGift,descriptionGift}) => {
+const SavedGifts:FC<SavedGiftsProps> = ({nameGift,priceGift,descriptionGift,onDelete,onEdit}) => {
     return (
         <div style={{ maxWidth: "580px" }}>
             <Container disableGutters >
-                <div style={{ display: "flex", justifyContent: "space-between" }}>
-                    <p className='title'>
-                        תשורות שנשמרו
-                    </p>
-                    <Divider sx={{ width: "calc(100% - 275px)", borderBottom: "1px solid #d6d6d6", marginBottom: "9px" }} />
-                </div>
-
                 <Container disableGutters>
                     <List >
                         <div>
@@ -54,7 +50,7 @@ const SavedGifts:FC<SavedGiftsProps> = ({nameGift,priceGift,descriptionGift}) =>
                                                 <Container disableGutters ></Container>
                                                 <Divider sx={{borderBottom: "1px dashed #d6d6d6"}}/>
                                                 <Container disableGutters >
-                                                    <SavedGiftsBtn />
+                                                    <SavedGiftsBtn onDelete={onDelete} onEdit={onEdit} />
                                                 </Container>
                                             </AccordionDetails>
                                         </Accordion>

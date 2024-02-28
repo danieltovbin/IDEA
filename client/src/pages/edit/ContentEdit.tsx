@@ -55,7 +55,7 @@ const ContentEdit = () => {
           onTextChange={(e) => {
             setText(e.htmlValue);
           }}
-          style={{ height: "320px", marginBottom: "35px", minHeight: "360px" }}
+          style={{ height: "320px", marginBottom: "35px", minHeight: "360px",backgroundColor:"white" }}
         />
       </div>
       {/* <Container
@@ -121,6 +121,7 @@ const ContentEdit = () => {
         showContinuation={true}
         showContinuationIcon={true}
       />
+      <div style={{marginBottom:'250px'}}></div>
     </EditLayout>
   );
 };

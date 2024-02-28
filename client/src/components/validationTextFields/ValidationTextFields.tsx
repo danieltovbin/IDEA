@@ -14,13 +14,14 @@ const ValidationTextFields: FC<ValidateTextProps> = ({  inputId, placeholder, cu
             } else if (customCondition(inputValue)) {
                 setInputValue(inputValue);
                 setErrorMessage('');
+                addChangeToProject(e)
             } else if(customConditionLogic && customConditionLogic(inputValue)) {
                 setErrorMessage(textError || '')
             }else {
                 setInputValue(inputValue);  
                 setErrorMessage('');
+                
               }
-            addChangeToProject(e)
         } catch (error) {
             console.error("Something wrong with handleChange function",error)
         }
