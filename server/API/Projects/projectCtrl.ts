@@ -87,7 +87,7 @@ export async function get4latestProjects(req, res) {
   try {
     const latestProjects = await ProjectModel.find()
       .sort({ createdAt: -1 })
-      .limit(4);
+      .limit(1);
     console.log(latestProjects);
     res.send({ ok: true, latestProjects });
   } catch (error) {

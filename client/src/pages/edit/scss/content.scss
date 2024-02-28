@@ -1,8 +1,65 @@
-.card{
-    width: 95%;
-    padding: 0 calc((100% - 818px) / 2) !important;
+.card {
+  width: 95%;
+  padding: 0 calc((100% - 818px) / 2) !important;
 
-    svg{
-        margin: 0;
-    }
+  svg {
+    margin: 0;
+  }
+}
+
+.p-editor-container .p-editor-content .ql-editor {
+  background-color: white !important;
+  color: #4b5563;
+}
+
+.p-editor-toolbar {
+  background-color: #f9fafb !important;
+  color: white !important;
+  border-color: #aeaeae !important;
+  svg {
+    color: rgb(0, 0, 0) !important;
+  }
+  line {
+    color: rgb(0, 0, 0) !important;
+  }
+}
+.p-editor-container,
+.p-editor-content {
+  border-color: #aeaeae !important;
+  color: #4b5563 !important;
+  stroke: #4b5563 !important;
+}
+#root
+  > div
+  > div.card
+  > div.p-component.p-editor-container
+  > div.p-editor-toolbar.ql-toolbar.ql-snow
+  > span:nth-child(3)
+  > span.ql-color.ql-picker.ql-color-picker
+  > span.ql-picker-label
+  > svg
+  > line.ql-color-label.ql-stroke.ql-transparent,
+.p-editor-container .p-editor-toolbar.ql-snow .ql-picker .ql-picker-label,
+.p-editor-container .p-editor-toolbar.ql-snow .ql-stroke,
+#root
+  > div
+  > div.card
+  > div.p-component.p-editor-container
+  > div.p-editor-toolbar.ql-toolbar.ql-snow
+  > span:nth-child(3)
+  > span.ql-color.ql-picker.ql-color-picker
+  > span.ql-picker-label
+  > svg
+  > .ql-stroke,
+#root
+  > div
+  > div.card
+  > div.p-component.p-editor-container
+  > div.p-editor-toolbar.ql-toolbar.ql-snow
+  > span:nth-child(3)
+  > span.ql-color.ql-picker.ql-color-picker
+  > span.ql-picker-label
+  > svg {
+  color: #4b5563 !important;
+  stroke: #4b5563 !important;
 }

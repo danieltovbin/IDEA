@@ -7,7 +7,7 @@ import { getLast4projects } from "../../API/Projects/projectClientCtrl";
 const TopProjects = () => {
   const [slideIndex, setSlideIndex] = useState(1);
   const [loading, setLoading] = useState(true);
-
+  const [projects, setProjects] = useState([]);
   useEffect(() => {
     showSlides(slideIndex);
     let i = 0;
@@ -22,7 +22,8 @@ const TopProjects = () => {
   async function getProject() {
     const { latestProjects } = await getLast4projects();
     console.log(latestProjects);
-    const second = setTimeout(() => {
+    setProjects(latestProjects);
+    setTimeout(() => {
       setLoading(false);
     }, 1500);
   }
@@ -61,7 +62,7 @@ const TopProjects = () => {
         ).className.replace(" active", "");
       }
       (slides[newIndex - 1] as HTMLElement).style.display = "flex";
-      (dots[newIndex - 1] as HTMLElement).className += " active";
+      (dots[newIndex - 1] as HTMLElement).className += "active";
 
       setSlideIndex(newIndex);
     }
@@ -75,11 +76,12 @@ const TopProjects = () => {
         </div>
       ) : (
         <div className="slideshow-container">
-          <TopProjectDiv projectInfo={project1} />
-          <TopProjectDiv projectInfo={project2} />
-          <TopProjectDiv projectInfo={project3} />
-          <TopProjectDiv projectInfo={project4} />
-          <TopProjectDiv projectInfo={project4} />
+          {projects.map((project)=>{
+            return <TopProjectDiv projectInfo={project}/>
+          })}
+          <TopProjectDiv projectInfo={projects[0]}/>
+          <TopProjectDiv projectInfo={projects[0]}/>
+          <TopProjectDiv projectInfo={projects[0]}/>
           <div className="btnPrevNext">
             <a className="prev" onClick={() => plusSlides(-1)}>
               &#10094;
@@ -92,8 +94,8 @@ const TopProjects = () => {
             <span className="dot" onClick={() => currentSlide(1)}></span>
             <span className="dot" onClick={() => currentSlide(2)}></span>
             <span className="dot" onClick={() => currentSlide(3)}></span>
-            <span className="dot" onClick={() => currentSlide(4)}></span>
-            <span className="dot" onClick={() => currentSlide(5)}></span>
+            {/* <span className="dot" onClick={() => currentSlide(4)}></span>
+            <span className="dot" onClick={() => currentSlide(5)}></span> */}
           </div>
         </div>
       )}

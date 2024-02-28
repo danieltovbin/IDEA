@@ -1,17 +1,14 @@
+import { Container } from "@mui/material";
 import "primeicons/primeicons.css";
 import { Editor } from "primereact/editor";
 import "primereact/resources/themes/lara-dark-indigo/theme.css";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { updateOneOnProject } from "../../API/Projects/projectClientCtrl";
+import PrevNextPage from "../../components/edit/util/prevNextPage/PrevNextPage";
+import LabelAndNote from "../../components/labelNoteProps/LabelAndNote";
 import EditLayout from "../../layouts/EditLayout";
 import "./scss/content.scss";
-import { Container, Divider, SvgIcon, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import LabelAndNote from "../../components/labelNoteProps/LabelAndNote";
-import {
-  getProjectById,
-  updateOneOnProject,
-} from "../../API/Projects/projectClientCtrl";
-import PrevNextPage from "../../components/edit/util/prevNextPage/PrevNextPage";
 
 const ContentEdit = () => {
   const navigate = useNavigate();
@@ -22,13 +19,19 @@ const ContentEdit = () => {
   const handleGetContent = async () => {
     if (editorRef.current) {
       const content = editorRef.current.getContent().innerHTML;
-      await updateOneOnProject("projectStory", content);
+      const content1 = editorRef.current.getQuill();
+      console.log(content1);
+
+      await updateOneOnProject("projectStory", text);
     }
   };
 
+  useEffect(() => {
+    console.log(text);
+  }, [text]);
   return (
     <EditLayout>
-      <div className="card">
+      <div className="card" >
         <p>
           זהו המקום לספר את הסיפור של הפרויקט. בצורה עניינית מצד אחד ומלאה
           ומפורטת מהצד השני. כדאי להוסיף כותרות, תמונות, סרטונים וכל תוכן נוסף
@@ -49,7 +52,7 @@ const ContentEdit = () => {
 את העמוד כדאי לעצב בצורה נעימה לקריאה, בשילוב תמונות, סרטונים ומצגים.`}
           showTooltip={true}
         />
-        <Editor
+        <Editor dir="ltr"
           ref={editorRef}
           value={text}
           onTextChange={(e) => {
@@ -60,8 +63,7 @@ const ContentEdit = () => {
       </div>
       <Container
         sx={{ padding: "0 calc((100% - 818px) / 2) !important", margin: 0 }}
-      >
-      </Container>
+      ></Container>
       <PrevNextPage
         prevPageName={"descriptionProject"}
         nextPageName={"Submissions"}

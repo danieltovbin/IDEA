@@ -1,48 +1,61 @@
 import { FC } from "react";
 // import "./topProjectStyle.scss";
 import "./projectHeaderStyle.scss";
+import { useNavigate } from "react-router-dom";
 // import LinearProgressWithLabel from '@mui/lab/LinearProgressWithLabel';
 
 interface TopProjectDivProps {
-  projectInfo: {
-    location: string;
-    category: string;
-    ownerName: string;
-    shortDescription: string;
-    aid: number;
-    raised: number;
-    supportsNam: number;
-    leftDays: number;
-    projectName: string;
-  };
+  projectInfo: Project;
 }
 
 const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
+  const navigate = useNavigate();
   let {
-    location,
-    category,
-    ownerName,
+    ownerId,
+    projectName,
+    projectCategory,
     shortDescription,
+    tags,
+    images,
+    videoLink,
+    projectStory,
     aid,
     raised,
-    supportsNam,
-    leftDays,
-    projectName,
+    location,
+    limitDate,
+    ownerInfo,
+    gifts,
   } = projectInfo;
+  console.log(projectInfo);
 
-  const percentRaised = parseInt(((raised / aid) * 100).toString());
+  const percentRaised = parseInt(
+    (((raised == null ? 0 : raised) / aid) * 100).toString()
+  );
 
+  const enterProject = () => {
+    sessionStorage.setItem("projectId", projectInfo._id);
+    navigate("/project");
+  };
   return (
-    <div className="projectHeaderDiv">
+    <div className="">
       <div className="topProjectNum1 topProject " dir="rtl">
         <div className="rSide">
           <iframe
-            src="https://player.vimeo.com/video/902571486?h=8d978f09c5"
             width="640"
             height="360"
-            allow="autoplay; fullscreen; picture-in-picture"
-            //   allowfullscreen
+            src={
+              projectInfo.videoLink.includes("vimeo.com")
+                ? `https://player.vimeo.com/video/${projectInfo.videoLink
+                    .split("/")
+                    .pop()}`
+                : `https://www.youtube.com/embed/${
+                    projectInfo.videoLink.split("=")[1]
+                  }`
+            }
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           ></iframe>
+
           <div className="rbIcons">
             <div className="location label">
               <div className="LocationIcon icon1">
@@ -61,7 +74,7 @@ const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
                   <path d="M12,12.85a3.29,3.29,0,1,1,3.28-3.28A3.28,3.28,0,0,1,12,12.85Zm0-5.57a2.29,2.29,0,1,0,2.28,2.29A2.29,2.29,0,0,0,12,7.28Z"></path>
                 </svg>
               </div>
-              <p>{location}</p>
+              <p>{projectInfo.ownerInfo.location}</p>
             </div>
             <div className="category label">
               <div className="categoryIcon icon1">
@@ -83,19 +96,19 @@ const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
                   <path d="M17.91,16.67a.44.44,0,0,1-.22-.05.49.49,0,0,1-.22-.67l.69-1.39a.51.51,0,0,1,.45-.28h0a.51.51,0,0,1,.45.28L19.75,16a.5.5,0,0,1-.22.67.5.5,0,0,1-.67-.22l-.25-.5-.25.5A.5.5,0,0,1,17.91,16.67Z"></path>
                 </svg>
               </div>
-              <p>{category}</p>
+              <p>{projectCategory.map((cat) => `  ${cat} ,`)} </p>
             </div>
           </div>
         </div>
         <div className="lSide">
-          <h2>{projectName}</h2>
+          <h2>{ownerInfo.ownerName}</h2>
           <div className="owner">
-            <img src="" alt="" />
+            <img src={ownerInfo.profileImageUrl} alt="" />
             <div className="ownerName">
               <p>הפרוייקט של:</p>
               <div className="name">
                 <p>
-                  <strong>{ownerName}</strong>
+                  <strong>{ownerInfo.ownerName}</strong>
                 </p>
                 <span className="mailIcon">
                   <svg
@@ -119,7 +132,7 @@ const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
             </div>
           </div>
           <div className="description">
-            <p>{shortDescription}</p>
+            <p>{projectInfo.shortDescription}</p>
           </div>
           <div className="progressBar">
             <div
@@ -135,7 +148,9 @@ const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
               style={{
                 position: "relative",
                 top: "calc(-100% - 20px )",
-                right: `calc(${percentRaised}%  - 20px)`,
+                right: `calc(${
+                  percentRaised > 3 ? percentRaised : 3
+                }%  - 20px)`,
               }}
             >
               {percentRaised}%
@@ -143,20 +158,20 @@ const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
           </div>
           <div className="projectStatus">
             <div className="donatedFromAid">
-              <h4> {raised} ₪</h4>
+              <h4> {raised == null ? 0 : raised} ₪</h4>
               <p>מתוך {aid} ₪</p>
             </div>
             <div className="leftDays">
-              <h4>{leftDays}</h4>
+              <h4>{limitDate != null ? limitDate.toDateString() : 12}</h4>
               <p>ימים שנותרו</p>
             </div>
             <div className="supporter">
-              <h4>{supportsNam}</h4>
+              <h4>{10}</h4>
               <p>תומכים.ות</p>
             </div>
           </div>
           <div className="enterToProjectDiv">
-            <button className="enterToProjectBtn">כניסה לפרוייקט</button>
+            <button className="enterToProjectBtn">לתמיכה בפרוייקט</button>
           </div>
           <div
             className="mediaIcons"

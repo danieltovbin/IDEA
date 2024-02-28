@@ -76,6 +76,7 @@
       overflow: hidden;
       overflow-wrap: break-word;
       white-space: pre-line;
+      display: block;
       p {
         font-size: 13px;
       }
@@ -116,12 +117,14 @@
       justify-content: space-between;
       padding: 18px 0px;
       div {
-        //   text-align: center;
+        // text-align: center;
         h4 {
           font-size: 18px;
+          line-height: 15px;
         }
         p {
           font-size: 11px;
+          color: #7d7d7d;
         }
       }
     }

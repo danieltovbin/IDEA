@@ -36,7 +36,7 @@ const LoginForm = () => {
         const { ok, userToken } = result;
         if (ok && userToken) {
           sessionStorage.setItem("userToken", userToken);
-          navigate("/descriptionProject");
+          navigate("/format");
         }
       } else {
         console.error("No response from server");
@@ -106,6 +106,9 @@ const LoginForm = () => {
             התחברות
           </Button>
         </Grid>
+        <a dir="rtl" href="/register">
+          עוד אין לך משתמש? הירשם בקלות כאן
+        </a>
       </form>
     </Container>
   );
