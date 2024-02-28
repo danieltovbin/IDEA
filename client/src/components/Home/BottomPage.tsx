@@ -10,11 +10,12 @@ const BottomPage = () => {
               <h4>נעים להכיר</h4>
               <li>קצת עלינו</li>
               <li>צור קשר</li>
-              <li>אקדמיית הדסטארט</li>
+              <li>אקדמיית IDEA</li>
               <li>הסדרי נגישות</li>
               <li style={{ color: "#ff0d91", fontWeight: "bold" }}>
                 הפודקאסט שלנו
               </li>
+
             </ul>
           </div>
           <div className="list2">
@@ -25,14 +26,16 @@ const BottomPage = () => {
               <li>שיתופי פעולה</li>
               <li>עזרי שיווק</li>
               <li>איך זה עובד?</li>
-              <li>למה הדסטארט?</li>
+
+              <li>למה להתחיל?</li>
               <li>המדריך ליזמים</li>
               <li>הסדנאות שלנו</li>
             </ul>
           </div>
           <div className="list3">
             <ul>
-              <h4>קבוצת הדסטארט</h4>
+
+              <h4>  קבוצת IDEA</h4>
               <li>fundit</li>
               <li>giveback</li>
               <li>beactive</li>

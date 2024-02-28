@@ -21,6 +21,7 @@ interface OwnerInfo {
 }
 
 interface TopProjectDivProps {
+
   projectInfo: {
     _id: string;
     ownerId: string;

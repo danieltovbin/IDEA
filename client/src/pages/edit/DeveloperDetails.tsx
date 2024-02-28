@@ -131,6 +131,7 @@ const DeveloperDetails = () => {
         prevPageName={"Submissions"}
         nextPageName={"project"}
       />
+      <div style={{marginBottom:"70px"}}></div>
     </EditLayout>
   );
 };

@@ -1,0 +1,47 @@
+.number{
+    p:nth-child(1){
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: bold;
+    }
+
+    p:nth-child(2){
+        font-size: 11px;
+        line-height: 17px;
+        color: rgb(125, 125, 125);
+    }
+}
+
+.card-image{
+    &:hover{
+        transform: scale(1.1);
+        object-fit: cover;
+        transition: all 0.3s ease;
+    }
+}
+
+.btn-avatar{
+    button{
+        padding: 0px;
+              cursor: unset;
+              width: 24px;
+              height: 24px;
+              min-width: 40px;
+              display: flex;
+              outline: none;
+              border: none;
+
+    }
+}
+
+.containerCardProject{
+    font-size: 15px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    overflow-wrap:break-word;
+    white-space: pre-lin;
+    padding: 10px 16px;
+    line-height:21px;
+
+}

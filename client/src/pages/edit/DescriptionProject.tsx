@@ -174,6 +174,7 @@ const DescriptionProject = () => {
         </div>
       </div>
       <ConnectWithUs />
+      <div style={{marginBottom: "70px"}}></div>
     </EditLayout>
   );
 };

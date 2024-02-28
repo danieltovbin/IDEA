@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const BtnStart = () => {
     const navigate = useNavigate()
     function startProject(){
-        navigate("/login")
+        navigate("/descriptionProject")
     }
   return (
     <div className='btnStartDiv'>

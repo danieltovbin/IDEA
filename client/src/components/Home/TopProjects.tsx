@@ -4,6 +4,7 @@ import { project1, project2, project3, project4 } from "./projects";
 import "./topProjectsStyle.scss";
 import { getLast4projects } from "../../API/Projects/projectClientCtrl";
 
+
 const TopProjects = () => {
   const [slideIndex, setSlideIndex] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -99,6 +100,7 @@ const TopProjects = () => {
           </div>
         </div>
       )}
+
     </>
   );
 };
