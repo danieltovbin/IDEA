@@ -37,7 +37,7 @@ const ValidationTextFields: FC<ValidateTextProps> = ({
             console.error("Something wrong with handleChange function",error)
         }
     }
-  };
+  // };
 
 
   return (
@@ -97,46 +97,46 @@ const ValidationTextFields: FC<ValidateTextProps> = ({
   );
 };
 
-<!--     return (
-        <>
-            <Box
-                component="form"
-                sx={{
-                    '& .MuiTextField-root': { '& fieldset': { borderColor: '#756e6e' } },
-                    '& input::placeholder': { fontSize: "14px" },
-                }}
-                noValidate
-                autoComplete="off"
-            >
-                {customCondition(inputValue) ? (
-                    <TextField
-                    variant="outlined"
-                    color="success"
-                    focused
-                    name={name}
-                    value={value}
-                    sx={{ width: "100%", '& .MuiFormHelperText-root': { textAlign: "right", margin: 0, fontSize: "11px" } }}
-                    error={errorMessage !== ""}
-                    id={inputId}
-                    onChange={handleChange}
-                    helperText={errorMessage}
-                    placeholder={placeholder}
-                    inputProps={inputProps as StandardTextFieldProps["inputProps"]}
-                    />
-                    ) : (
-                        <TextField
-                        name={name}
-                        value={value}
-                    sx={{ width: "100%", '& .MuiFormHelperText-root': { textAlign: "right", margin: 0, fontSize: "11px" } }}
-                    error={errorMessage !== ""}
-                    id={inputId}
-                    onChange={handleChange }
-                    helperText={errorMessage}
-                    placeholder={placeholder}
-                />)
-                }
-            </Box>
-        </>
-    )
-} -->
+// <!--     return (
+//         <>
+//             <Box
+//                 component="form"
+//                 sx={{
+//                     '& .MuiTextField-root': { '& fieldset': { borderColor: '#756e6e' } },
+//                     '& input::placeholder': { fontSize: "14px" },
+//                 }}
+//                 noValidate
+//                 autoComplete="off"
+//             >
+//                 {customCondition(inputValue) ? (
+//                     <TextField
+//                     variant="outlined"
+//                     color="success"
+//                     focused
+//                     name={name}
+//                     value={value}
+//                     sx={{ width: "100%", '& .MuiFormHelperText-root': { textAlign: "right", margin: 0, fontSize: "11px" } }}
+//                     error={errorMessage !== ""}
+//                     id={inputId}
+//                     onChange={handleChange}
+//                     helperText={errorMessage}
+//                     placeholder={placeholder}
+//                     inputProps={inputProps as StandardTextFieldProps["inputProps"]}
+//                     />
+//                     ) : (
+//                         <TextField
+//                         name={name}
+//                         value={value}
+//                     sx={{ width: "100%", '& .MuiFormHelperText-root': { textAlign: "right", margin: 0, fontSize: "11px" } }}
+//                     error={errorMessage !== ""}
+//                     id={inputId}
+//                     onChange={handleChange }
+//                     helperText={errorMessage}
+//                     placeholder={placeholder}
+//                 />)
+//                 }
+//             </Box>
+//         </>
+//     )
+// } -->
 export default ValidationTextFields;
