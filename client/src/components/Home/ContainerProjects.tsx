@@ -13,20 +13,14 @@ const ContainerProjects = () => {
             <CategoryAndBtnMore categoryName={'עומדים להסתיים'} />
             <Divider />
             <div className='cards'>
-            <StyledCard><ProjectCard /></StyledCard>
-            <StyledCard><ProjectCard /></StyledCard>
-            <StyledCard><ProjectCard /></StyledCard>
-            <StyledCard><ProjectCard /></StyledCard>
+            <StyledCard><ProjectCard /></StyledCard> 
             </div>
         </div>
         <div className='Popular'>
         <CategoryAndBtnMore categoryName={'פרויקטים פופולריים'} />
         <Divider />
             <div className='cards'>
-            <StyledCard><ProjectCard /></StyledCard>
-            <StyledCard><ProjectCard /></StyledCard>
-            <StyledCard><ProjectCard /></StyledCard>
-            <StyledCard><ProjectCard /></StyledCard>
+            <StyledCard><ProjectCard /></StyledCard>  
             </div>
         </div>
         <div className='new'>
@@ -34,18 +28,12 @@ const ContainerProjects = () => {
         <Divider />
             <div className='cards'>
             <StyledCard><ProjectCard /></StyledCard>
-            <StyledCard><ProjectCard /></StyledCard>
-            <StyledCard><ProjectCard /></StyledCard>
-            <StyledCard><ProjectCard /></StyledCard>
             </div>
         </div>
         <div className='endedSuccessfully'>
         <CategoryAndBtnMore categoryName={'הסתיימו בהצלחה'} />
         <Divider />
             <div className='cards'>
-            <StyledCard><ProjectCard /></StyledCard>
-            <StyledCard><ProjectCard /></StyledCard>
-            <StyledCard><ProjectCard /></StyledCard>
             <StyledCard><ProjectCard /></StyledCard>
             </div>
         </div>

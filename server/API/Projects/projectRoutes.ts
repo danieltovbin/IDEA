@@ -1,9 +1,10 @@
 import express from "express";
-import { get4latestProjects, getProjectById, startProject, updateOneOnProject, updateProject } from "./projectCtrl";
+import { allProjects, get4latestProjects, getProjectById, startProject, updateOneOnProject, updateProject } from "./projectCtrl";
 const router = express.Router();
 
 router
 .get("/get4latestProjects", get4latestProjects)
+.get("/allProjects", allProjects)
 .post("/startProject", startProject)
 .post("/getProjectById", getProjectById)
 .put("/updateProject", updateProject)
