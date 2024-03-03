@@ -1,7 +1,7 @@
 import { MdDoubleArrow } from "react-icons/md";
 import "./btnStart.scss";
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const BtnStart = () => {
     const navigate = useNavigate()
@@ -11,13 +11,16 @@ const BtnStart = () => {
       else{
         alert("על מנת ליצור פרוייקט עליך להיות מחובר")
         navigate("/login")
-      }
+      
     }
+  }
   return (
-    <div className='btnStartDiv'>
-        <button onClick={startProject}>Start here <MdDoubleArrow className="icon"/></button>
+    <div className="btnStartDiv">
+      <button onClick={startProject}>
+        Start here <MdDoubleArrow className="icon" />
+      </button>
     </div>
-  )
-}
+  );
+};
 
-export default BtnStart
+export default BtnStart;
