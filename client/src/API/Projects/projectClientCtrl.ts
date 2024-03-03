@@ -107,3 +107,14 @@ export async function getLast4projects() {
     console.error(error);
   }
 }
+export async function allprojects() {
+  try {
+    const { data } = await axios.get("/API/projects/allProjects");
+    console.log('data in allprojects',data)
+    if (data) return data;
+    else return [];
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}

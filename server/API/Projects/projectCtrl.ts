@@ -94,3 +94,19 @@ export async function get4latestProjects(req, res) {
     console.error(error);
   }
 }
+export async function allProjects(req, res) {
+  try {
+    const allProjects = await ProjectModel.find({})
+    // console.log('allProjects from allProjects' ,allProjects);
+    if (allProjects.length === 0) {
+      return res.send({ ok: true, allProjects: [] });
+    }
+
+    res.send({ ok: true, allProjects })
+    // console.log('res.send allProjects ', allProjects);
+    
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ ok: false, error: 'Internal Server Error' });
+  }
+}

@@ -1,28 +1,37 @@
-import React, { FC } from 'react'
+import { useEffect, useState } from 'react';
 import './scss/projectCard.scss'
 import { he, fakerHE } from '@faker-js/faker';
+import { allprojects } from '../../../API/Projects/projectClientCtrl';
 // const randomName = fakerHE.person.fullName(); // Rowan Nikolaus
 // const randomImage = fakerHE.image.urlLoremFlickr({ category: 'nature' })
 // const randomAvatar = fakerHE.image.avatar()
 
-export interface TopProjectProps {
-  projectInfo?: {
-    location?: string;
-    category?: string;
-    ownerName?: string;
-    shortDescription?: string;
-    aid?: number;
-    raised?: number;
-    supportsNam?: number;
-    leftDays?: number;
-    projectName?: string;
-  };
-}
-
 const ProjectCard = () => {
+  const [projects, setProjects] = useState<Project[]>([]);
+
+  const allProjects = async () => {
+    try {
+      const { allProjects } = await allprojects();
+      console.log('allProjects from ProjectCard',allProjects);
+      setProjects(allProjects)
+
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  }
+
+  useEffect(() => {
+   
+    allProjects();
+  }, []);
+
   // const percentRaised = parseInt(((raised / aid) * 100).toString());
   return (
-    <div
+    <div>
+      {projects.map((project)=>(
+        <div key={project._id}>
+          <div
       style={{
         height: 'auto',
         color: 'rgb(66, 66, 66)',
@@ -35,18 +44,19 @@ const ProjectCard = () => {
         width: '242px',
         backgroundColor: 'rgb(255, 255, 255)',
         margin: '0px',
-        cursor:'pointer',
+        cursor: 'pointer',
         fontFamily: 'Open Sans Hebrew, sans-serif',
         whiteSpace: 'pre-line',
         overflowWrap: 'break-word'
-        
+
       }}
     >
-      <div style={{overflow:'hidden', height:'133px'}}>
+      <div style={{ overflow: 'hidden', height: '133px' }}>
         <img
           className="card-image"
           width="100%"
           height="133px"
+          // src={project.images}
           src={fakerHE.image.urlLoremFlickr({ category: 'nature' })}
         />
       </div>
@@ -58,7 +68,7 @@ const ProjectCard = () => {
           fontSize: '16px',
           maxHeight: '48px',
           minHeight: '22px',
-          fontWeight:'bold',
+          fontWeight: 'bold',
           padding: '10px 15px 0px'
         }}
       >
@@ -68,7 +78,7 @@ const ProjectCard = () => {
         style={{
           width: 'calc(100% - 16px)',
           padding: '8px 16px 0px',
-          display:"flex",
+          display: "flex",
           alignItems: 'center'
         }}
       >
@@ -88,34 +98,26 @@ const ProjectCard = () => {
           </button>
         </div>
         <div>
-          <div style={{ fontWeight: 'normal',padding: '0px 5px',fontSize: '13px', lineHeight: '17px' }}>
-          {fakerHE.person.fullName()}
+          <div style={{ fontWeight: 'normal', padding: '0px 5px', fontSize: '13px', lineHeight: '17px' }}>
+            {project.ownerInfo?.ownerName || 'Unknown Owner'}
+            {/* {fakerHE.person.fullName()} */}
           </div>
         </div>
       </div>
       <div
-      className='containerCardProject'
-        // style={{
-        //   fontSize: '15px',
-        //   height: '78px',
-        //   position: 'relative',
-        //   overflow: 'hidden',
-        //   overflowWrap: 'break-word',
-        //   whiteSpace: 'pre-lin',
-        //   padding: '10px 16px',
-        //   lineHeight:'21px',
-        // }}
+        className='containerCardProject'
       >
         אנחנו מזמינים אתכם לקחת חלק ולתמוך בכרם בוטיק אשר ניזון מחומרים אורגנים וללא ריסוסים.
         אנו מייצרים יין טבעי כפי שאבותינו עשו לפנינו.
         <div
-          style={{  backgroundColor: 'rgba(255, 255, 255, 0.6)', bottom: '6px',position: 'absolute',height: '17px',left:' 0px', right: '0px'
-       }}
+          style={{
+            backgroundColor: 'rgba(255, 255, 255, 0.6)', bottom: '6px', position: 'absolute', height: '17px', left: ' 0px', right: '0px'
+          }}
         ></div>
       </div>
-      <div style={{paddingBottom: '16px',paddingTop: '16px'}}>
+      <div style={{ paddingBottom: '16px', paddingTop: '16px' }}>
         <div>
-        {/* <div className="progressBar">
+          {/* <div className="progressBar">
             <div
               className={
                 percentRaised < 99 ? "progress" : "progress projectCompleted"
@@ -144,7 +146,7 @@ const ProjectCard = () => {
             <div style={{ transform: 'translateX(52%)' }}></div>
           </div>
         </div>
-        <div style={{display:"flex",padding: '8px 16px 0',justifyContent: 'space-between'}}>
+        <div style={{ display: "flex", padding: '8px 16px 0', justifyContent: 'space-between' }}>
           <div className='number'>
             <p>
               <span>₪</span>9,520
@@ -155,10 +157,6 @@ const ProjectCard = () => {
             <p>2</p>
             <p>ימים נותרו</p>
           </div>
-          {/* <div>
-            <p>0</p>
-            <p>תומכים ה.קבע</p>
-          </div> */}
           <div className='number'>
             <p>32</p>
             <p>תומכים.ות</p>
@@ -166,6 +164,10 @@ const ProjectCard = () => {
         </div>
       </div>
     </div>
+        </div>
+      ))}
+    </div>
+    
   )
 }
 
