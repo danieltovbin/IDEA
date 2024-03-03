@@ -134,7 +134,7 @@ const TopProjectDiv: FC<TopProjectDivProps> = ({ projectInfo }) => {
           </div>
         </div>
         <div className="lSide">
-          <h2>{ownerInfo.ownerName}</h2>
+          <h2>{projectName}</h2>
           <div className="owner">
             <img src={ownerInfo.profileImageUrl} alt="" />
             <div className="ownerName">

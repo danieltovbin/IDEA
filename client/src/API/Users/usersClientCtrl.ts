@@ -17,8 +17,13 @@ export const register = async (userData: {
       name,
     });
     if (!data) throw new Error("connection to server is fail");
+    if (data.ok == false) {
+      console.log(data);
+      return false;
+    } else return true;
   } catch (error) {
     console.error(error);
+    return false;
   }
 };
 

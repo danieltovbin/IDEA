@@ -43,11 +43,11 @@ const projectSchema = new Schema<IProject>({
   shortDescription: String,
   tags: [String],
   images: [String],
-  videoLink: String,
+  videoLink: {type: String, default:""},
   projectStory: String,
   aid: {type:Number, default: 0},
   raised: Number,
-  location: String,
+  location: {type: String, default:""},
   limitDate: Date,
   ownerInfo: {
     ownerName: String,
@@ -61,9 +61,8 @@ const projectSchema = new Schema<IProject>({
     {
       name: String,
       description: String,
-      coast: Number,
+      price: Number,
       deliveryOption: [String],
-      date: Date,
     },
   ],
 });

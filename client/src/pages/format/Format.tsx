@@ -8,8 +8,19 @@ import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import Inputs from "./util/Inputs";
 import ContactSupportOutlinedIcon from "@mui/icons-material/ContactSupportOutlined";
 import ConnectWithUs from "../../components/Popups/ConnectWithUs";
+import { useEffect, useState } from "react";
+import LoginForm from "../../Components/Login/LoginForm";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Format = () => {
+  const isLogin = sessionStorage.getItem("userToken") ? true : false;
+  console.log(isLogin);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!isLogin) {
+      navigate("/login");
+    }
+  }, []);
   return (
     <div className="format">
       <AppBarProps />
@@ -70,8 +81,7 @@ const Format = () => {
           />
         </div>
       </div>
-      <ConnectWithUs/>
-      {/* <ContactSupportOutlinedIcon className="contact-us"/> */}
+      <ConnectWithUs />
     </div>
   );
 };

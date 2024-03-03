@@ -6,7 +6,12 @@ import { useNavigate } from 'react-router-dom';
 const BtnStart = () => {
     const navigate = useNavigate()
     function startProject(){
-        navigate("/descriptionProject")
+      if(sessionStorage.getItem("userToken"))
+        navigate("/format")
+      else{
+        alert("על מנת ליצור פרוייקט עליך להיות מחובר")
+        navigate("/login")
+      }
     }
   return (
     <div className='btnStartDiv'>

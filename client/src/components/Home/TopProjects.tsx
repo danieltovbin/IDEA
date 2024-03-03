@@ -82,7 +82,7 @@ const TopProjects = () => {
           })}
           <TopProjectDiv projectInfo={projects[0]}/>
           <TopProjectDiv projectInfo={projects[0]}/>
-          <TopProjectDiv projectInfo={projects[0]}/>
+          {/* <TopProjectDiv projectInfo={projects[0]}/> */}
           <div className="btnPrevNext">
             <a className="prev" onClick={() => plusSlides(-1)}>
               &#10094;
