@@ -8,7 +8,9 @@ import { allprojects } from '../../../API/Projects/projectClientCtrl';
 
 const ProjectCard = () => {
   const [projects, setProjects] = useState<Project[]>([]);
-
+  
+  const par = projects.length > 0 ? parseInt(((projects[0].raised / projects[0].aid) * 100).toString()) : 20;
+  console.log(par);
   const allProjects = async () => {
     try {
       const { allProjects } = await allprojects();
@@ -26,11 +28,11 @@ const ProjectCard = () => {
     allProjects();
   }, []);
 
-  // const percentRaised = parseInt(((raised / aid) * 100).toString());
   return (
     <div>
-      {projects.map((project)=>(
+      {projects && projects.map((project)=>(
         <div key={project._id}>
+         
           <div
       style={{
         height: 'auto',
@@ -56,8 +58,8 @@ const ProjectCard = () => {
           className="card-image"
           width="100%"
           height="133px"
-          // src={project.images}
-          src={fakerHE.image.urlLoremFlickr({ category: 'nature' })}
+          src={project.images[0]}
+          // src={fakerHE.image.urlLoremFlickr({ category: 'nature' })}
         />
       </div>
       <div>
@@ -117,26 +119,27 @@ const ProjectCard = () => {
       </div>
       <div style={{ paddingBottom: '16px', paddingTop: '16px' }}>
         <div>
-          {/* <div className="progressBar">
+          <div className="progressBar">
+            
             <div
               className={
-                percentRaised < 99 ? "progress" : "progress projectCompleted"
+                parseInt(((project.raised / project.aid) * 100).toString()) < 99 ? "progress" : "progress projectCompleted"
               }
-              style={{ width: `${percentRaised}%` }}
+              style={{ width: `${parseInt(((project.raised / project.aid) * 100).toString())}%` }}
             ></div>
             <p
               className={
-                percentRaised < 99 ? "percentP" : "percentP percentPCompleted"
+                parseInt(((project.raised / project.aid) * 100).toString()) < 99 ? "percentP" : "percentP percentPCompleted"
               }
               style={{
                 position: "relative",
                 top: "calc(-100% - 20px )",
-                right: `calc(${percentRaised}%  - 20px)`,
+                right: `calc(${parseInt(((project.raised / project.aid) * 100).toString())}%  - 20px)`,
               }}
             >
-              {percentRaised}%
+              {parseInt(((project.raised / project.aid) * 100).toString())}%
             </p>
-          </div> */}
+          </div>
           <div
             style={{ margin: '0px calc(48% - 25px)' }}
           >
