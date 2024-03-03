@@ -8,6 +8,7 @@ interface PrevNextPageProps {
   showContinuation?: boolean;
   showContinuationIcon?: boolean;
   getContentFunc?: ()=>void;
+  getGifts?: ()=>void;
   getChangesOnOwnerPage?: ()=>void;
 }
 
@@ -17,7 +18,8 @@ const PrevNextPage: FC<PrevNextPageProps> = ({
   showContinuation,
   showContinuationIcon,
   getContentFunc, 
-  getChangesOnOwnerPage
+  getChangesOnOwnerPage,
+  getGifts
 }) => {
   const navigate = useNavigate();
 
@@ -36,7 +38,7 @@ const PrevNextPage: FC<PrevNextPageProps> = ({
             <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41"></path>
           </SvgIcon>
           <Typography
-            onClick={(e) => {navigate(`/${prevPageName}`);getContentFunc ? getContentFunc() : null;getChangesOnOwnerPage ? getChangesOnOwnerPage() : null}}
+            onClick={(e) => {navigate(`/${prevPageName}`);getContentFunc ? getContentFunc() : null; getChangesOnOwnerPage ? getChangesOnOwnerPage() : null; getGifts ? getGifts() : null;}}
             style={{
               color: "#424242",
               cursor: "pointer",
@@ -58,7 +60,7 @@ const PrevNextPage: FC<PrevNextPageProps> = ({
           />
           <Typography
             onClick={() => {navigate(`/${nextPageName}`);
-            getContentFunc ? getContentFunc() : null; getChangesOnOwnerPage ? getChangesOnOwnerPage() : null}}
+            getContentFunc ? getContentFunc() : null; getChangesOnOwnerPage ? getChangesOnOwnerPage() : null; getGifts ? getGifts() : null;}}
             style={{
               whiteSpace: "nowrap",
               color: "#388602",

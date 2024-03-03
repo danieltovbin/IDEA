@@ -10,21 +10,7 @@ interface TopProjectDivProps {
 
 const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
   const navigate = useNavigate();
-  let {
-    ownerId,
-    projectName,
-    projectCategory,
-    shortDescription,
-    tags,
-    images,
-    videoLink,
-    projectStory,
-    aid,
-    raised,
-    location,
-    limitDate,
-    ownerInfo,
-    gifts,
+  let { ownerId, projectName, projectCategory, shortDescription, tags, images, videoLink, projectStory, aid, raised, location, limitDate, ownerInfo, gifts,
   } = projectInfo;
   console.log(projectInfo);
 
@@ -101,7 +87,7 @@ const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
           </div>
         </div>
         <div className="lSide">
-          <h2>{ownerInfo.ownerName}</h2>
+          <h2>{projectName}</h2>
           <div className="owner">
             <img src={ownerInfo.profileImageUrl} alt="" />
             <div className="ownerName">

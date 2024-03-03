@@ -21,7 +21,6 @@ interface OwnerInfo {
 }
 
 interface TopProjectDivProps {
-
   projectInfo: {
     _id: string;
     ownerId: string;
@@ -70,7 +69,7 @@ const TopProjectDiv: FC<TopProjectDivProps> = ({ projectInfo }) => {
     navigate("/project");
   };
   return (
-    <div className="mySlides fade">
+    <div className="mySlides fade topProjectInHomePage">
       <div className="topProjectNum1 topProject " dir="rtl">
         <div className="rSide">
           <iframe
@@ -134,7 +133,7 @@ const TopProjectDiv: FC<TopProjectDivProps> = ({ projectInfo }) => {
           </div>
         </div>
         <div className="lSide">
-          <h2>{ownerInfo.ownerName}</h2>
+          <h2>{projectName}</h2>
           <div className="owner">
             <img src={ownerInfo.profileImageUrl} alt="" />
             <div className="ownerName">
@@ -208,10 +207,7 @@ const TopProjectDiv: FC<TopProjectDivProps> = ({ projectInfo }) => {
               כניסה לפרוייקט
             </button>
           </div>
-          <div
-            className="mediaIcons"
-            style={{ justifyContent: "center", paddingBottom: "16px" }}
-          >
+          <div className="mediaIcons" style={{ justifyContent: "center" }}>
             <div
               style={{
                 backgroundColor: "rgb(59, 89, 152)",
@@ -306,7 +302,7 @@ const TopProjectDiv: FC<TopProjectDivProps> = ({ projectInfo }) => {
                 height: "40px",
               }}
             >
-              <a  
+              <a
                 data-socialnetwork="email"
                 data-shareprojectid="77000"
                 id="share-link"

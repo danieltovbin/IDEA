@@ -16,6 +16,7 @@ import "./register.scss";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { register } from "../../API/Users/usersClientCtrl";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -28,6 +29,7 @@ const RegisterForm = () => {
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
+  const navigate = useNavigate();
   const handleMouseDownPassword = (
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
@@ -39,11 +41,11 @@ const RegisterForm = () => {
       if (matchPassword !== "" && matchPassword === password) {
         await toast.dismiss();
         setIsMatch(true);
-        toast.success("confirm password!");
+        // toast.success("confirm password!");
       } else if (matchPassword !== "" && matchPassword !== password) {
         await toast.dismiss();
         setIsMatch(false);
-        toast.error("Passwords are not equal", {});
+        // toast.error("Passwords are not equal", {});
       }
     };
 
@@ -52,7 +54,23 @@ const RegisterForm = () => {
 
   const registerForm = async (ev: any) => {
     ev.preventDefault();
-    if (isMatch) await register({ name: fullName, password, email, userName });
+    if (isMatch) {
+      const ok = await register({ name: fullName, password, email, userName });
+      console.log(ok);
+
+      if (!ok) {
+        toast.error("אחד מהפרטים או יותר שגויים וההרשמה נדחתה", {
+          position: "top-center",
+          rtl: true,
+        });
+      } else {
+        toast.success("הפרטים נקלטו במערכת בהצלחה", {
+          position: "top-center",
+          rtl: true,
+        });
+        navigate("/login");
+      }
+    }
   };
 
   return (

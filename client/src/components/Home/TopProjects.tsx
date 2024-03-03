@@ -82,7 +82,7 @@ const TopProjects = () => {
           })}
           <TopProjectDiv projectInfo={projects[0]}/>
           <TopProjectDiv projectInfo={projects[0]}/>
-          <TopProjectDiv projectInfo={projects[0]}/>
+          {/* <TopProjectDiv projectInfo={projects[0]}/> */}
           <div className="btnPrevNext">
             <a className="prev" onClick={() => plusSlides(-1)}>
               &#10094;
@@ -95,8 +95,8 @@ const TopProjects = () => {
             <span className="dot" onClick={() => currentSlide(1)}></span>
             <span className="dot" onClick={() => currentSlide(2)}></span>
             <span className="dot" onClick={() => currentSlide(3)}></span>
-            {/* <span className="dot" onClick={() => currentSlide(4)}></span>
-            <span className="dot" onClick={() => currentSlide(5)}></span> */}
+            <span className="dot" onClick={() => currentSlide(4)}></span>
+            <span className="dot" onClick={() => currentSlide(5)}></span>
           </div>
         </div>
       )}

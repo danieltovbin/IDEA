@@ -7,6 +7,7 @@ import EditLayout from '../../layouts/EditLayout'
 import './scss/submissions.scss'
 import PrevNextPage from '../../components/edit/util/prevNextPage/PrevNextPage'
 import { useGiftContext } from '../../context/GiftContext'
+import { updateOneOnProject } from '../../API/Projects/projectClientCtrl'
 
 const Submissions = () => {
   const [showNewSubmission, setShowNewSubmission] = useState(true);
@@ -18,6 +19,16 @@ const Submissions = () => {
 
   const showAddGift = () => {
     setShowNewSubmission(true)
+  }
+
+  const handleGifts = async() =>{
+    try {
+      console.log(giftAdded)
+      const res = await updateOneOnProject("gifts", giftAdded )
+      console.log(res);
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (
@@ -67,7 +78,7 @@ const Submissions = () => {
 
 
       </div>
-      <PrevNextPage prevPageName={'contentEdit'} nextPageName={'DeveloperDetails'} showContinuation={true} showContinuationIcon={true} />
+      <PrevNextPage prevPageName={'contentEdit'} nextPageName={'DeveloperDetails'} showContinuation={true} showContinuationIcon={true} getGifts={handleGifts} />
       <div style={{ marginBottom: "300px" }}></div>
     </EditLayout>
   )

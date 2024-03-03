@@ -13,9 +13,13 @@ export const register = async (req, res) => {
     const hash = await bcrypt.hash(password, saltRounds);
     const user = new UserModel({ userName, password: hash, email, name });
     const userDB = await user.save();
-    res.send(userDB);
+    if(userDB)
+    res.send({userDB, ok: true});
+  else(
+    res.send({ok: false})
+  )
   } catch (error) {
-    res.status(400).send({ error: "Bad Request", message: error.message });
+    res.status(400).send({ error: "Bad Request", message: error.message ,ok: false})
   }
 };
 

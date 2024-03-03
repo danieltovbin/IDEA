@@ -2,9 +2,10 @@
   padding: 0;
   margin: 0;
 }
+.topProjectInHomePage{
 .topProject {
   margin: 1rem;
-  padding: 1rem;
+  padding: 1rem 1rem 0px 1rem;
   display: flex;
   .rSide {
     margin-left: 16px;
@@ -143,15 +144,14 @@
     .mediaIcons {
       display: flex;
       -webkit-box-pack: justify;
-      padding: 0px 8px;
-      margin-top: 8px;
+      padding: 0px 8px 0px;
+      margin-top: 16px;
       font-family: Open Sans Hebrew, sans-serif !important;
       direction: rtl;
       -webkit-tap-highlight-color: #0000;
       display: flex;
       -webkit-box-pack: justify;
-      padding: 0px 8px;
-      padding-bottom: 16px;
+
       div {
         margin: 10px;
         border-radius: 100%;
@@ -172,4 +172,5 @@
       }
     }
   }
+}
 }

@@ -1,7 +1,7 @@
 import React from "react";
-import RegisterForm from "../../Components/Register/RegisterForm";
 import "./registerPageStyle.scss";
 import Navbar from "../../Components/Navbar/Navbar";
+import RegisterForm from "../../components/Register/RegisterForm";
 const RegisterPage = () => {
   return (
     <>
@@ -9,7 +9,7 @@ const RegisterPage = () => {
     <div className="registerPageDiv">
       <div className="div1"></div>
       <div className="div2">
-        <RegisterForm />
+        <RegisterForm/>
       </div>
     </div>
     </>
