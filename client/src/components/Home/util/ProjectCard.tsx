@@ -134,7 +134,7 @@ const ProjectCard = () => {
               style={{
                 position: "relative",
                 top: "calc(-100% - 20px )",
-                right: `calc(${parseInt(((project.raised / project.aid) * 100).toString())}%  - 20px)`,
+                right: `calc(${parseInt(((project.raised / project.aid) * 100).toString())}%  - 0px)`,
               }}
             >
               {parseInt(((project.raised / project.aid) * 100).toString())}%
@@ -152,9 +152,9 @@ const ProjectCard = () => {
         <div style={{ display: "flex", padding: '8px 16px 0', justifyContent: 'space-between' }}>
           <div className='number'>
             <p>
-              <span>₪</span>9,520
+              <span>₪</span>{project.raised}
             </p>
-            <p>מתוך <span>₪</span>20,000</p>
+            <p>מתוך <span>₪</span>{project.aid}</p>
           </div>
           <div className='number'>
             <p>2</p>
