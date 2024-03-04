@@ -63,6 +63,9 @@ const RegisterForm = () => {
           position: "top-center",
           rtl: true,
         });
+        setEmail("");
+        setUserName("");
+        ev.target.reset();
       } else {
         toast.success("הפרטים נקלטו במערכת בהצלחה", {
           position: "top-center",

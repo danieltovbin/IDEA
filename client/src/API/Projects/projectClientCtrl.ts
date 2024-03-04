@@ -110,11 +110,30 @@ export async function getLast4projects() {
 export async function allprojects() {
   try {
     const { data } = await axios.get("/API/projects/allProjects");
-    console.log('data in allprojects',data)
+    console.log("data in allprojects", data);
     if (data) return data;
     else return [];
   } catch (error) {
     console.error(error);
     return [];
+  }
+}
+
+export async function deleteProject(projectId: string, ) {
+  try {
+    const userToken = sessionStorage.getItem("userToken");
+    if(!userToken) throw new Error("User token not found in client session");
+    const params = {
+      userToken: userToken,
+      projectId: projectId,
+    };
+    if (!projectId) throw new Error("project not found");
+    const { data } = await axios.post(`/API/projects/deleteProject`, {userToken, projectId});
+
+    if (!data || data.ok === false) throw new Error("server error");
+    return data.ok ? { ok: true } : { ok: false, error: "server error" };
+  } catch (error) {
+    console.error(error);
+    return { ok: false, error: error };
   }
 }

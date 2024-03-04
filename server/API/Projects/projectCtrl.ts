@@ -87,26 +87,41 @@ export async function get4latestProjects(req, res) {
   try {
     const latestProjects = await ProjectModel.find()
       .sort({ createdAt: -1 })
-      .limit(1);
+      .limit(4);
     console.log(latestProjects);
     res.send({ ok: true, latestProjects });
   } catch (error) {
     console.error(error);
   }
 }
+
 export async function allProjects(req, res) {
   try {
-    const allProjects = await ProjectModel.find({})
+    const allProjects = await ProjectModel.find({});
     // console.log('allProjects from allProjects' ,allProjects);
     if (allProjects.length === 0) {
       return res.send({ ok: true, allProjects: [] });
     }
 
-    res.send({ ok: true, allProjects })
+    res.send({ ok: true, allProjects });
     // console.log('res.send allProjects ', allProjects);
-    
   } catch (error) {
     console.error(error);
-    res.status(500).send({ ok: false, error: 'Internal Server Error' });
+    res.status(500).send({ ok: false, error: "Internal Server Error" });
+  }
+}
+
+export async function deleteProject(req, res) {
+  try {
+    const {projectId, userToken} = req.body
+    console.log(projectId, userToken);
+
+   const deletedProject = await ProjectModel.findOneAndDelete({_id:projectId}) 
+    if(!deletedProject)
+    throw new Error("Project not deleted");
+  else res.send({ ok: true})
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ ok: false, error: "Internal Server Error" });
   }
 }

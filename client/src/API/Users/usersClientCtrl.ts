@@ -40,8 +40,6 @@ export const login = async (userData: {
       userName,
       password,
     });
-    // console.log(data.userToken);
-    // console.log(data);
 
     if (data.ok) return { ok: true, userToken: data.userToken };
     if (!data) throw new Error("connection to server is fail");
@@ -49,3 +47,18 @@ export const login = async (userData: {
     console.error(error);
   }
 };
+
+export const checkIsAdminInDB = async () => {
+  try {
+    const userToken = sessionStorage.getItem("userToken");
+    const { data } = await axios.post("/API/users/checkIsAdmin", { userToken });
+    return {authorized: data.isAdmin };
+  } catch (error) {
+    console.error(error);
+    return { authorized:false}
+  }
+};
+
+export const handleLogOut =()=>{
+  sessionStorage.removeItem("userToken");
+}

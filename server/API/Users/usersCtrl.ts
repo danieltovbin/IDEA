@@ -13,13 +13,12 @@ export const register = async (req, res) => {
     const hash = await bcrypt.hash(password, saltRounds);
     const user = new UserModel({ userName, password: hash, email, name });
     const userDB = await user.save();
-    if(userDB)
-    res.send({userDB, ok: true});
-  else(
-    res.send({ok: false})
-  )
+    if (userDB) res.send({ userDB, ok: true });
+    else res.send({ ok: false });
   } catch (error) {
-    res.status(400).send({ error: "Bad Request", message: error.message ,ok: false})
+    res
+      .status(400)
+      .send({ error: "Bad Request", message: error.message, ok: false });
   }
 };
 
@@ -39,7 +38,7 @@ export const login = async (req, res) => {
     };
     const token = jwt.encode(cookie, SECRET_KEY);
     res.cookie("user", token, { httpOnly: true, maxAge: 1000 * 60 * 60 * 3 });
-    res.send({ userDB, ok: true , userToken: token });
+    res.send({ userDB, ok: true, userToken: token });
   } catch (error) {
     console.error(error);
     res.status(400).send({ error: "Bad Request", message: error.message });
@@ -54,6 +53,43 @@ export const getUserByToken = async (req, res) => {
     const userDB = await UserModel.findById(cookie);
     if (!userDB) throw new Error("no user");
     res.send({ user: userDB });
+  } catch (error) {
+    console.error(error);
+    res.status(400).send({ error: "Bad Request", message: error.message });
+  }
+};
+
+export const checkIsAdmin = async (req, res) => {
+  try {
+    const { userToken } = req.body;
+    if (!userToken) throw new Error("no token");
+    const { userId } = jwt.decode(userToken, SECRET_KEY);
+    const userDB = await UserModel.findById(userId);
+    if (!userDB) throw new Error("no user");
+
+    if (userDB.role === "admin") {
+      res.send({ isAdmin: true });
+    } else res.send({ isAdmin: false });
+  } catch (error) {
+    console.error(error);
+    res.status(400).send({ error: "Bad Request", message: error.message });
+  }
+};
+
+export const checkIsAdminMW = async (req, res, next) => {
+  try {
+    console.log(req.params.userToken);
+
+    const { userToken } = req.body;
+    if (!userToken) throw new Error("no token");
+    const { userId } = jwt.decode(userToken, SECRET_KEY);
+    const userDB = await UserModel.findById(userId);
+    if (!userDB) throw new Error("no user");
+
+    if (userDB.role === "admin") {
+      // res.send({ isAdmin: true });
+      next();
+    } else res.send({ isAdmin: false, error: "not authorized" });
   } catch (error) {
     console.error(error);
     res.status(400).send({ error: "Bad Request", message: error.message });

@@ -1,5 +1,6 @@
 import express from "express";
-import { allProjects, get4latestProjects, getProjectById, startProject, updateOneOnProject, updateProject } from "./projectCtrl";
+import { allProjects, deleteProject, get4latestProjects, getProjectById, startProject, updateOneOnProject, updateProject } from "./projectCtrl";
+import {  checkIsAdminMW } from "../Users/usersCtrl";
 const router = express.Router();
 
 router
@@ -9,5 +10,6 @@ router
 .post("/getProjectById", getProjectById)
 .put("/updateProject", updateProject)
 .patch("/updateOne", updateOneOnProject)
+.post("/deleteProject",checkIsAdminMW ,deleteProject)
 
 export default router;

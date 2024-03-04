@@ -11,6 +11,7 @@ import ConnectWithUs from "../../components/Popups/ConnectWithUs";
 import { useEffect, useState } from "react";
 import LoginForm from "../../Components/Login/LoginForm";
 import { Navigate, useNavigate } from "react-router-dom";
+import Navbar from "../../Components/Navbar/Navbar";
 
 const Format = () => {
   const isLogin = sessionStorage.getItem("userToken") ? true : false;
@@ -23,7 +24,7 @@ const Format = () => {
   }, []);
   return (
     <div className="format">
-      <AppBarProps />
+      <Navbar />
       <div
         className="container"
         style={{
