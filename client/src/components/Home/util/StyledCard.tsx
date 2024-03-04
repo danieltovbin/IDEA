@@ -7,10 +7,11 @@ interface StyledCardProps{
 
 export const StyledCard:FC<StyledCardProps> = ({children})=>{
     return(
-    <Card
+    <Card variant="outlined"
     style={{
-        margin: '0px 6px 16px',
+        margin: '0px 0px 16px',
         textDecoration: 'none',
+        border:'none'
     }}
     >
         {children}

@@ -1,10 +1,20 @@
 .categoryAndBtnMore{
-    margin-top: 33px;
+    border-bottom: 1px solid #0000;
+    margin-bottom: 16px;
+
+    &:hover {
+        border-bottom: 1px solid #C0C0C0;
+      }
     button{
         border: none;
+        background: none;
+        padding: none;
 
         &:focus {
             outline: none;
+        }
+        &:hover{
+            background: #DCDCDC;
         }
     }
 }
