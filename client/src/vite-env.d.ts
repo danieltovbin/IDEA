@@ -67,3 +67,8 @@ interface Project {
     gifts: Gift[];
   };
 }
+
+interface ProjectCardProps {
+  categoryFilter?: 'endingSoon' | 'popular' | 'new' | 'completed' | "";
+  projectsToShow: number;
+}

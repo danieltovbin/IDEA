@@ -8,7 +8,7 @@ interface CategoryAndBtnMoreProps{
 
 const CategoryAndBtnMore:FC<CategoryAndBtnMoreProps> = ({categoryName}) => {
   return (
-    <div className='categoryAndBtnMore' style={{display:"flex",justifyContent: "space-between",cursor:'pointer'}}>
+    <div className='categoryAndBtnMore' style={{display:"flex",justifyContent: "space-between",cursor:'pointer', alignItems: 'center'}}>
         <div>
         <h1 style={{fontSize: "18px",fontWeight: "bold",fontFamily: "Open Sans Hebrew, sans-serif !important", color: "rgba(0, 0, 0, 0.87)"}}>{categoryName}</h1>
         </div>

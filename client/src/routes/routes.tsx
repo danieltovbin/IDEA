@@ -10,8 +10,10 @@ import HomePage from "../pages/Home/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
 import ProjectMainPage from "../pages/ProjectMainPage/ProjectMainPage";
+import MoreProjects from "../components/Home/util/MoreProjects";
 import AdminPage from "../pages/AdminPage/AdminPage";
 import UnAuthorizedPage from "../components/AdminPage/UnAuthorizedPage";
+
 
 export const router = createBrowserRouter([
   { path: "/format", element: <Format /> },
@@ -25,6 +27,7 @@ export const router = createBrowserRouter([
   { path: "/homePage", element: <HomePage /> },
   { path: "/createProject", element: <CreateProject /> },
   { path: "/project", element: <ProjectMainPage /> },
+  { path: "/more/:categoryName", element: <MoreProjects /> },
   { path: "/adminPage", element: <AdminPage /> },
   { path: "/", element: <HomePage /> },
   { path: "*", element: <UnAuthorizedPage /> },
