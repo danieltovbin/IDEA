@@ -1,6 +1,7 @@
 import { FC } from "react";
 import "./topProjectStyle.scss";
 import { useNavigate } from "react-router-dom";
+import { calculateRemainingDays } from "./util/calculateRemainingDays";
 // import LinearProgressWithLabel from '@mui/lab/LinearProgressWithLabel';
 
 interface Gift {
@@ -194,7 +195,8 @@ const TopProjectDiv: FC<TopProjectDivProps> = ({ projectInfo }) => {
               <p>מתוך {aid} ₪</p>
             </div>
             <div className="leftDays">
-              <h4>{limitDate != null ? limitDate.toDateString() : 12}</h4>
+              <h4>{calculateRemainingDays(limitDate)}</h4>
+              {/* <h4>{limitDate != null ? limitDate.toDateString() : 12}</h4> */}
               <p>ימים שנותרו</p>
             </div>
             <div className="supporter">

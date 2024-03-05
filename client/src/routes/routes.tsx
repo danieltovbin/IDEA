@@ -10,6 +10,7 @@ import HomePage from "../pages/Home/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
 import ProjectMainPage from "../pages/ProjectMainPage/ProjectMainPage";
+import MoreProjects from "../components/Home/util/MoreProjects";
 
 export const router = createBrowserRouter([
   { path: "/format", element: <Format /> },
@@ -23,5 +24,6 @@ export const router = createBrowserRouter([
   { path: "/homePage", element: <HomePage /> },
   { path: "/createProject", element: <CreateProject /> },
   { path: "/project", element: <ProjectMainPage /> },
+  { path: "/more/:categoryName", element: <MoreProjects /> },
   { path: "/", element: <HomePage /> },
 ]);

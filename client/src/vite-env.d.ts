@@ -54,3 +54,26 @@ interface Project {
     gifts: Gift[];
   };
 }
+
+type Proj = {
+  _id: string;
+  createdAt: Date;
+  ownerId: string;
+  projectName: string;
+  projectCategory: string[];
+  shortDescription: string;
+  tags: string[];
+  images: string[];
+  videoLink: string;
+  projectStory: string;
+  aid: number;
+  raised: number;
+  location: string;
+  limitDate: Date;
+  ownerInfo: OwnerInfo;
+  gifts: Gift[];
+};
+interface ProjectCardProps {
+  categoryFilter?: 'endingSoon' | 'popular' | 'new' | 'completed' | "";
+  projectsToShow: number;
+}

@@ -19,7 +19,7 @@ interface IOwnerInfo {
 
 interface IProject extends Document {
   ownerId: string;
-  createdAt:Date,
+  createdAt: Date,
   projectName: string;
   projectCategory: string[];
   shortDescription: string;
@@ -37,21 +37,30 @@ interface IProject extends Document {
 
 const projectSchema = new Schema<IProject>({
   ownerId: String,
-  createdAt: { type: Date, default: Date.now }, 
+  createdAt: { type: Date, default: Date.now },
   projectName: String,
   projectCategory: [String],
   shortDescription: String,
   tags: [String],
   images: [String],
-  videoLink: {type: String, default:""},
-  projectStory: {type: String, default:""},
-  aid: {type:Number, default: 0},
-  raised: {type:Number, default: 0},
-  location: {type: String, default:""},
-  limitDate: Date,
+  videoLink: { type: String, default: "" },
+  projectStory: { type: String, default: "" },
+  aid: { type: Number, default: 0 },
+  raised: { type: Number, default: 0 },
+  location: { type: String, default: "" },
+  // limitDate: Date,
+  limitDate: {
+    type: Date,
+    default: function () {
+      const createdAt = this.createdAt || Date.now();
+      const limitDate = new Date(createdAt);
+      limitDate.setDate(limitDate.getDate() + 40);
+      return limitDate;
+    }
+  },
   ownerInfo: {
     ownerName: String,
-    location: {type: String, default:""},
+    location: { type: String, default: "" },
     ownerDescription: String,
     phoneNumber: String,
     linkToFacebook: String,
