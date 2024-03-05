@@ -3,12 +3,14 @@ import { MdDeleteForever } from "react-icons/md";
 import "./projectCard.scss";
 
 import ProgressBar from "./ProgressBar";
+import LeftDays from "./helpers/LeftDays";
 interface ProjectCardProps {
   project: Project;
-  handleDelete: (project:Project)=>void;
+  handleDelete: (project: Project) => void;
 }
 
 const ProjectCard: FC<ProjectCardProps> = ({ project, handleDelete }) => {
+  console.log(project.limitDate);
 
   return (
     <div dir="rtl" className="cardComp" key={project._id}>
@@ -37,7 +39,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ project, handleDelete }) => {
           <p>מתוך {project.aid}</p>
         </div>
         <div className="leftDays">
-          <h2>{Math.round(Math.random() * 10)}</h2>
+          <LeftDays limitDate={project.limitDate} />
           <p>ימים שנותרו</p>
         </div>
         <div className="supports">
@@ -48,12 +50,11 @@ const ProjectCard: FC<ProjectCardProps> = ({ project, handleDelete }) => {
       <div
         className="deleteBtn"
         onClick={() => {
-          handleDelete(project)
+          handleDelete(project);
         }}
       >
         <MdDeleteForever />
       </div>
-     
     </div>
   );
 };

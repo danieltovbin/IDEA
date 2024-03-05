@@ -94,7 +94,7 @@ async function addRandomProject() {
       aid: Math.round(Math.random() * 900000),
       projectStory: fakerHE.lorem.text(),
       shortDescription: fakerHE.lorem.paragraph(),
-      raised: Math.round(Math.random() * 910000),
+      raised: Math.round(Math.random() * 600000),
       ownerInfo: {
         ownerName: fakerHE.person.fullName(),
         location: fakerHE.location.city(),

@@ -30,7 +30,7 @@ type Project = {
   aid: number;
   raised: number;
   location: string;
-  limitDate: Date;
+  limitDate: string;
   ownerInfo: OwnerInfo;
   gifts: Gift[];
 };
