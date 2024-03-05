@@ -16,7 +16,7 @@ const LeftDays: FC<{ limitDate: string }> = ({ limitDate }) => {
 
   return (
     <div>
-      <h2>{leftDays}</h2>
+      <h4>{leftDays}</h4>
     </div>
   );
 };
