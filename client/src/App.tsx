@@ -7,7 +7,6 @@ import { useContext, useState } from "react";
 import { ToastContainer } from "react-toastify";
 
 function App() {
-  // const [project, setProject] = useState<Project|null>();
 
   return (
     <>

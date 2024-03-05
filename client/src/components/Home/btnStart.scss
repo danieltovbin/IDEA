@@ -3,7 +3,7 @@
     background-color: white !important;
   }
   width: 100vw;
-  height: 70vh;
+  height: 60vh;
   display: flex;
   justify-content: center;
   background-image: url(https://cdn.pixabay.com/photo/2023/12/20/07/04/mountains-8459056_640.jpg);
@@ -15,18 +15,39 @@
   // background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  button {
-    background-color: #ff0d91;
-    height: 150px;
-    width: 400px;
-    color: white;
-    font-size: 35px;
-    letter-spacing: 2.5px;
-    transition: all 0.3s;
-
-    &:hover {
-      cursor: pointer;
-      scale: 1.05;
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h4 {
+      display: block;
+      color: white;
+      color: black;
+      font-size: 20px;
+      width: 900px;
+      padding-left: 400px;
+      text-shadow: 2px 2px 1px black;
+      text-shadow: 1px 1px 2px rgb(255, 255, 255);
+      text-align: right;
+    }
+    button {
+      display: block;
+      background-color: #ff0d91;
+      height: 80px;
+      width: 400px;
+      color: white;
+      // font-size: 35px;
+      letter-spacing: 2.5px;
+      transition: all 0.3s;
+      display: flex;
+      margin-top: 2rem;
+      justify-content: center;
+      align-items: center;
+      &:hover {
+        cursor: pointer;
+        scale: 1.05;
+      }
     }
   }
 }

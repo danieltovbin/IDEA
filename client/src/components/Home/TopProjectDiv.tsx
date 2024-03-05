@@ -1,7 +1,7 @@
 import { FC } from "react";
 import "./topProjectStyle.scss";
 import { useNavigate } from "react-router-dom";
-import { calculateRemainingDays } from "./util/calculateRemainingDays";
+import LeftDays from "../AdminPage/helpers/LeftDays";
 // import LinearProgressWithLabel from '@mui/lab/LinearProgressWithLabel';
 
 interface Gift {
@@ -35,7 +35,7 @@ interface TopProjectDivProps {
     aid: number;
     raised: number;
     location: string;
-    limitDate: Date;
+    limitDate: string;
     ownerInfo: OwnerInfo;
     gifts: Gift[];
   };
@@ -59,7 +59,6 @@ const TopProjectDiv: FC<TopProjectDivProps> = ({ projectInfo }) => {
     ownerInfo,
     gifts,
   } = projectInfo;
-  console.log(projectInfo);
 
   const percentRaised = parseInt(
     (((raised == null ? 0 : raised) / aid) * 100).toString()
@@ -195,8 +194,7 @@ const TopProjectDiv: FC<TopProjectDivProps> = ({ projectInfo }) => {
               <p>מתוך {aid} ₪</p>
             </div>
             <div className="leftDays">
-              <h4>{calculateRemainingDays(limitDate)}</h4>
-              {/* <h4>{limitDate != null ? limitDate.toDateString() : 12}</h4> */}
+              <LeftDays limitDate={projectInfo.limitDate} />
               <p>ימים שנותרו</p>
             </div>
             <div className="supporter">

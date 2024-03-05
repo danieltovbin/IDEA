@@ -1,8 +1,10 @@
+
 import { FC, useEffect, useState } from 'react';
 import './scss/projectCard.scss'
 import { he, fakerHE } from '@faker-js/faker';
 import { allprojects } from '../../../API/Projects/projectClientCtrl';
 import { calculateRemainingDays } from './calculateRemainingDays';
+
 
 
 const ProjectCard: FC<ProjectCardProps> = ({ categoryFilter, projectsToShow }) => {
@@ -15,15 +17,13 @@ const ProjectCard: FC<ProjectCardProps> = ({ categoryFilter, projectsToShow }) =
       console.log('allProjects from ProjectCard', allProjects);
       setProjects(allProjects)
 
-
     } catch (error) {
       console.error(error);
       return [];
     }
-  }
+  };
 
   useEffect(() => {
-
     allProjects();
   }, []);
 
@@ -64,6 +64,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ categoryFilter, projectsToShow }) =
   }).slice(0, projectsToShow)
 
   return (
+
     <div style={{ display: 'flex', width: '100%', justifyContent: 'space-around', flexWrap: 'wrap' }}>
       {filteredProjects.map((project, index) => (
         <div

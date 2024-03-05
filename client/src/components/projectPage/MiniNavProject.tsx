@@ -4,6 +4,7 @@ import { Box, Tab } from "@mui/material";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
+import AllGifts from "./gifts/AllGifts";
 
 interface miniNavDivProps {
   project: Project;
@@ -44,6 +45,7 @@ const MiniNavProject: FC<miniNavDivProps> = ({ project }) => {
         <TabPanel value="3">עדכונים</TabPanel>
         <TabPanel value="4">תגוובת</TabPanel>
       </TabContext>
+      <AllGifts project={project}/>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { FC } from "react";
 // import "./topProjectStyle.scss";
 import "./projectHeaderStyle.scss";
 import { useNavigate } from "react-router-dom";
+import LeftDays from "../AdminPage/helpers/LeftDays";
 // import LinearProgressWithLabel from '@mui/lab/LinearProgressWithLabel';
 
 interface TopProjectDivProps {
@@ -148,7 +149,7 @@ const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
               <p>מתוך {aid} ₪</p>
             </div>
             <div className="leftDays">
-              <h4>{limitDate != null ? limitDate.toDateString() : 12}</h4>
+              <LeftDays limitDate={limitDate}/>
               <p>ימים שנותרו</p>
             </div>
             <div className="supporter">

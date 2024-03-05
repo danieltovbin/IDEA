@@ -3,9 +3,10 @@
 interface Gift {
   name: string;
   description: string;
-  coast: number;
+  price: number;
   deliveryOption: string[];
-  date: Date;
+  date: string;
+  _id: string;
 }
 
 interface OwnerInfo {
@@ -17,6 +18,16 @@ interface OwnerInfo {
   profileImageUrl: string;
 }
 
+interface Donation{
+  userId:string;
+  projectId: string;
+  userLevel:number;
+  donorName: string
+  amount:number;
+  date:string;
+  Comment:string;
+}
+
 type Project = {
   _id: string;
   ownerId: string;
@@ -26,11 +37,12 @@ type Project = {
   tags: string[];
   images: string[];
   videoLink: string;
+  donations: Donation[];
   projectStory: string;
   aid: number;
   raised: number;
   location: string;
-  limitDate: Date;
+  limitDate: string;
   ownerInfo: OwnerInfo;
   gifts: Gift[];
 };
@@ -44,6 +56,7 @@ interface Project {
     shortDescription: string;
     tags: string[];
     images: string[];
+    donations: Donation[];
     videoLink: string;
     projectStory: string;
     aid: number;
