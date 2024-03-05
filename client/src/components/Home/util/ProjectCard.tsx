@@ -5,9 +5,8 @@ import { allprojects } from '../../../API/Projects/projectClientCtrl';
 import { calculateRemainingDays } from './calculateRemainingDays';
 
 
-
 const ProjectCard: FC<ProjectCardProps> = ({ categoryFilter, projectsToShow }) => {
-  const [projects, setProjects] = useState<Proj[]>([]);
+  const [projects, setProjects] = useState<Project[]>([]);
   console.log('projects from ProjectCard', projects);
 
   const allProjects = async () => {
@@ -106,7 +105,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ categoryFilter, projectsToShow }) =
                     width="24px"
                     height="24px"
                     style={{ borderRadius: '50%' }}
-                    src={fakerHE.image.avatar()}
+                    src={project.ownerInfo.profileImageUrl}
                   />
                 </span>
               </button>
