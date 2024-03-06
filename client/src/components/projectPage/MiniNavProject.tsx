@@ -5,19 +5,20 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import AllGifts from "./gifts/AllGifts";
+import "./miniNavProject.scss"
 
 interface miniNavDivProps {
   project: Project;
 }
 
 const MiniNavProject: FC<miniNavDivProps> = ({ project }) => {
-  const [navigateNum, setNavigateNum] = useState(0);
   const [value, setValue] = useState("1");
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
   return (
     <div className="miniNavDiv" dir="rtl">
+
       <TabContext value={value}>
         <Box
           className="navBarInProject"

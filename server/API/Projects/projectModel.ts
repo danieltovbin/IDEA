@@ -20,7 +20,7 @@ interface IOwnerInfo {
 
 interface IProject extends Document {
   ownerId: string;
-  createdAt: Date,
+  createdAt: Date;
   projectName: string;
   projectCategory: string[];
   shortDescription: string;
@@ -56,7 +56,7 @@ const projectSchema = new Schema<IProject>({
       const limitDate = new Date(createdAt);
       limitDate.setDate(limitDate.getDate() + 50);
       return limitDate;
-    }
+    },
   },
   ownerInfo: {
     ownerName: String,
@@ -72,15 +72,13 @@ const projectSchema = new Schema<IProject>({
       description: String,
       price: Number,
       deliveryOption: [String],
+      giftId: { type: String, default: generateUUID() },
     },
   ],
 });
 
 const ProjectModel = model<IProject>("projects", projectSchema);
 export default ProjectModel;
-
-
-
 
 /////////-----------------------------------------------------------
 // -----------------------------------------------------------------
@@ -100,7 +98,7 @@ async function addRandomProject() {
       videoLink:
         "https://www.youtube.com/watch?v=RFGWDSCNclg&ab_channel=%D7%9B%D7%90%D7%9F%7C%D7%97%D7%93%D7%A9%D7%95%D7%AA-%D7%AA%D7%90%D7%92%D7%99%D7%93%D7%94%D7%A9%D7%99%D7%93%D7%95%D7%A8%D7%94%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99",
       aid: Math.round(Math.random() * 900000),
-      projectStory: fakerHE.lorem.text(),
+      projectStory: createProjectStory(),
       shortDescription: fakerHE.lorem.paragraph(),
       raised: Math.round(Math.random() * 600000),
       ownerInfo: {
@@ -113,7 +111,27 @@ async function addRandomProject() {
       gifts: [
         {
           name: fakerHE.commerce.productName(),
-          description: fakerHE.lorem.lines,
+          description: fakerHE.commerce.productDescription(),
+          price: Math.floor(Math.floor(Math.random() * 1001) / 50) * 50,
+        },
+        {
+          name: fakerHE.commerce.productName(),
+          description: fakerHE.commerce.productDescription(),
+          price: Math.floor(Math.floor(Math.random() * 1001) / 50) * 50,
+        },
+        {
+          name: fakerHE.commerce.productName(),
+          description: fakerHE.commerce.productDescription(),
+          price: Math.floor(Math.floor(Math.random() * 1001) / 50) * 50,
+        },
+        {
+          name: fakerHE.commerce.productName(),
+          description: fakerHE.commerce.productDescription(),
+          price: Math.floor(Math.floor(Math.random() * 1001) / 50) * 50,
+        },
+        {
+          name: fakerHE.commerce.productName(),
+          description: fakerHE.commerce.productDescription(),
           price: Math.floor(Math.floor(Math.random() * 1001) / 50) * 50,
         },
       ],
@@ -123,4 +141,28 @@ async function addRandomProject() {
   } catch (error) {
     console.error(error);
   }
+}
+
+export function generateUUID(): string {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+    const r = (Math.random() * 16) | 0,
+      v = c === "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
+
+function createProjectStory() {
+  return `      <div>
+  <h1>${fakerHE.commerce.productName()}</h1>
+  <h3 style="color: gray; font-size: 18px;">${fakerHE.commerce.productName()}</h3>
+  <p>${fakerHE.lorem.paragraphs()}</p>
+  <p style={color:"red"}>${fakerHE.company.catchPhraseDescriptor()}</p>
+  <img src=${fakerHE.image.url()}/>
+  <h2>${fakerHE.commerce.productName()}</h2>
+  <p>הנה כמה לינקים חשובים שיעזרו לכם להכיר אותנו: <a href="#">${fakerHE.commerce.productName()}</a>, <a href="#">${fakerHE.commerce.productName()}</a>, <a href="#">${fakerHE.commerce.productName()}</a></p>
+    </div>`;
+}
+
+for (let i = 0; i < 25; i++) {
+  addRandomProject();
 }
