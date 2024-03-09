@@ -1,18 +1,18 @@
-import Autocomplete from "@mui/material/Autocomplete";
-import "../scss/format.scss";
-import AnnouncementOutlinedIcon from "@mui/icons-material/AnnouncementOutlined";
 import { TextField } from "@mui/material";
-import { options } from "./OptionsCategories";
+import Autocomplete from "@mui/material/Autocomplete";
 import { useState } from "react";
-import { startProject } from "../../../API/Projects/projectClientCtrl";
 import { useNavigate } from "react-router-dom";
+import { startProject } from "../../../API/Projects/projectClientCtrl";
 import LabelAndNote from "../../../components/labelNoteProps/LabelAndNote";
+import "../scss/format.scss";
+import { options } from "./OptionsCategories";
 
 const Inputs = () => {
   const navigate = useNavigate();
-  const [formContent, setFormContent] = useState({});
+  const [nameProject, setNameProject] = useState<string>('');
+  const [projectCategory, setProjectCategory] = useState<{ category: string; title: string; img: JSX.Element } | null>(null)
+  const [isFormComplete, setIsFormComplete] = useState<boolean>(false);
 
-  //   const handleInputChange = (e) => {};ru
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -23,6 +23,17 @@ const Inputs = () => {
     if (ok) navigate("/descriptionProject");
   };
 
+  const handleCategoryChange =(_: React.ChangeEvent<{}>, newValue: { category: string; title: string; img: JSX.Element } | null)=>{
+    setProjectCategory(newValue);
+    setIsFormComplete(!!nameProject && !!newValue);
+  };
+
+  const handleNameProjectChange = (event: React.ChangeEvent<HTMLInputElement>)=>{
+    const newName = event?.target.value;
+    setNameProject(newName);
+    setIsFormComplete(!!newName && !!projectCategory)
+  }
+
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -30,6 +41,8 @@ const Inputs = () => {
           <label htmlFor="nameProject">שם הפרויקט</label>
           <input
             id="nameProject"
+            value={nameProject}
+            onChange={handleNameProjectChange}
             name="projectName"
             type="text"
             placeholder="שם יצירתי שייצג את הפרויקט - עד 22 תווים"
@@ -48,6 +61,8 @@ const Inputs = () => {
             />
             <Autocomplete
               sx={{ padding: 0 }}
+              value={projectCategory}
+              onChange={handleCategoryChange}
               options={options}
               groupBy={(option) => option.category}
               getOptionLabel={(option) => option.title}
@@ -70,7 +85,7 @@ const Inputs = () => {
             />
           </div>
         </div>
-        <button type="submit" className="btnNextLevel">
+        <button type="submit" className="btnNextLevel" style={{backgroundColor: isFormComplete ? 'rgb(72, 173, 2)' : 'white',color: isFormComplete ? 'white' : 'gray'}} disabled={!isFormComplete}>
           שמירה והמשך לשלב הבא
         </button>
       </form>
