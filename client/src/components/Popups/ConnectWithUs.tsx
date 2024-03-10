@@ -7,9 +7,34 @@ import {
   TextField,
 } from "@mui/material";
 import { IoMdClose } from "react-icons/io";
+import axios from "axios";
 
 const ConnectWithUs = () => {
   const [visible, setVisible] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    subject: "נושא אחר",
+    message: "",
+  });
+
+  const handleSubmit = async(e:React.FormEvent<HTMLFormElement>)=>{
+    e.preventDefault();
+    try {
+      const response = await axios.post("/API/users/send-email",formData);
+      if(response.data.ok) {
+        console.log("Email sent successfully");
+        
+      }else {
+        console.error("Failed to send email");
+      }
+    } catch (error) {
+      console.error("Error sending email",error);
+    } finally{
+      setVisible(false);
+    }
+  }
   return (
     <div dir="rtl" className="connectWithUsDiv">
       <div
@@ -36,21 +61,27 @@ const ConnectWithUs = () => {
               onClick={() => setVisible(!visible)}
             />
             <h3>צור קשר</h3>
-            <form action="">
+            <form onSubmit={handleSubmit}>
               <FormControl className="formControl">
                 <TextField
                   id="standard-basic"
+                  value={formData.fullName}
+                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                   label="שם מלא"
                   variant="standard"
                 />
                 <TextField
                   id="standard-basic"
                   label="אימייל"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   variant="standard"
                 />
                 <TextField
                   id="standard-basic"
                   label="טלפון"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   variant="standard"
                 />
                 <div className="selcetInputDiv">
@@ -59,22 +90,25 @@ const ConnectWithUs = () => {
                   </InputLabel>
                   <NativeSelect
                     defaultValue={"נושא"}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     inputProps={{
                       name: "request subject",
                       id: "uncontrolled-native",
                     }}
-                  >
+                  >    
                     <option value={0}>נושא אחר</option>
-                    <option value={1}>שאלות לגבי גיוס לעסקים</option>
-                    <option value={2}>תמיכה טכנית</option>
-                    <option value={3}>פניה בנושא חיובי אשראי</option>
-                    <option value={4}>פניה בנושא אי קבלת תשורה</option>
-                    <option value={5}>שאלות לפני פתיחת גיוס</option>
-                    <option value={6}>פניה בנושא גיפטקארד</option>
+                    <option value={'שאלות לגבי גיוס לעסקים'}>שאלות לגבי גיוס לעסקים</option>
+                    <option value={'תמיכה טכנית'}>תמיכה טכנית</option>
+                    <option value={'פנייה בנושא חיוב אשראי'}>פניה בנושא חיובי אשראי</option>
+                    <option value={'פנייה בנושא אי קבלת תשורה'}>פניה בנושא אי קבלת תשורה</option>
+                    <option value={'שאלות לפני פתיחת גיוס'}>שאלות לפני פתיחת גיוס</option>
+                    <option value={'פניה בנושא גיפטקארד'}>פניה בנושא גיפטקארד</option>
                   </NativeSelect>
                 </div>
                 <TextField
                   id="standard-basic"
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   label="תוכן הודעה"
                   variant="standard"
                 />
