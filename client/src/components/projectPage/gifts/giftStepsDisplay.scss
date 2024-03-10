@@ -1,13 +1,11 @@
 .giftComp {
   width: 320px;
-  .firstDisplay {
-    border: 1px solid #48ad02;
+  .stepsDisplay {
+    //   border: 1px solid #48ad02;
     border-radius: 3px;
     transition: all 0.3s ease;
     padding: 20px 16px 32px;
-    border: 1px solid #48ad02;
     position: relative;
-    cursor: pointer;
     height: auto;
     outline: none;
     overflow: hidden;
@@ -80,19 +78,13 @@
       text-indent: 24px;
       background-color: #ffffff;
     }
-    &:hover {
-      background-color: #48ad02;
-      color: white !important;
-      border: unset;
-      .green,
-      svg,
-      .giftName {
-        color: white !important;
-      }
-      .labelToSupport {
-        color: #48ad02;
-        box-shadow: 0 1px 3px 0 rgba(86, 86, 86, 0.4);
-      }
-    }
+  }
+  .MuiTextField-root {
+    margin: 5px 0px !important;
+    width: 90%;
+  }
+  .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root {
+    left: unset !important;
+    right: 0% !important;
   }
 }

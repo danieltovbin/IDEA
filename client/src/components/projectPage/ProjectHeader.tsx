@@ -11,7 +11,21 @@ interface TopProjectDivProps {
 
 const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
   const navigate = useNavigate();
-  let { ownerId, projectName, projectCategory, shortDescription, tags, images, videoLink, projectStory, aid, raised, location, limitDate, ownerInfo, gifts,
+  let {
+    ownerId,
+    projectName,
+    projectCategory,
+    shortDescription,
+    tags,
+    images,
+    videoLink,
+    projectStory,
+    aid,
+    raised,
+    location,
+    limitDate,
+    ownerInfo,
+    gifts,
   } = projectInfo;
   console.log(projectInfo);
 
@@ -23,8 +37,16 @@ const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
     sessionStorage.setItem("projectId", projectInfo._id);
     navigate("/project");
   };
+
+  const scrollIntoGifts = () => {
+    const element = document.getElementById("allGifts");
+    if (element) element.scrollIntoView(({ 
+      behavior: 'smooth' 
+  }));
+  };
+
   return (
-    <div className="">
+    <div  className="">
       <div className="topProjectNum1 topProject " dir="rtl">
         <div className="rSide">
           <iframe
@@ -149,7 +171,7 @@ const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
               <p>מתוך {aid} ₪</p>
             </div>
             <div className="leftDays">
-              <LeftDays limitDate={limitDate}/>
+              <LeftDays limitDate={limitDate} />
               <p>ימים שנותרו</p>
             </div>
             <div className="supporter">
@@ -158,7 +180,9 @@ const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
             </div>
           </div>
           <div className="enterToProjectDiv">
-            <button className="enterToProjectBtn">לתמיכה בפרוייקט</button>
+            <button style={{transition: "all 1s ease"}} onClick={scrollIntoGifts} className="enterToProjectBtn">
+              לתמיכה בפרוייקט
+            </button>
           </div>
           <div
             className="mediaIcons"

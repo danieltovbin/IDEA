@@ -1,0 +1,53 @@
+.chosenGiftDiv {
+  border: 1px solid rgb(219, 219, 219);
+  padding: 1rem;
+  background-color: #fcfbfa;
+  .stepsDisplay {
+    background-color: #fcfbfa;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    padding: 20px 16px 32px;
+    position: relative;
+    height: auto;
+    outline: none;
+    overflow: hidden;
+    text-align: start;
+    font-family: inherit;
+    border-radius: 3px;
+    justify-content: flex-start;
+    margin: 8px 0px;
+  }
+  .MuiTextField-root {
+    margin: 5px 0px !important;
+    width: 90%;
+  }
+  .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root {
+    left: unset !important;
+    right: 0% !important;
+  }
+  .personalDetails {
+    .addCommentToProj {
+      font-size: 14px;
+      padding: 5px;
+    }
+    .commentWriterName {
+      display: flex;
+      font-size: 11px;
+      align-items: center;
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+    .css-dpjnhs-MuiInputBase-root-MuiOutlinedInput-root {
+      background-color: rgb(207, 207, 207);
+    }
+    span {
+      font-size: 13px;
+    }
+  }
+  .validFormBtn {
+    background-color: #48ad02;
+    color: white;
+  }
+}

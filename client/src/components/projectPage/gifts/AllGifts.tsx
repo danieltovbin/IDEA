@@ -8,7 +8,7 @@ interface AllGiftsProps {
 const AllGifts: FC<AllGiftsProps> = ({ project }) => {
     const gifts = project.gifts
   return (
-    <div className="allGiftsDiv">
+    <div  className="allGiftsDiv" id="allGifts">
       {gifts.map((gift) => (
         <GiftComp key={gift._id} gift={gift} project={project} />
       ))}

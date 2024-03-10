@@ -54,7 +54,8 @@ const projectSchema = new Schema<IProject>({
     default: function () {
       const createdAt = this.createdAt || Date.now();
       const limitDate = new Date(createdAt);
-      limitDate.setDate(limitDate.getDate() + 50);
+      // limitDate.setDate(limitDate.getDate() + 50);
+      limitDate.setDate(limitDate.getDate() + (fakerHE.number.int({ min: 15, max: 50 })));
       return limitDate;
     },
   },
@@ -158,11 +159,21 @@ function createProjectStory() {
   <p>${fakerHE.lorem.paragraphs()}</p>
   <p style={color:"red"}>${fakerHE.company.catchPhraseDescriptor()}</p>
   <img src=${fakerHE.image.url()}/>
+  <h3 style="color: gray; font-size: 18px;">${fakerHE.commerce.productName()}</h3>
+  <p>${fakerHE.lorem.paragraphs()}</p>
+  <p style={color:"red"}>${fakerHE.company.catchPhraseDescriptor()}</p>
+  <img src=${fakerHE.image.url()}/>
+  <h3 style="color: gray; font-size: 18px;">${fakerHE.commerce.productName()}</h3>
+  <p>${fakerHE.lorem.paragraphs()}</p>
+  <p>${fakerHE.lorem.paragraphs()}</p>
+  <p>${fakerHE.lorem.paragraphs()}</p>
+  <p style={color:"red"}>${fakerHE.company.catchPhraseDescriptor()}</p>
+  <img src=${fakerHE.image.url()}/>
   <h2>${fakerHE.commerce.productName()}</h2>
   <p>הנה כמה לינקים חשובים שיעזרו לכם להכיר אותנו: <a href="#">${fakerHE.commerce.productName()}</a>, <a href="#">${fakerHE.commerce.productName()}</a>, <a href="#">${fakerHE.commerce.productName()}</a></p>
     </div>`;
 }
 
-for (let i = 0; i < 25; i++) {
-  addRandomProject();
-}
+// for (let i = 0; i < 5; i++) {
+//   addRandomProject();
+// }
