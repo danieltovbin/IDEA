@@ -73,8 +73,13 @@ export async function updateOneOnProject(req, res) {
     }
     const projectDB = await ProjectModel.updateOne(
       { _id: projectId },
-      { [key]: value }
+      { [key]: value },
     );
+    // const projectDB1 = await ProjectModel.findByIdAndUpdate(
+    //   { "_id": projectId },
+    //   { [key]: value },{new: true}
+    // );
+
     if (!projectDB)
       throw new Error("not found project with this id in database");
     res.send({ ok: true });
@@ -98,13 +103,10 @@ export async function get4latestProjects(req, res) {
 export async function allProjects(req, res) {
   try {
     const allProjects = await ProjectModel.find({});
-    // console.log('allProjects from allProjects' ,allProjects);
     if (allProjects.length === 0) {
       return res.send({ ok: true, allProjects: [] });
     }
-
     res.send({ ok: true, allProjects });
-    // console.log('res.send allProjects ', allProjects);
   } catch (error) {
     console.error(error);
     res.status(500).send({ ok: false, error: "Internal Server Error" });
@@ -113,13 +115,14 @@ export async function allProjects(req, res) {
 
 export async function deleteProject(req, res) {
   try {
-    const {projectId, userToken} = req.body
+    const { projectId, userToken } = req.body;
     console.log(projectId, userToken);
 
-   const deletedProject = await ProjectModel.findOneAndDelete({_id:projectId}) 
-    if(!deletedProject)
-    throw new Error("Project not deleted");
-  else res.send({ ok: true})
+    const deletedProject = await ProjectModel.findOneAndDelete({
+      _id: projectId,
+    });
+    if (!deletedProject) throw new Error("Project not deleted");
+    else res.send({ ok: true });
   } catch (error) {
     console.error(error);
     res.status(500).send({ ok: false, error: "Internal Server Error" });

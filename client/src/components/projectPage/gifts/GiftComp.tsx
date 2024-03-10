@@ -1,28 +1,24 @@
-import React, { FC } from "react";
-import { GoLightBulb } from "react-icons/go";
-
+import { FC, useState } from "react";
+import ChosenGiftDisplay from "./ChosenGiftDisplay";
+import GiftFirstDisplay from "./GiftFirstDisplay";
+import "./giftCompStyle.scss";
 interface GiftCompProps {
   gift: Gift;
   project: Project;
 }
 const GiftComp: FC<GiftCompProps> = ({ gift, project }) => {
+  const [IsChosenGift, setIsChosenGift] = useState(false);
+
+  const handleClickOnGift = () => {
+    setIsChosenGift(true);
+  };
   return (
     <div className="giftComp">
-      <div className="minPrice">
-        <p>מינימים</p>
-        <h2>{gift.price}₪</h2>
-      </div>
-      <h2 className="giftName">{gift.name}</h2>
-      <p className="giftDescription">{gift.description}</p>
-      <p className="dateToDelivery">תאריך מסירה : אוקטובר 2025</p>
-      <div className="supportersDiv">
-        <GoLightBulb />
-        <p className="supporters">
-          <span>{10}</span>
-          תומכים.ות מתוך
-          <span>{project.donations ? project.donations.length : 100}</span>
-        </p>
-      </div>
+      {!IsChosenGift ? (
+        <GiftFirstDisplay onClick={handleClickOnGift} gift={gift} project={project} />
+      ) : (
+        <ChosenGiftDisplay gift={gift} project={project} />
+      )}
     </div>
   );
 };
