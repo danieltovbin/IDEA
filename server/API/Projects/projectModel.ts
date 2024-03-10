@@ -54,7 +54,7 @@ const projectSchema = new Schema<IProject>({
     default: function () {
       const createdAt = this.createdAt || Date.now();
       const limitDate = new Date(createdAt);
-      limitDate.setDate(limitDate.getDate() + 50);
+      limitDate.setDate(limitDate.getDate() + (fakerHE.number.int({ min: 15, max: 50 })));
       return limitDate;
     }
   },
