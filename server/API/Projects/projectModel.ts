@@ -7,7 +7,7 @@ interface IGift {
   price: number;
   // deliveryOption: [string];
   giftId: string;
-  _id: string |any;
+  _id: string | any;
   donations: [
     {
       donationId: String;
