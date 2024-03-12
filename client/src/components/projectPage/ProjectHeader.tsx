@@ -34,6 +34,14 @@ const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
     (((raised == null ? 0 : raised) / aid) * 100).toString()
   );
 
+  const donors = (()=>{
+    let donorsNum = 0 
+    gifts.forEach(gift=>{
+      donorsNum += gift.donations.length
+    })
+    return donorsNum
+  }) ()
+
   const enterProject = () => {
     sessionStorage.setItem("projectId", projectInfo._id);
     navigate("/project");
@@ -176,7 +184,7 @@ const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
               <p>ימים שנותרו</p>
             </div>
             <div className="supporter">
-              <h4>{10}</h4>
+              <h4>{donors}</h4>
               <p>תומכים.ות</p>
             </div>
           </div>

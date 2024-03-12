@@ -1,11 +1,12 @@
 import { UserSchema } from "./../../server/API/Users/usersModel";
-/// <reference types="vite/client" />
+// / <reference types="vite/client" />
 
 interface Gift {
   name: string;
   description: string;
   price: number;
   deliveryOption: string[];
+  donations: { donationId :string , sumOfDonations:number}[];
   date: string;
   _id: string;
 }
@@ -34,7 +35,7 @@ type Donation = {
   date: string;
   giftId: string;
   projectId: string;
-  userToken?:string
+  userToken?: string;
   name: string;
   email: string;
   address: string;

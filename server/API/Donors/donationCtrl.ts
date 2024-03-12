@@ -11,7 +11,7 @@ export async function addDonation(req, res) {
         { _id: donation.projectId },
         {
           $inc: {
-            raised: 5,
+            raised: donation.donationSum,
           },
         }
         );

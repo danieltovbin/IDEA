@@ -16,6 +16,7 @@ interface GiftCompProps {
 }
 
 const ChosenGiftDisplay: FC<GiftCompProps> = ({ gift, project }) => {
+   
   const steps = ["סכום תמיכה", "פרטים אישיים", "פרטי עסקה"];
   const [activeStep, setActiveStep] = useState(0);
   const [donation, setDonation] = useState<Donation>({
