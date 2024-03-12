@@ -6,6 +6,8 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import AllGifts from "./gifts/AllGifts";
 import "./miniNavProject.scss"
+import Comments from "./TabPanels/Comments";
+import Supporters from "./TabPanels/Supporters";
 
 interface miniNavDivProps {
   project: Project;
@@ -13,7 +15,7 @@ interface miniNavDivProps {
 
 const MiniNavProject: FC<miniNavDivProps> = ({ project }) => {
   const [value, setValue] = useState("1");
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+  const handleChange = (_: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
   return (
@@ -42,9 +44,9 @@ const MiniNavProject: FC<miniNavDivProps> = ({ project }) => {
             <div dangerouslySetInnerHTML={{ __html: project.projectStory }} />
           </div>{" "}
         </TabPanel>
-        <TabPanel value="2">תומכים.ות</TabPanel>
+        <TabPanel value="2"><Supporters /></TabPanel>
         <TabPanel value="3">עדכונים</TabPanel>
-        <TabPanel value="4">תגוובת</TabPanel>
+        <TabPanel value="4"><Comments /></TabPanel>
       </TabContext>
       <AllGifts project={project}/>
     </div>
