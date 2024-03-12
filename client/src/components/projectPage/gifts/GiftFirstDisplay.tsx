@@ -9,6 +9,14 @@ interface GiftFirstDisplayProps{
 }
 
 const GiftFirstDisplay:FC<GiftFirstDisplayProps> = ({gift, project, onClick}) => {
+  const donorsOfThisGift =    gift.donations.length;
+  const donors = (()=>{
+    let donorsNum = 0 
+    project.gifts.forEach(gift=>{
+      donorsNum += gift.donations.length
+    })
+    return donorsNum
+  }) ()
   return (
     <div className="firstDisplay" onClick={onClick}>
       <div className="minPrice">
@@ -23,11 +31,11 @@ const GiftFirstDisplay:FC<GiftFirstDisplayProps> = ({gift, project, onClick}) =>
       <div className="supportersDiv">
         <GoLightBulb />
         <p className="supporters">
-          <span className="green">{10} </span>
+          <span className="green">{donorsOfThisGift} </span>
           תומכים.ות מתוך
           <span className="green">
             {" "}
-            {project.donations ? project.donations.length : 100}
+            {donors ? donors : 100}
           </span>
         </p>
       </div>

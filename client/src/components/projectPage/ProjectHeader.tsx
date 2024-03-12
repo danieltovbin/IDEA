@@ -3,6 +3,7 @@ import { FC } from "react";
 import "./projectHeaderStyle.scss";
 import { useNavigate } from "react-router-dom";
 import LeftDays from "../AdminPage/helpers/LeftDays";
+import { Project } from "../../vite-env";
 // import LinearProgressWithLabel from '@mui/lab/LinearProgressWithLabel';
 
 interface TopProjectDivProps {
@@ -32,6 +33,14 @@ const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
   const percentRaised = parseInt(
     (((raised == null ? 0 : raised) / aid) * 100).toString()
   );
+
+  const donors = (()=>{
+    let donorsNum = 0 
+    gifts.forEach(gift=>{
+      donorsNum += gift.donations.length
+    })
+    return donorsNum
+  }) ()
 
   const enterProject = () => {
     sessionStorage.setItem("projectId", projectInfo._id);
@@ -175,7 +184,7 @@ const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
               <p>ימים שנותרו</p>
             </div>
             <div className="supporter">
-              <h4>{10}</h4>
+              <h4>{donors}</h4>
               <p>תומכים.ות</p>
             </div>
           </div>
