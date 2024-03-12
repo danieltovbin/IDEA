@@ -1,5 +1,6 @@
 import { FC } from "react";
 import ProjectHeader from "./ProjectHeader";
+import { Project } from "../../vite-env";
 
 
 interface HeaderProps{

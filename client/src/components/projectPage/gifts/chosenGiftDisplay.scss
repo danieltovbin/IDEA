@@ -26,6 +26,17 @@
     right: 0% !important;
   }
   .personalDetails {
+    button {
+        margin: 10px 0;
+        width: 100%;
+        background-color: #ff4492;
+        color: white;
+      }
+      button:disabled {
+        background-color: lightgray;
+        color: gray;
+        cursor: not-allowed; /* עדיף להגדיר סוגריים סולמיים */
+    }
     .addCommentToProj {
       font-size: 14px;
       padding: 5px;
@@ -46,6 +57,7 @@
       font-size: 13px;
     }
   }
+  
   .validFormBtn {
     background-color: #48ad02;
     color: white;

@@ -1,3 +1,4 @@
+import { UserSchema } from "./../../server/API/Users/usersModel";
 /// <reference types="vite/client" />
 
 interface Gift {
@@ -18,15 +19,32 @@ interface OwnerInfo {
   profileImageUrl: string;
 }
 
-interface Donation{
-  userId:string;
+// interface Donation {
+//   userId: string;
+//   projectId: string;
+//   userLevel: number;
+//   donorName: string;
+//   amount: number;
+//   date: string;
+//   Comment: string;
+// }
+
+type Donation = {
+  _id?: string;
+  giftId: string;
   projectId: string;
-  userLevel:number;
-  donorName: string
-  amount:number;
-  date:string;
-  Comment:string;
-}
+  userToken?:string
+  name: string;
+  email: string;
+  address: string;
+  city: string;
+  rewardAmount: number;
+  donationSum: number;
+  noteToOwner: string;
+  comment: string;
+  approvalRegulation: boolean;
+  anonymous: boolean;
+};
 
 type Project = {
   _id: string;
@@ -69,6 +87,6 @@ interface Project {
 }
 
 interface ProjectCardProps {
-  categoryFilter?: 'endingSoon' | 'popular' | 'new' | 'completed' | "";
+  categoryFilter?: "endingSoon" | "popular" | "new" | "completed" | "";
   projectsToShow: number;
 }

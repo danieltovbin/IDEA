@@ -1,0 +1,64 @@
+.paymentDetails {
+  .safetyPayment {
+    display: flex;
+    align-items: center;
+    margin: 20px 6px;
+    svg {
+      color: red;
+      font-size: 24px;
+    }
+    p {
+      font-weight: bolder;
+      font-size: 14px;
+      margin: 0 5px;
+    }
+  }
+  .dealDetails {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .giftName {
+    padding: 10px 0px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .amountGifts,
+  .addSupportAmount {
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    span {
+      font-weight: bold;
+    }
+  }
+  .addSupportAmount {
+    margin-bottom: 20px;
+  }
+  .dashed {
+    width: 100%;
+    border: 1px dashed #ccc;
+    margin: 16px 0px;
+  }
+  .sumToPay {
+    display: flex;
+    justify-content: space-between;
+    font-size: large;
+    font-weight: bold;
+  }
+  .creditCardDetail {
+    margin-top: 10px;
+    font-size: 15px;
+  }
+  .cardDetails {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  button {
+    width: 100%;
+    margin: 10px 0;
+    width: 100%;
+    background-color: #ff4492;
+    color: white;
+  }
+}

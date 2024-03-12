@@ -1,0 +1,20 @@
+.sumOfSupport {
+  .amountOfGiftsAndSupport {
+    display: flex;
+    justify-content: space-around;
+    .MuiTextField-root {
+      width: 100px;
+    }
+  }
+  button {
+    margin: 10px 0;
+    width: 100%;
+    background-color: #ff4492;
+    color: white;
+  }
+  button:disabled {
+    background-color: lightgray;
+    color: gray;
+    cursor: not-allowed; /* עדיף להגדיר סוגריים סולמיים */
+}
+}

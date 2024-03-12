@@ -9,6 +9,7 @@ import multer from "multer";
 import cloudinaryRoutes from "./API/Cloudinary/cloudinaryRoutes";
 import projectRoutes from "./API/Projects/projectRoutes";
 import usersRoutes from "./API/Users/usersRoutes";
+import donationRoutes from "./API/Donors/donationRoutes"
 dotenv.config();
 
 const app = express();
@@ -24,6 +25,7 @@ const { MONGO_URI } = process.env;
 app.use("/API/users", usersRoutes);
 app.use("/API/projects", projectRoutes);
 app.use("/API/cloudinary", cloudinaryRoutes);
+app.use("/API/donation", donationRoutes);
 
 const CLOUDINARY_URI = JSON.parse(process.env.CLOUDINARY_URI);
 

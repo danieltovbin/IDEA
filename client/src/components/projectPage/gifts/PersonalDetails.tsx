@@ -1,14 +1,15 @@
-import { FormControlLabel, Checkbox } from "@mui/material";
-import { TextField } from "@mui/material";
+import { Checkbox, FormControlLabel, TextField } from "@mui/material";
 
-import React, { FC, useEffect, useState } from "react";
-import GiftFirstDisplay from "./GiftFirstDisplay";
+import { FC, useEffect, useState } from "react";
+import { Gift, Project } from "../../../vite-env";
 import GiftStepsDisplay from "./GiftStepsDisplay";
 
-const PersonalDetails: FC<{ gift: Gift; project: Project }> = ({
-  gift,
-  project,
-}) => {
+const PersonalDetails: FC<{
+  gift: Gift;
+  project: Project;
+  next: (index: number) => void;
+  handleDonationChange: (donationChanges: any) => void;
+}> = ({ gift, project, next, handleDonationChange }) => {
   const [isFormValid, setIsFormValid] = useState(false);
   const [formData, setFormData] = useState({
     name: null,
@@ -18,8 +19,8 @@ const PersonalDetails: FC<{ gift: Gift; project: Project }> = ({
     noteToOwner: null,
     phone: null,
     comment: null,
-    regulationCheck: false,
-    anonymousCheck: false,
+    approvalRegulation: false,
+    anonymous: false,
   });
 
   const requiredFields = [
@@ -28,7 +29,7 @@ const PersonalDetails: FC<{ gift: Gift; project: Project }> = ({
     "address",
     "city",
     "phone",
-    "regulationCheck",
+    "approvalRegulation",
   ];
   function areRequiredFieldsFilled(requiredFields: string[], formData: any) {
     for (const field of requiredFields) {
@@ -48,7 +49,7 @@ const PersonalDetails: FC<{ gift: Gift; project: Project }> = ({
 
   const handleChange = (event: any) => {
     const { name, value, checked } = event.target;
-    if (name === "regulationCheck" || name === "anonymousCheck") {
+    if (name === "approvalRegulation" || name === "anonymous") {
       setFormData((prevData) => ({ ...prevData, [name]: checked }));
     } else {
       setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -57,7 +58,7 @@ const PersonalDetails: FC<{ gift: Gift; project: Project }> = ({
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    // console.log("Form data:", formData);
+    handleDonationChange(formData)
   };
 
   useEffect(() => {
@@ -127,15 +128,15 @@ const PersonalDetails: FC<{ gift: Gift; project: Project }> = ({
           onChange={handleChange}
         />
         <FormControlLabel
-          name="regulationCheck"
+          name="approvalRegulation"
           required
-          checked={formData.regulationCheck}
+          checked={formData.approvalRegulation}
           control={<Checkbox />}
           label="אני מאשר.ת את התקנון"
           onChange={handleChange}
         />
         <FormControlLabel
-          name="anonymousCheck"
+          name="anonymous"
           control={<Checkbox />}
           label="אעדיף להופיע ברשימת התומכים כאונימי"
           onChange={handleChange}
@@ -143,6 +144,10 @@ const PersonalDetails: FC<{ gift: Gift; project: Project }> = ({
         <button
           disabled={!isFormValid}
           className={isFormValid ? "validFormBtn" : "continueBtn"}
+          onClick={(e) => {
+            handleSubmit(e)
+            next(2);
+          }}
           type="submit"
         >
           להמשך

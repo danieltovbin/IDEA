@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Project } from "../../vite-env";
 
 export async function startProject(projectInfo: any) {
   try {

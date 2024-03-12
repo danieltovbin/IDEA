@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import ChosenGiftDisplay from "./ChosenGiftDisplay";
 import GiftFirstDisplay from "./GiftFirstDisplay";
 import "./giftCompStyle.scss";
+import { Gift, Project } from "../../../vite-env";
 interface GiftCompProps {
   gift: Gift;
   project: Project;

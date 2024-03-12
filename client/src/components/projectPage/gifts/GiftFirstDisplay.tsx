@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { GoLightBulb } from "react-icons/go";
+import { Gift, Project } from "../../../vite-env";
 
 interface GiftFirstDisplayProps{
     gift:Gift;

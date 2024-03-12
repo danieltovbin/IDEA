@@ -4,9 +4,16 @@ import { he, fakerHE } from "@faker-js/faker";
 interface IGift {
   name: string;
   description: string;
-  coast: number;
-  deliveryOption: string[];
-  date: Date;
+  price: number;
+  // deliveryOption: [string];
+  giftId: string;
+  _id: string |any;
+  donations: [
+    {
+      donationId: String;
+      sumOfDonations: Number;
+    }
+  ];
 }
 
 interface IOwnerInfo {
@@ -55,7 +62,9 @@ const projectSchema = new Schema<IProject>({
       const createdAt = this.createdAt || Date.now();
       const limitDate = new Date(createdAt);
       // limitDate.setDate(limitDate.getDate() + 50);
-      limitDate.setDate(limitDate.getDate() + (fakerHE.number.int({ min: 15, max: 50 })));
+      limitDate.setDate(
+        limitDate.getDate() + fakerHE.number.int({ min: 15, max: 50 })
+      );
       return limitDate;
     },
   },
@@ -72,8 +81,16 @@ const projectSchema = new Schema<IProject>({
       name: String,
       description: String,
       price: Number,
-      deliveryOption: [String],
+      // deliveryOption: [String],
       giftId: { type: String, default: generateUUID() },
+      donations: {
+        type: [
+          {
+            donationId: String,
+            sumOfDonations: Number,
+          },
+        ],
+      },
     },
   ],
 });
