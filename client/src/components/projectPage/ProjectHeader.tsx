@@ -3,6 +3,7 @@ import { FC } from "react";
 import "./projectHeaderStyle.scss";
 import { useNavigate } from "react-router-dom";
 import LeftDays from "../AdminPage/helpers/LeftDays";
+import { Project } from "../../vite-env";
 // import LinearProgressWithLabel from '@mui/lab/LinearProgressWithLabel';
 
 interface TopProjectDivProps {

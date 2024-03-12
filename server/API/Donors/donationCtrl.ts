@@ -43,3 +43,31 @@ export async function addDonation(req, res) {
     console.error(error);
   }
 }
+
+
+export async function allDonationsByProject(req, res) {
+  try {
+    const {projectId} = req.body;
+    const allDonations = await DonationModel.find({projectId:projectId});
+    if (allDonations.length === 0) {
+      return res.send({ ok: true, allDonations: [] });
+    }
+    res.send({ ok: true, allDonations });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ ok: false, error: "Internal Server Error" });
+  }
+}
+
+export async function getAllDonations(req, res) {
+  try {
+    const allDonations = await DonationModel.find({});
+    if (allDonations.length === 0) {
+      return res.send({ ok: true, allDonations: [] });
+    }
+    res.send({ ok: true, allDonations });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ ok: false, error: "Internal Server Error" });
+  }
+}

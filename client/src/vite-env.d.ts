@@ -31,6 +31,7 @@ interface OwnerInfo {
 
 type Donation = {
   _id?: string;
+  date: string;
   giftId: string;
   projectId: string;
   userToken?:string
