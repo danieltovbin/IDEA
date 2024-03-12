@@ -3,13 +3,20 @@ import UserModel from "../Users/usersModel";
 
 
 export const DonationSchema = new Schema({
-  userId:{type: String, default:"none"},
+  giftId: String,
   projectId: String,
-  userLevel:{type:Number, default:0},
-  donorName: {type: String, default:"תומך אנונימי"},
-  amount:Number,
-  date:Date,
-  Comment:String
+  userToken:String,
+  name: String,
+  email: String,
+  address: String,
+  city: String,
+  rewardAmount: Number,
+  donationSum: Number,
+  noteToOwner: String,
+  comment: String,
+  approvalRegulation: {type: Boolean, required:true},
+  anonymous: {type: Boolean, default: false},
+  date: {type:Date, default:new Date()},
 });
 
 const DonationModel = model("donation", DonationSchema);
