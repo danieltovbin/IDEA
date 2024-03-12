@@ -8,6 +8,7 @@ import AllGifts from "./gifts/AllGifts";
 import "./miniNavProject.scss"
 import Comments from "./TabPanels/Comments";
 import Supporters from "./TabPanels/Supporters";
+import { Project } from "../../vite-env";
 
 interface miniNavDivProps {
   project: Project;

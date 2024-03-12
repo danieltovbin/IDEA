@@ -4,6 +4,7 @@ import { he, fakerHE } from "@faker-js/faker";
 import { allprojects } from "../../../API/Projects/projectClientCtrl";
 import { calculateRemainingDays } from "./calculateRemainingDays";
 import { useNavigate } from "react-router-dom";
+import { Project, ProjectCardProps } from "../../../vite-env";
 
 const ProjectCard: FC<ProjectCardProps> = ({
   categoryFilter,
