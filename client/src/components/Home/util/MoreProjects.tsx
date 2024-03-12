@@ -1,7 +1,6 @@
-import React, { FC } from 'react'
-import { StyledCard } from './StyledCard'
-import ProjectCard from './ProjectCard'
 import { useLocation, useParams } from 'react-router-dom';
+import ProjectCard from './ProjectCard';
+import { StyledCard } from './StyledCard';
 import './scss/moreProjects.scss';
 
 

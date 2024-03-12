@@ -10,6 +10,7 @@ import cloudinaryRoutes from "./API/Cloudinary/cloudinaryRoutes";
 import projectRoutes from "./API/Projects/projectRoutes";
 import usersRoutes from "./API/Users/usersRoutes";
 import donationRoutes from "./API/Donors/donationRoutes"
+import DonationModel from "./API/Donors/donationModel";
 dotenv.config();
 
 const app = express();
@@ -40,6 +41,8 @@ mongoose
     console.error(err);
   });
 
+ 
 app.listen(PORT, () => {
   console.log(`app listening on PORT : ${PORT}❤️`);
 });
+

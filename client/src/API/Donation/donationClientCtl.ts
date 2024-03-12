@@ -14,3 +14,28 @@ export const addDonation = async (donation:Donation) => {
     return { ok: false };
   }
 };
+
+export const getDonationsByProject = async () => {
+  try {
+    const projectId = sessionStorage.getItem("projectId")
+    if(!projectId) throw new Error("No projectId found in getDonationsByProject")
+    const { data } = await axios.post("/API/donation/allDonationByProject",{projectId});
+    console.log("data in getDonations", data);
+    if (data) return data;
+    else return [];
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
+export const getAllDonations = async () => {
+  try {
+    const { data } = await axios.get("/API/donation/getAllDonations");
+    console.log("data in getAllDonations", data);
+    if (data) return data;
+    else return [];
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
