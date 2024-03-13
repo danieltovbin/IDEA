@@ -116,7 +116,7 @@ const PersonalDetails: FC<{
             alt="avatar"
           />
           <p>
-            <span>ruth</span> תגובתך תפורסם בדף הפרוייקט
+            <span>{formData.name}</span> תגובתך תפורסם בדף הפרוייקט
           </p>
         </div>
         <TextField

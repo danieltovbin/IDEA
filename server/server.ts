@@ -1,16 +1,13 @@
-// import cloudinary from "cloudinary";
 const cloudinary = require( "cloudinary").v2
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
-import multer from "multer";
 import cloudinaryRoutes from "./API/Cloudinary/cloudinaryRoutes";
+import donationRoutes from "./API/Donors/donationRoutes";
 import projectRoutes from "./API/Projects/projectRoutes";
 import usersRoutes from "./API/Users/usersRoutes";
-import donationRoutes from "./API/Donors/donationRoutes"
-import DonationModel from "./API/Donors/donationModel";
 dotenv.config();
 
 const app = express();

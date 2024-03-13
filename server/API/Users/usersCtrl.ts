@@ -1,8 +1,7 @@
-import { cookieParser } from "cookie-parser";
-import UserModel from "./usersModel";
 import bcrypt from "bcrypt";
 import jwt from "jwt-simple";
-import nodemailer from 'nodemailer';
+import nodemailer from "nodemailer";
+import UserModel from "./usersModel";
 const { SECRET_KEY } = process.env;
 const saltRounds = 10;
 
@@ -88,7 +87,6 @@ export const checkIsAdminMW = async (req, res, next) => {
     if (!userDB) throw new Error("no user");
 
     if (userDB.role === "admin") {
-      // res.send({ isAdmin: true });
       next();
     } else res.send({ isAdmin: false, error: "not authorized" });
   } catch (error) {
@@ -97,41 +95,36 @@ export const checkIsAdminMW = async (req, res, next) => {
   }
 };
 
-
-
 const PORT = process.env.PORT || 3000;
 
-
-
-export const sendEmail = async(req,res)=>{
+export const sendEmail = async (req, res) => {
   try {
-    const {fullName, email, phone, subject, message} = req.body;
+    const { fullName, email, phone, subject, message } = req.body;
 
     const transporter = nodemailer.createTransport({
       port: 3000,
-      service: 'gmail',
+      service: "gmail",
       auth: {
-        user: 'idearuthdaniel@gmail.com',
-        pass: 'cbwk cqra yzag pnyh',
-      }
+        user: "idearuthdaniel@gmail.com",
+        pass: "cbwk cqra yzag pnyh",
+      },
     });
 
     const mailOptions = {
-      from: 'idearuthdaniel@gmail.com',
-      to: 'idearuthdaniel@gmail.com',
+      from: "idearuthdaniel@gmail.com",
+      to: "idearuthdaniel@gmail.com",
       subject: subject,
-      html: `<p style="color:red;">Name: ${fullName}<br>Email: ${email}</br>Phone: ${phone}<br>Message: ${message}</br></p>`
+      html: `<p style="color:red;">Name: ${fullName}<br>Email: ${email}</br>Phone: ${phone}<br>Message: ${message}</br></p>`,
     };
 
     const info = await transporter.sendMail(mailOptions);
 
-    console.log('Message sent: %s', info.messageId);
-    res.send({ok: true, message: 'Email sent successfully'})
-    
+    console.log("Message sent: %s", info.messageId);
+    res.send({ ok: true, message: "Email sent successfully" });
   } catch (error) {
-    console.error('Error sending email:', error);
-    res.status(500).send({error: 'Internal Server Error',message:error.message})
+    console.error("Error sending email:", error);
+    res
+      .status(500)
+      .send({ error: "Internal Server Error", message: error.message });
   }
-}
-
-
+};

@@ -1,7 +1,7 @@
 import jwt from "jwt-simple";
-import ProjectModel, { IProject } from "./projectModel";
 import UserModel from "../Users/usersModel";
-import { uploadImageController } from "../Cloudinary/cloudinaryCtrl";
+import ProjectModel, { IProject } from "./projectModel";
+import { fakerHE } from "@faker-js/faker";
 const { SECRET_KEY } = process.env;
 
 export async function startProject(req, res) {
@@ -75,11 +75,6 @@ export async function updateOneOnProject(req, res) {
         }
       }
     }
-    // const  = await ProjectModel.updateOne(
-    //   { _id: projectId },
-    //   { [key]: value }, 
-    //   { new: true }
-    // );
     const projectDB = await ProjectModel.findOneAndUpdate(
       { _id: projectId },
       { [key]: value },
@@ -178,3 +173,97 @@ function checkIsProjectCompleted(project: IProject) {
   }
   return false;
 }
+
+
+
+async function addRandomProject() {
+  try {
+    const newProject = new ProjectModel({
+      ownerId: "65c22d8fd830152457ab74e8",
+      projectName: fakerHE.music.songName(),
+      projectCategory: ["ציור"],
+      ownerName: fakerHE.person.fullName(),
+      images: [
+        fakerHE.image.url(),
+        fakerHE.image.url(),
+        fakerHE.image.url(),
+        fakerHE.image.url(),
+      ],
+      videoLink:
+        "https://www.youtube.com/watch?v=RFGWDSCNclg&ab_channel=%D7%9B%D7%90%D7%9F%7C%D7%97%D7%93%D7%A9%D7%95%D7%AA-%D7%AA%D7%90%D7%92%D7%99%D7%93%D7%94%D7%A9%D7%99%D7%93%D7%95%D7%A8%D7%94%D7%99%D7%A9%D7%A8%D7%90%D7%9C%D7%99",
+      aid: Math.round(Math.random() * 900000),
+      projectStory: createProjectStory(),
+      shortDescription: fakerHE.lorem.paragraph(),
+      raised: Math.round(Math.random() * 600000),
+      ownerInfo: {
+        ownerName: fakerHE.person.fullName(),
+        location: fakerHE.location.city(),
+        ownerDescription: fakerHE.lorem.paragraph(),
+        phoneNumber: fakerHE.phone.number(),
+        profileImageUrl: fakerHE.image.avatar(),
+      },
+      gifts: [
+        {
+          name: fakerHE.commerce.productName(),
+          description: fakerHE.commerce.productDescription(),
+          price: Math.floor(Math.floor(Math.random() * 1001) / 50) * 50,
+        },
+        {
+          name: fakerHE.commerce.productName(),
+          description: fakerHE.commerce.productDescription(),
+          price: Math.floor(Math.floor(Math.random() * 1001) / 50) * 50,
+        },
+        {
+          name: fakerHE.commerce.productName(),
+          description: fakerHE.commerce.productDescription(),
+          price: Math.floor(Math.floor(Math.random() * 1001) / 50) * 50,
+        },
+        {
+          name: fakerHE.commerce.productName(),
+          description: fakerHE.commerce.productDescription(),
+          price: Math.floor(Math.floor(Math.random() * 1001) / 50) * 50,
+        },
+        {
+          name: fakerHE.commerce.productName(),
+          description: fakerHE.commerce.productDescription(),
+          price: Math.floor(Math.floor(Math.random() * 1001) / 50) * 50,
+        },
+      ],
+    });
+    const projectDB = await newProject.save();
+    console.log(projectDB);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export function generateUUID(): string {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+    const r = (Math.random() * 16) | 0,
+      v = c === "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
+
+function createProjectStory() {
+  return `      <div>
+  <h1>${fakerHE.commerce.productName()}</h1>
+  <h3 style="color: gray; font-size: 18px;">${fakerHE.commerce.productName()}</h3>
+  <p>${fakerHE.lorem.paragraphs()}</p>
+  <p style={color:"red"}>${fakerHE.company.catchPhraseDescriptor()}</p>
+  <img src=${fakerHE.image.url()}/>
+  <h3 style="color: gray; font-size: 18px;">${fakerHE.commerce.productName()}</h3>
+  <p>${fakerHE.lorem.paragraphs()}</p>
+  <p style={color:"red"}>${fakerHE.company.catchPhraseDescriptor()}</p>
+  <img src=${fakerHE.image.url()}/>
+  <h3 style="color: gray; font-size: 18px;">${fakerHE.commerce.productName()}</h3>
+  <p>${fakerHE.lorem.paragraphs()}</p>
+  <p>${fakerHE.lorem.paragraphs()}</p>
+  <p>${fakerHE.lorem.paragraphs()}</p>
+  <p style={color:"red"}>${fakerHE.company.catchPhraseDescriptor()}</p>
+  <img src=${fakerHE.image.url()}/>
+  <h2>${fakerHE.commerce.productName()}</h2>
+  <p>הנה כמה לינקים חשובים שיעזרו לכם להכיר אותנו: <a href="#">${fakerHE.commerce.productName()}</a>, <a href="#">${fakerHE.commerce.productName()}</a>, <a href="#">${fakerHE.commerce.productName()}</a></p>
+    </div>`;
+}
+
