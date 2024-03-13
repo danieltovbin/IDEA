@@ -1,5 +1,10 @@
 import axios from "axios";
-import { environment } from "../Projects/projectClientCtrl";
+
+export let environment = "DEV";
+const CLIENT_DEV_URL = "http://localhost:3000";
+const CLIENT_PROD_URL = "https://idea-getappyourstartup-server.onrender.com";
+
+environment = environment === "DEV" ? CLIENT_DEV_URL : CLIENT_PROD_URL;
 
 
 export const register = async (userData: {
