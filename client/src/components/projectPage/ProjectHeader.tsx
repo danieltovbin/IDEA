@@ -1,29 +1,18 @@
 import { FC } from "react";
-// import "./topProjectStyle.scss";
 import "./projectHeaderStyle.scss";
-import { useNavigate } from "react-router-dom";
 import LeftDays from "../AdminPage/helpers/LeftDays";
 import { Project } from "../../vite-env";
-// import LinearProgressWithLabel from '@mui/lab/LinearProgressWithLabel';
 
 interface TopProjectDivProps {
   projectInfo: Project;
 }
 
 const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
-  const navigate = useNavigate();
   let {
-    ownerId,
     projectName,
     projectCategory,
-    shortDescription,
-    tags,
-    images,
-    videoLink,
-    projectStory,
     aid,
     raised,
-    location,
     limitDate,
     ownerInfo,
     gifts,
@@ -41,10 +30,7 @@ const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
     return donorsNum;
   })();
 
-  const enterProject = () => {
-    sessionStorage.setItem("projectId", projectInfo._id);
-    navigate("/project");
-  };
+
 
   const scrollIntoGifts = () => {
     const element = document.getElementById("allGifts");

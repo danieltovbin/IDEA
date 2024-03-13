@@ -1,10 +1,9 @@
 import { FC, useEffect, useState } from "react";
-import "./scss/projectCard.scss";
-import { he, fakerHE } from "@faker-js/faker";
-import { allCompletedProjects,  } from "../../../API/Projects/projectClientCtrl";
-import { calculateRemainingDays } from "./calculateRemainingDays";
 import { useNavigate } from "react-router-dom";
+import { allCompletedProjects, } from "../../../API/Projects/projectClientCtrl";
 import { Project, ProjectCardProps } from "../../../vite-env";
+import { calculateRemainingDays } from "./calculateRemainingDays";
+import "./scss/projectCard.scss";
 
 const ProjectCard: FC<ProjectCardProps> = ({
   categoryFilter,

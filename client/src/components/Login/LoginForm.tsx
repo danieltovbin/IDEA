@@ -1,18 +1,17 @@
-import { VisibilityOff, Visibility } from "@mui/icons-material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {
+  Button,
   Container,
   Grid,
-  Typography,
-  TextField,
-  InputAdornment,
   IconButton,
-  Button,
+  InputAdornment,
+  TextField,
+  Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import { login, register } from "../../API/Users/usersClientCtrl";
-import "./loginForm.scss";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { login } from "../../API/Users/usersClientCtrl";
+import "./loginForm.scss";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -76,7 +75,6 @@ const LoginForm = () => {
             label="סיסמה"
             type={showPassword ? "text" : "password"}
             variant="outlined"
-            // value={password}
             onChange={(e) => setPassword(e.target.value)}
             InputProps={{
               endAdornment: (

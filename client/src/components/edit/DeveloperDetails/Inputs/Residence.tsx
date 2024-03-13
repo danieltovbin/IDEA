@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import LabelAndNote from '../../../labelNoteProps/LabelAndNote'
 import ValidationTextFields from '../../../validationTextFields/ValidationTextFields'
 import { InputProps } from '../../DescriptionProject/Inputs/InputProps'

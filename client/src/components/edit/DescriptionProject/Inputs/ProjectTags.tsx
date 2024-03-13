@@ -24,8 +24,8 @@ const ProjectTags: FC<InputProps> = ({ addChangeToProject, value }) => {
     const tagsArray = [...selectedTags, tag];
     setSelectedTags(tagsArray);
   };
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     addChangeToProject(selectedTags);
   }, [selectedTags])
 

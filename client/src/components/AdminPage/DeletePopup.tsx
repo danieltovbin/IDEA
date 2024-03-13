@@ -1,5 +1,6 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { deleteProject } from "../../API/Projects/projectClientCtrl";
+import { Project } from "../../vite-env";
 import "./deletePopupStyle.scss";
 
 const DeletePopup: FC<{

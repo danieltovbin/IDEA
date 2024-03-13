@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {
-    getAllDonations,
-    getDonationsByProject,
+  getAllDonations,
+  getDonationsByProject,
 } from "../../../API/Donation/donationClientCtl";
 import { Donation } from "../../../vite-env";
 import "./scss/supporter.scss";

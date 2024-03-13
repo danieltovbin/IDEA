@@ -1,5 +1,5 @@
-import React, { FC } from 'react'
-import './scss/categoryAndBtnMore.scss'
+import { FC } from 'react';
+import './scss/categoryAndBtnMore.scss';
 
 interface CategoryAndBtnMoreProps{
     categoryName: string;

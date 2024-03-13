@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import "./connectBtnStyle.scss";
 import {
   FormControl,
   InputLabel,
   NativeSelect,
   TextField,
 } from "@mui/material";
-import { IoMdClose } from "react-icons/io";
 import axios from "axios";
+import React, { useState } from "react";
+import { IoMdClose } from "react-icons/io";
+import "./connectBtnStyle.scss";
 
 const ConnectWithUs = () => {
   const [visible, setVisible] = useState(false);
@@ -19,16 +19,16 @@ const ConnectWithUs = () => {
     message: "",
   });
 
-  const handleSubmit = async(e:React.FormEvent<HTMLFormElement>)=>{
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/API/users/send-email",formData);
-      if(!response.data.ok) {        
+      const response = await axios.post("/API/users/send-email", formData);
+      if (!response.data.ok) {
         console.error("Failed to send email");
       }
     } catch (error) {
-      console.error("Error sending email",error);
-    } finally{
+      console.error("Error sending email", error);
+    } finally {
       setVisible(false);
     }
   }
@@ -92,7 +92,7 @@ const ConnectWithUs = () => {
                       name: "request subject",
                       id: "uncontrolled-native",
                     }}
-                  >    
+                  >
                     <option value={0}>נושא אחר</option>
                     <option value={'שאלות לגבי גיוס לעסקים'}>שאלות לגבי גיוס לעסקים</option>
                     <option value={'תמיכה טכנית'}>תמיכה טכנית</option>

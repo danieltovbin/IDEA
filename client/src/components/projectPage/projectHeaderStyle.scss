@@ -14,7 +14,7 @@
         .label {
           display: flex;
           height: 30px;
-          vertical-align: middle; /* יישור אנכי כדי להקטין את הקווים בהתאם לגובה של הטקסט בסביבתם */
+          vertical-align: middle; 
           margin: 5px 10px;
           align-items: center;
           padding-left: 10px;
@@ -59,7 +59,6 @@
             display: flex;
             font-size: 13px;
             .mailIcon {
-              // margin: 0px 5px;
               height: 24px;
             }
           }
@@ -82,10 +81,7 @@
       }
       .progressBar {
         margin-top: 50px;
-  
-        width: 100%;
-        // overflow: hidden;
-  
+        width: 100%;  
         background-color: rgb(209, 209, 209);
         border-radius: 20px;
         height: 4px;
@@ -116,7 +112,6 @@
         justify-content: space-between;
         padding: 18px 0px;
         div {
-          //   text-align: center;
           h4 {
             font-size: 18px;
           }
@@ -157,7 +152,7 @@
           align-items: center;
           text-align: center;
           svg {
-            vertical-align: middle; /* יישור אנכי כדי להקטין את הקווים בהתאם לגובה של הטקסט בסביבתם */
+            vertical-align: middle; 
           }
           a {
             height: 24px;

@@ -1,28 +1,12 @@
-import { Container, SvgIcon, Button } from "@mui/material";
+import { Button, Container, SvgIcon } from "@mui/material";
 import { useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import "./gifts.scss";
-// import StaticDatePickerLandscape from "./Calendar";
-import Demo from "./Calendar";
-
-interface GiftsType {
-  name: string;
-  cost: number;
-  description: string;
-  estimatedDeliveryDate: Date;
-  deliveryOptions: [];
-  localDeliveryCost?: number;
-  internationalDeliveryCost?: number;
-  giftLimitedQuantity: number;
-  giftLimitedTime: number;
-}
 
 const Gifts = () => {
-  const [giftsNum, setGiftsNum] = useState();
-  const [gifts, setGifts] = useState<GiftsType[]>();
   const [moreOptions, setMoreOptions] = useState(false);
 
-  const addGift = () => {};
+
 
   return (
     <div className="gifts">
@@ -97,11 +81,10 @@ const Gifts = () => {
         <input id="giftCost" type="number" placeholder="יש להזין ספרות בלבד" />
 
         <label htmlFor="giftDescription">תיאור התשורה</label>
-        {/* <input id="giftDescription" type="text" placeholder="עד 2500 תוים "/> */}
         <textarea
           name="giftDescription"
           id="giftDescription"
-          rows="4"
+          rows={4}
           placeholder="עד 2500 תווים"
         ></textarea>
 
@@ -118,9 +101,8 @@ const Gifts = () => {
           <div>
             <label htmlFor="estimatedDeliveryDate">תאריך מסירה משוער</label>
             <div className="calender">
-              {/* <Demo /> */}
             </div>
-          </div>  
+          </div>
         ) : (
           <></>
         )}

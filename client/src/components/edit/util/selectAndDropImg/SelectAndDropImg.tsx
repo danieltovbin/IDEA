@@ -1,6 +1,5 @@
 import { ChangeEvent, DragEvent, FC, useRef, useState } from "react";
 import BtnEditAndDelete from "../btnEditAndDelete/BtnEditAndDelete";
-import axios from "axios";
 
 interface SelectDropProps {
   classname: string;
@@ -15,7 +14,6 @@ const SelectAndDropImg: FC<SelectDropProps> = ({
   inputId,
   selectFileComponent,
   handleChangeToForm, 
-  imageFromDB
 }) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isEditMode, setIsEditMode] = useState(false);
@@ -72,21 +70,6 @@ const SelectAndDropImg: FC<SelectDropProps> = ({
 
   const preventDefault = (event: DragEvent) => {
     event.preventDefault();
-  };
-
-  const handleSubmit = async (event: any) => {
-    event.preventDefault();
-    if (!selectedImage) {
-      alert("Please select an image to upload");
-      return;
-    }
-    const formData = new FormData();
-    formData.append("imageData", selectedImage);
-    try {
-
-    } catch (error) {
-      console.error("Error uploading image:", error);
-    }
   };
 
   return (
