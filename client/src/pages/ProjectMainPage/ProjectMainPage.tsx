@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getProjectById } from "../../API/Projects/projectClientCtrl";
-import Navbar from "../../Components/Navbar/Navbar";
+import Navbar from "../../components/NavbarFiled/Navbar";
 import Header from "../../components/projectPage/Header";
 import MiniNavProject from "../../components/projectPage/MiniNavProject";
 
@@ -34,7 +34,7 @@ const ProjectMainPage = () => {
         </div>
       ) : (
         <>
-          <Header loading={loading} project={projectInformation}/>
+          <Header loading={loading} project={projectInformation} />
           <MiniNavProject project={projectInformation} />
         </>
       )}

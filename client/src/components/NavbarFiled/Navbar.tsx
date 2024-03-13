@@ -2,7 +2,8 @@ import { useState } from "react";
 import { CiLogout } from "react-icons/ci";
 import { NavLink } from "react-router-dom";
 import { handleLogOut } from "../../API/Users/usersClientCtrl";
-import "./navbar.scss";
+import "./navbarStyle.scss"
+
 const Navbar = () => {
   const [isLogin, setIsLogin] = useState(
     sessionStorage.getItem("userToken") ? true : false

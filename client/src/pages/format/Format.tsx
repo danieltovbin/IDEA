@@ -4,11 +4,11 @@ import RocketLaunchOutlinedIcon from "@mui/icons-material/RocketLaunchOutlined";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../../Components/Navbar/Navbar";
 import ConnectWithUs from "../../components/Popups/ConnectWithUs";
 import { TitleImgP } from "../../components/titleImgP/TitleImgP";
 import "./scss/format.scss";
 import Inputs from "./util/Inputs";
+import Navbar from "../../components/NavbarFiled/Navbar";
 
 const Format = () => {
   const isLogin = sessionStorage.getItem("userToken") ? true : false;

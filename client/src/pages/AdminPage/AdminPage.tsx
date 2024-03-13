@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { checkIsAdminInDB } from "../../API/Users/usersClientCtrl";
-import Navbar from "../../Components/Navbar/Navbar";
+import Navbar from "../../components/NavbarFiled/Navbar";
 import AdminHeader from "../../components/AdminPage/AdminHeader";
 import AllProjectsDeletable from "../../components/AdminPage/AllProjectsDeleteable";
 import UnAuthorizedPage from "../../components/AdminPage/UnAuthorizedPage";

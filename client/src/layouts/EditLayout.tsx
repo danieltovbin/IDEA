@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import CreationNav from "../Components/CreateProject/CreationNav";
 import BottomPage from "../Components/Home/BottomPage";
-import Navbar from "../Components/Navbar/Navbar";
+import Navbar from "../components/NavbarFiled/Navbar";
 import Navtabs from "../components/navtabs/Navtabs";
 import "./scss/edit.scss";
 
@@ -12,7 +12,7 @@ interface LayoutProps {
 const EditLayout: FC<LayoutProps> = ({ children }) => {
   return (
     <div className="edit">
-      <Navbar/>
+      <Navbar />
       <CreationNav />
       <div>
         <Navtabs />

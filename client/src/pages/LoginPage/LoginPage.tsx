@@ -1,4 +1,4 @@
-import Navbar from "../../Components/Navbar/Navbar";
+import Navbar from "../../components/NavbarFiled/Navbar";
 import LoginForm from "../../components/Login/LoginForm";
 import "./loginPage.scss";
 const LoginPage = () => {

@@ -1,5 +1,5 @@
 import BottomPage from "../../Components/Home/BottomPage";
-import Navbar from "../../Components/Navbar/Navbar";
+import Navbar from "../../components/NavbarFiled/Navbar";
 import BtnStart from "../../components/Home/BtnStart";
 import ContainerProjects from "../../components/Home/ContainerProjects";
 import TopProjects from "../../components/Home/TopProjects";

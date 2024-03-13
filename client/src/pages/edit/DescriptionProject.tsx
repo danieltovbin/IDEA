@@ -17,7 +17,6 @@ import PicProject from "../../components/edit/DescriptionProject/picProject/PicP
 import LabelAndNote from "../../components/labelNoteProps/LabelAndNote";
 import EditLayout from "../../layouts/EditLayout";
 import "./scss/description.scss";
-import { Project, Gift } from "../../vite-env";
 
 const DescriptionProject = () => {
   const navigate = useNavigate();
@@ -42,12 +41,6 @@ const DescriptionProject = () => {
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  const handleIconClick = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.click();
-    }
-  };
-
   const getProject = async () => {
     setCurrentProject(await getProjectById());
   };
@@ -58,7 +51,7 @@ const DescriptionProject = () => {
 
   const handleChangeInput = (event: any): void => {
     const { name, value } = event.target;
-    setCurrentProject((prevFormData) => ({
+    setCurrentProject((prevFormData: Project) => ({
       ...prevFormData,
       [name]: value,
     }));
@@ -69,7 +62,7 @@ const DescriptionProject = () => {
   };
 
   const handleChangeTags = (selectedTags: [string]): void => {
-    setCurrentProject((prevFormData) => {
+    setCurrentProject((prevFormData: Project) => {
       return {
         ...prevFormData,
         tags: selectedTags,
@@ -78,7 +71,7 @@ const DescriptionProject = () => {
   };
 
   const handleChangeCategories = (selectedCategories: [string]): void => {
-    setCurrentProject((prevFormData) => {
+    setCurrentProject((prevFormData: Project) => {
       return {
         ...prevFormData,
         projectCategory: selectedCategories,
