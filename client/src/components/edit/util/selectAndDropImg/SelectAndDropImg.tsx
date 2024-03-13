@@ -29,13 +29,9 @@ const SelectAndDropImg: FC<SelectDropProps> = ({
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event?.target.files && event.target.files[0];
-    //ruths changes
     if (event.target.files && event.target.files.length > 0) {
-    //   setImage(event.target.files[0]);
-    //   console.log(event.target.files[0]);
       handleChangeToForm(event)
     }
-    //   -----
     if (file) {
       handleImage(file);
       setIsEditMode(true);
@@ -84,16 +80,12 @@ const SelectAndDropImg: FC<SelectDropProps> = ({
       alert("Please select an image to upload");
       return;
     }
-    // יצירת אובייקט FormData והוספת התמונה אליו
     const formData = new FormData();
     formData.append("imageData", selectedImage);
     try {
-      // שליחת בקשת POST לשרת
-      // const response = await axios.post('/uploadImage', formData);
-      // console.log(response.data.message); // הודעת התגובה מהשרת
+
     } catch (error) {
       console.error("Error uploading image:", error);
-      // טיפול בשגיאה
     }
   };
 

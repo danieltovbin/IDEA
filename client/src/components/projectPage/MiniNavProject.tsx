@@ -5,10 +5,11 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import AllGifts from "./gifts/AllGifts";
-import "./miniNavProject.scss"
+import "./miniNavProject.scss";
 import Comments from "./TabPanels/Comments";
 import Supporters from "./TabPanels/Supporters";
 import { Project } from "../../vite-env";
+import ProjectContent from "./projectContent";
 
 interface miniNavDivProps {
   project: Project;
@@ -21,7 +22,6 @@ const MiniNavProject: FC<miniNavDivProps> = ({ project }) => {
   };
   return (
     <div className="miniNavDiv" dir="rtl">
-
       <TabContext value={value}>
         <Box
           className="navBarInProject"
@@ -42,14 +42,18 @@ const MiniNavProject: FC<miniNavDivProps> = ({ project }) => {
         </Box>
         <TabPanel value="1">
           <div role="tabpanel" hidden={value !== "1"}>
-            <div dangerouslySetInnerHTML={{ __html: project.projectStory }} />
+            <ProjectContent project={project} />
           </div>{" "}
         </TabPanel>
-        <TabPanel value="2"><Supporters /></TabPanel>
+        <TabPanel value="2">
+          <Supporters />
+        </TabPanel>
         <TabPanel value="3">עדכונים</TabPanel>
-        <TabPanel value="4"><Comments /></TabPanel>
+        <TabPanel value="4">
+          <Comments />
+        </TabPanel>
       </TabContext>
-      <AllGifts project={project}/>
+      <AllGifts project={project} />
     </div>
   );
 };

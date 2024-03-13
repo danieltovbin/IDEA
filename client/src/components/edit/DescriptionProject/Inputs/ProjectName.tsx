@@ -4,7 +4,6 @@ import ValidationTextFields from "../../../validationTextFields/ValidationTextFi
 import { InputProps } from "./InputProps";
 
 const ProjectName: FC<InputProps> = ({addChangeToProject, value}) => {
-  console.log("value:"+value);
   
   return (
     <div>

@@ -17,7 +17,6 @@ const TopProjects = () => {
 
   async function getProject() {
     const { latestProjects } = await getLast4projects();
-    console.log(latestProjects);
     setProjects(latestProjects);
     setTimeout(() => {
       setLoading(false);

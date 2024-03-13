@@ -3,10 +3,8 @@ import { Project } from "../../vite-env";
 
 export async function startProject(projectInfo: any) {
   try {
-    const { projectName, projectCategory } = projectInfo;
     const userToken = sessionStorage.getItem("userToken");
 
-    console.log(projectName, projectCategory);
     const { data } = await axios.post("/API/projects/startProject", {
       projectInfo,
       userToken,
@@ -17,8 +15,7 @@ export async function startProject(projectInfo: any) {
     if (data.ok) return { ok: true };
     else throw new Error("Could not create project");
   } catch (error) {
-    console.log("Failed to start project in client Side:");
-    console.error(error);
+    console.error("Failed to start project in client Side:" +error);
     return { ok: false };
   }
 }
@@ -29,7 +26,6 @@ export async function getProjectById() {
     const { data } = await axios.post("/API/projects/getProjectById", {
       projectId,
     });
-    console.log(data);
     if (data.projectDB) return data.projectDB;
     else return undefined;
   } catch (error) {
@@ -39,7 +35,6 @@ export async function getProjectById() {
 
 export async function updateProject(projectForm: Project) {
   try {
-    console.log(projectForm);
     const projectId = sessionStorage.getItem("projectId");
     const { data } = await axios.put("/API/projects/updateProject", {
       projectForm,
@@ -53,7 +48,6 @@ export async function updateProject(projectForm: Project) {
 
 export async function updateOneOnProject(key: string, value: any) {
   try {
-    console.log(key, value);
     const projectId = sessionStorage.getItem("projectId");
     const { data } = await axios.patch("/API/projects/updateOne", {
       value,
@@ -85,14 +79,10 @@ export async function uploadImage(file: any, key: string) {
           "Content-Type": "multipart/form-data",
         },
       })
-      .then((response) => {
-        console.log("Image uploaded successfully:", response.data);
-      })
       .catch((error) => {
         console.error("Error uploading image:", error);
       });
-    //@ts-ignore
-    console.log("Image uploaded successfully:", response.data.imageUrl);
+    
   } catch (error) {
     console.error("Error uploading image:", error);
   }
@@ -101,7 +91,6 @@ export async function uploadImage(file: any, key: string) {
 export async function getLast4projects() {
   try {
     const { data } = await axios.get("/API/projects/get4latestProjects");
-    console.log(data);
     if (data) return data;
     else return [];
   } catch (error) {
@@ -111,7 +100,6 @@ export async function getLast4projects() {
 export async function allprojects() {
   try {
     const { data } = await axios.get("/API/projects/allProjects");
-    console.log("data in allprojects", data);
     if (data) return data;
     else return [];
   } catch (error) {
@@ -119,6 +107,19 @@ export async function allprojects() {
     return [];
   }
 }
+
+export async function allCompletedProjects() {
+  try {
+    const { data } = await axios.get("/API/projects/allCompletedProjects");
+    if (data) return data;
+    else return [];
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
+
+
 
 export async function deleteProject(projectId: string, ) {
   try {

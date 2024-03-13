@@ -81,8 +81,8 @@ const TopProjectDiv: FC<TopProjectDivProps> = ({ projectInfo }) => {
                     .split("/")
                     .pop()}`
                 : `https://www.youtube.com/embed/${
-                    projectInfo.videoLink.split("=")[1]
-                  }`
+                  projectInfo.videoLink.split("=")[1]
+                }`.split("&")[0]
             }
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

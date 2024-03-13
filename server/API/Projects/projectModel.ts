@@ -25,7 +25,7 @@ interface IOwnerInfo {
   profileImageUrl: string;
 }
 
-interface IProject extends Document {
+export interface IProject extends Document {
   ownerId: string;
   createdAt: Date;
   projectName: string;
@@ -41,6 +41,7 @@ interface IProject extends Document {
   limitDate: Date;
   ownerInfo: IOwnerInfo;
   gifts: IGift[];
+  isProjectCompleted: Boolean,
 }
 
 const projectSchema = new Schema<IProject>({
@@ -56,12 +57,12 @@ const projectSchema = new Schema<IProject>({
   aid: { type: Number, default: 0 },
   raised: { type: Number, default: 0 },
   location: { type: String, default: "" },
+  isProjectCompleted: {type: Boolean, default: false},
   limitDate: {
     type: Date,
     default: function () {
       const createdAt = this.createdAt || Date.now();
       const limitDate = new Date(createdAt);
-      // limitDate.setDate(limitDate.getDate() + 50);
       limitDate.setDate(
         limitDate.getDate() + fakerHE.number.int({ min: 15, max: 50 })
       );
@@ -93,6 +94,38 @@ const projectSchema = new Schema<IProject>({
       },
     },
   ],
+});
+
+
+projectSchema.pre('save', function(next) {
+  const project = this;
+  
+  if (
+    project.projectName &&
+    project.projectName != "" &&
+    project.projectStory &&
+    project.projectStory != "" &&
+    project.shortDescription &&
+    project.shortDescription != "" &&
+    project.images &&
+    project.images.length > 0 &&
+    project.videoLink &&
+    project.videoLink != "" &&
+    project.aid &&
+    project.aid > 0 &&
+    project.ownerInfo &&
+    project.ownerInfo.ownerName &&
+    project.ownerInfo.ownerName != "" &&
+    project.ownerInfo.profileImageUrl &&
+    project.gifts &&
+    project.gifts.length > 0
+  ){
+    project.isProjectCompleted= true;
+  } else {
+    project.isProjectCompleted = false;
+  }
+  
+  next();
 });
 
 const ProjectModel = model<IProject>("projects", projectSchema);
@@ -191,6 +224,6 @@ function createProjectStory() {
     </div>`;
 }
 
-// for (let i = 0; i < 5; i++) {
+// for (let i = 0; i < 23; i++) {
 //   addRandomProject();
 // }

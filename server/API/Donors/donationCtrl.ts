@@ -32,8 +32,7 @@ export async function addDonation(req, res) {
       await newDonation.save();
       await projectDb.save();
 
-      console.log(newDonation);
-      console.log(projectDb)
+     
       res.send({ ok: true, newDonation });
     } else {
       res.send({ ok: false });

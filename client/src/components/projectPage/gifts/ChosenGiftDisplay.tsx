@@ -13,9 +13,10 @@ import { addDonation } from "../../../API/Donation/donationClientCtl";
 interface GiftCompProps {
   gift: Gift;
   project: Project;
+  onStepsCompleted: ()=>void
 }
 
-const ChosenGiftDisplay: FC<GiftCompProps> = ({ gift, project }) => {
+const ChosenGiftDisplay: FC<GiftCompProps> = ({ gift, project, onStepsCompleted }) => {
    
   const steps = ["סכום תמיכה", "פרטים אישיים", "פרטי עסקה"];
   const [activeStep, setActiveStep] = useState(0);
@@ -74,11 +75,11 @@ const ChosenGiftDisplay: FC<GiftCompProps> = ({ gift, project }) => {
     }
 
     setDonation(updatedDonation);
-    console.log(updatedDonation);
   };
 
   const handleSubmitDonation = async () => {
     await addDonation(donation);
+    onStepsCompleted()
   };
 
   return (

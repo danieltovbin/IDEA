@@ -7,10 +7,9 @@ export const addDonation = async (donation:Donation) => {
       donation
     });
     if (data.ok) return { ok: true };
-    else throw new Error("Could not create project");
+    else throw new Error("Could not create donation");
   } catch (error) {
-    console.log("Failed to start project in client Side:");
-    console.error(error);
+    console.error("Failed to start project in client Side:"+error);
     return { ok: false };
   }
 };
@@ -20,7 +19,6 @@ export const getDonationsByProject = async () => {
     const projectId = sessionStorage.getItem("projectId")
     if(!projectId) throw new Error("No projectId found in getDonationsByProject")
     const { data } = await axios.post("/API/donation/allDonationByProject",{projectId});
-    console.log("data in getDonations", data);
     if (data) return data;
     else return [];
   } catch (error) {
@@ -31,7 +29,6 @@ export const getDonationsByProject = async () => {
 export const getAllDonations = async () => {
   try {
     const { data } = await axios.get("/API/donation/getAllDonations");
-    console.log("data in getAllDonations", data);
     if (data) return data;
     else return [];
   } catch (error) {

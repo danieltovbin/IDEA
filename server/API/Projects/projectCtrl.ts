@@ -1,5 +1,5 @@
 import jwt from "jwt-simple";
-import ProjectModel from "./projectModel";
+import ProjectModel, { IProject } from "./projectModel";
 import UserModel from "../Users/usersModel";
 import { uploadImageController } from "../Cloudinary/cloudinaryCtrl";
 const { SECRET_KEY } = process.env;
@@ -50,7 +50,11 @@ export async function updateProject(req, res) {
     }
 
     if (Object.keys(updatedFields).length > 0) {
-      await ProjectModel.updateOne({ _id: projectId }, updatedFields);
+     const projectDB = await ProjectModel.findOneAndUpdate({ _id: projectId }, updatedFields, {new: true});
+     if( checkIsProjectCompleted(projectDB )){
+      projectDB.isProjectCompleted =  true;
+      await projectDB.save();
+     }
     }
   } catch (error) {
     console.error(error);
@@ -71,14 +75,21 @@ export async function updateOneOnProject(req, res) {
         }
       }
     }
-    const projectDB = await ProjectModel.updateOne(
+    // const  = await ProjectModel.updateOne(
+    //   { _id: projectId },
+    //   { [key]: value }, 
+    //   { new: true }
+    // );
+    const projectDB = await ProjectModel.findOneAndUpdate(
       { _id: projectId },
       { [key]: value },
+      { new: true }
     );
-    // const projectDB1 = await ProjectModel.findByIdAndUpdate(
-    //   { "_id": projectId },
-    //   { [key]: value },{new: true}
-    // );
+
+   if( checkIsProjectCompleted(projectDB )){
+    projectDB.isProjectCompleted =  true;
+    await projectDB.save();
+   }
 
     if (!projectDB)
       throw new Error("not found project with this id in database");
@@ -90,7 +101,7 @@ export async function updateOneOnProject(req, res) {
 
 export async function get4latestProjects(req, res) {
   try {
-    const latestProjects = await ProjectModel.find()
+    const latestProjects = await ProjectModel.find({isProjectCompleted: true})
       .sort({ createdAt: -1 })
       .limit(4);
     console.log(latestProjects);
@@ -103,6 +114,19 @@ export async function get4latestProjects(req, res) {
 export async function allProjects(req, res) {
   try {
     const allProjects = await ProjectModel.find({});
+    if (allProjects.length === 0) {
+      return res.send({ ok: true, allProjects: [] });
+    }
+    res.send({ ok: true, allProjects });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ ok: false, error: "Internal Server Error" });
+  }
+}
+
+export async function allCompletedProjects(req, res) {
+  try {
+    const allProjects = await ProjectModel.find({isProjectCompleted: true});
     if (allProjects.length === 0) {
       return res.send({ ok: true, allProjects: [] });
     }
@@ -127,4 +151,30 @@ export async function deleteProject(req, res) {
     console.error(error);
     res.status(500).send({ ok: false, error: "Internal Server Error" });
   }
+}
+
+function checkIsProjectCompleted(project: IProject) {
+  if (
+    project.projectName &&
+    project.projectName != "" &&
+    project.projectStory &&
+    project.projectStory != "" &&
+    project.shortDescription &&
+    project.shortDescription != "" &&
+    project.images &&
+    project.images.length > 0 &&
+    project.videoLink &&
+    project.videoLink != "" &&
+    project.aid &&
+    project.aid > 0 &&
+    project.ownerInfo &&
+    project.ownerInfo.ownerName &&
+    project.ownerInfo.ownerName != "" &&
+    project.ownerInfo.profileImageUrl &&
+    project.gifts &&
+    project.gifts.length > 0
+  ) {
+    return true;
+  }
+  return false;
 }

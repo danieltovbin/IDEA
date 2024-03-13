@@ -1,5 +1,5 @@
 import { Container, SvgIcon, Typography } from "@mui/material";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   getProjectById,
@@ -21,7 +21,7 @@ import "./scss/description.scss";
 const DescriptionProject = () => {
   const navigate = useNavigate();
   // const [project, setProject] = useContext(ProjectContext);
-  const [images, setImages] = useState()
+  const [images, setImages] = useState();
   const [currentProject, setCurrentProject] = useState<Project>({
     ownerId: "",
     projectName: "",
@@ -50,7 +50,6 @@ const DescriptionProject = () => {
 
   const getProject = async () => {
     setCurrentProject(await getProjectById());
-    console.log("get project from DB", currentProject);
   };
 
   useEffect(() => {
@@ -65,39 +64,32 @@ const DescriptionProject = () => {
     }));
   };
 
-  const handleSelectedImages=(event:any)=>{
-      setImages(event.target.files[0]);
-  }
+  const handleSelectedImages = (event: any) => {
+    setImages(event.target.files[0]);
+  };
 
-  const handleChangeTags = (selectedTags:[string]): void => {
-    console.log(selectedTags+"---");
-    
+  const handleChangeTags = (selectedTags: [string]): void => {
     setCurrentProject((prevFormData) => {
       return {
         ...prevFormData,
         tags: selectedTags,
       };
     });
-    console.log(currentProject);
-    
   };
-  
-  const handleChangeCategories = (selectedCategories:[string]): void => {
+
+  const handleChangeCategories = (selectedCategories: [string]): void => {
     setCurrentProject((prevFormData) => {
       return {
         ...prevFormData,
         projectCategory: selectedCategories,
       };
     });
-    console.log(currentProject);
   };
-  
 
   const handleSubmit = () => {
-    console.log("form complete!");
-    console.log(currentProject);
+ 
     updateProject(currentProject);
-    uploadImage(images, "images")
+    uploadImage(images, "images");
     navigate("/contentEdit");
   };
 
@@ -142,7 +134,12 @@ const DescriptionProject = () => {
               }
               showTooltip={true}
             />
-            <PicProject imageFromDB={currentProject.images ? currentProject.images[0] : null} handleChangeToForm={handleSelectedImages} />
+            <PicProject
+              imageFromDB={
+                currentProject.images ? currentProject.images[0] : null
+              }
+              handleChangeToForm={handleSelectedImages}
+            />
             <ProjectVideo
               value={currentProject.videoLink || ""}
               addChangeToProject={handleChangeInput}
@@ -157,7 +154,14 @@ const DescriptionProject = () => {
               onClick={handleSubmit}
             >
               <div style={{ display: "flex", color: "green" }}>
-                <Typography style={{ color: "green", cursor: "pointer",fontSize:"15px", fontWeight:"bold" }}>
+                <Typography
+                  style={{
+                    color: "green",
+                    cursor: "pointer",
+                    fontSize: "15px",
+                    fontWeight: "bold",
+                  }}
+                >
                   שמירה והמשך
                 </Typography>
                 <SvgIcon
@@ -174,7 +178,7 @@ const DescriptionProject = () => {
         </div>
       </div>
       <ConnectWithUs />
-      <div style={{marginBottom: "70px"}}></div>
+      <div style={{ marginBottom: "70px" }}></div>
     </EditLayout>
   );
 };

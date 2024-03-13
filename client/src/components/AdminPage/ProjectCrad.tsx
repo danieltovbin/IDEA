@@ -10,7 +10,6 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: FC<ProjectCardProps> = ({ project, handleDelete }) => {
-  console.log(project.limitDate);
 
   return (
     <div dir="rtl" className="cardComp" key={project._id}>

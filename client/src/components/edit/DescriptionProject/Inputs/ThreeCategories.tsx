@@ -14,7 +14,6 @@ const ThreeCategories: FC<InputProps> = ({ addChangeToProject, value }) => {
   const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
 
   useEffect(()=>{
-    console.log(selectedOptions)
     const selectedOptionsOnString = selectedOptions.map(option => option.title)
     addChangeToProject(selectedOptionsOnString)
   }, [selectedOptions])
