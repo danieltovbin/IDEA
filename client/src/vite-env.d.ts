@@ -38,7 +38,7 @@ type Donation = {
 };
 
 type Project = {
-  _id?: string;
+  _id: string;
   ownerId: string;
   projectName: string;
   projectCategory: string[];
@@ -49,10 +49,10 @@ type Project = {
   donations?: Donation[];
   projectStory: string;
   aid: number;
-  raised?: number;
+  raised: number;
   location?: string;
-  limitDate?: string;
-  ownerInfo?: OwnerInfo;
+  limitDate: string;
+  ownerInfo: OwnerInfo;
   gifts: Gift[];
 };
 

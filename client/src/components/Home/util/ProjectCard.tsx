@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { allCompletedProjects, } from "../../../API/Projects/projectClientCtrl";
-import { Project, ProjectCardProps } from "../../../vite-env";
 import { calculateRemainingDays } from "./calculateRemainingDays";
 import "./scss/projectCard.scss";
 
