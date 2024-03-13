@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, createContext, useContext, useState } from 'react'
+import React, { Dispatch, FC, createContext, useContext, useState } from 'react';
 
 interface SubmissionContextProps {
     showNewSubmission: boolean;

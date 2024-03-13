@@ -71,7 +71,6 @@ const PersonalDetails: FC<{
       <form onSubmit={handleSubmit} action="" dir="rtl">
         <p>פרטים דרושים לתשורה זו</p>
         <TextField
-          // disabled
           label="כתבו את שמכם המלא"
           name="name"
           variant="standard"

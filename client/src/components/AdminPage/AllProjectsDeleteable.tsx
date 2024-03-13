@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { allprojects } from "../../API/Projects/projectClientCtrl";
+import { Project } from "../../vite-env";
+import Loading from "../Helpers/Loading";
+import DeletePopup from "./DeletePopup";
 import ProjectCard from "./ProjectCrad";
 import "./allProjectStyle.scss";
-import DeletePopup from "./DeletePopup";
-import Loading from "../Helpers/Loading";
-import { Project } from "../../vite-env";
 
 const AllProjectsDeletable = () => {
   const [projects, setProjects] = useState<Project[]>([]);

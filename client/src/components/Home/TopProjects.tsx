@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { getLast4projects } from "../../API/Projects/projectClientCtrl";
 import TopProjectDiv from "./TopProjectDiv";
 import "./topProjectsStyle.scss";
-import { getLast4projects } from "../../API/Projects/projectClientCtrl";
 
 const TopProjects = () => {
   const [slideIndex, setSlideIndex] = useState(0);

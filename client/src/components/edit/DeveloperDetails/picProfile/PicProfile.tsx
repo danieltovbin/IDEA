@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import SelectAndDropImg from "../../util/selectAndDropImg/SelectAndDropImg";
 import SelectFileFromProfile from "./SelectFileFromProfile";
 import "./scss/PicProfile.scss";

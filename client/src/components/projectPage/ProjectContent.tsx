@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { Project } from "../../vite-env";
 
 const ProjectContent: FC<{ project: Project }> = ({ project }) => {

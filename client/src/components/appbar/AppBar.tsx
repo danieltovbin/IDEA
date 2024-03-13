@@ -19,7 +19,7 @@ const AppBarProps = () => {
   ];
 
   return (
-    <AppBar className='appbar-style' position="static" sx={{ backgroundColor: 'white',padding: "0 calc((100% - 818px) / 2) !important",height: "58px"}}>
+    <AppBar className='appbar-style' position="static" sx={{ backgroundColor: 'white', padding: "0 calc((100% - 818px) / 2) !important", height: "58px" }}>
       <Container maxWidth="xl">
         <Toolbar>
           <Box sx={{ display: 'flex' }}>

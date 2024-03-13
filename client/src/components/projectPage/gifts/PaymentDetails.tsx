@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material";
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import { MdLockOutline } from "react-icons/md";
-import { Donation, Gift, Project } from "../../../vite-env";
+import { Donation, Gift } from "../../../vite-env";
 import "./styles/paymentDetailsStyle.scss";
 
 interface PaymentDetailsProps {
@@ -14,7 +14,6 @@ interface PaymentDetailsProps {
 const PaymentDetails: FC<PaymentDetailsProps> = ({
   gift,
   donation,
-  next,
   handleDonationChange,
 }) => {
   const [confetti, setConfetti] = useState(false);

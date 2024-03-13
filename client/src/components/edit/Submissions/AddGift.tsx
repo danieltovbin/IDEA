@@ -138,10 +138,8 @@ const AddGift: FC<AddGiftProps> = ({ showAddGift, showForm }) => {
                         </div>
                         )
                     ))}
-
                 </>
             )}
-
         </div>
     )
 }

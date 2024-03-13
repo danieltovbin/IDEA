@@ -1,14 +1,13 @@
-import { FC, useState } from "react";
-import "./miniNavProject.scss";
-import { Box, Tab } from "@mui/material";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import AllGifts from "./gifts/AllGifts";
-import "./miniNavProject.scss";
+import { Box, Tab } from "@mui/material";
+import { FC, useState } from "react";
+import { Project } from "../../vite-env";
 import Comments from "./TabPanels/Comments";
 import Supporters from "./TabPanels/Supporters";
-import { Project } from "../../vite-env";
+import AllGifts from "./gifts/AllGifts";
+import "./miniNavProject.scss";
 import ProjectContent from "./projectContent";
 
 interface miniNavDivProps {

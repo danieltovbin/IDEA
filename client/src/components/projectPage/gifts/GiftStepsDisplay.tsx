@@ -1,7 +1,7 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { GoLightBulb } from "react-icons/go";
-import "./giftStepsDisplay.scss";
 import { Gift, Project } from "../../../vite-env";
+import "./giftStepsDisplay.scss";
 interface GiftStepsDisplayProps {
   gift: Gift;
   project: Project;
