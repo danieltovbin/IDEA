@@ -26,7 +26,6 @@ export const GiftProvider: FC<GiftProviderProps> = ({ children }) => {
     try {
       const currentProject = await getProjectById();
       if (currentProject && currentProject.gifts) {
-        console.log(currentProject.gifts);
         return currentProject.gifts;
       }
     } catch (error) {

@@ -17,10 +17,10 @@ import PicProject from "../../components/edit/DescriptionProject/picProject/PicP
 import LabelAndNote from "../../components/labelNoteProps/LabelAndNote";
 import EditLayout from "../../layouts/EditLayout";
 import "./scss/description.scss";
+import { Project, Gift } from "../../vite-env";
 
 const DescriptionProject = () => {
   const navigate = useNavigate();
-  // const [project, setProject] = useContext(ProjectContext);
   const [images, setImages] = useState();
   const [currentProject, setCurrentProject] = useState<Project>({
     ownerId: "",
@@ -87,7 +87,6 @@ const DescriptionProject = () => {
   };
 
   const handleSubmit = () => {
- 
     updateProject(currentProject);
     uploadImage(images, "images");
     navigate("/contentEdit");

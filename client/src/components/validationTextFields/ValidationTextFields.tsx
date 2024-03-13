@@ -42,9 +42,7 @@ const ValidationTextFields: FC<ValidateTextProps> = ({
   const handleSubmit = (
     e: React.FormEvent<HTMLFormElement> | React.FormEvent<HTMLDivElement>
   ) => {
-    e.preventDefault();
-    console.log(e.target);
-    
+    e.preventDefault();    
   };
 
   

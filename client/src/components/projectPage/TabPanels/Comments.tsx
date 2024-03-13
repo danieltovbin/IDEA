@@ -1,27 +1,27 @@
-import moment from 'moment';
-import 'moment-timezone';
-import { useEffect, useState } from 'react';
-import { getDonationsByProject } from '../../../API/Donation/donationClientCtl';
-import { Donation } from '../../../vite-env';
-import './scss/comments.scss';
+import moment from "moment";
+import "moment-timezone";
+import { useEffect, useState } from "react";
+import { getDonationsByProject } from "../../../API/Donation/donationClientCtl";
+import "./scss/comments.scss";
 
 const Comments = () => {
-  const [donations, setdonations] = useState<Donation[]>([])
+  const [donations, setdonations] = useState<Donation[]>([]);
 
   const allDonationsByProject = async () => {
     try {
-      const response = await getDonationsByProject()
+      const response = await getDonationsByProject();
       if (response && response.allDonations) {
         const { allDonations } = response;
-        console.log('allDonations: ', allDonations)
-        setdonations(allDonations)
+        setdonations(allDonations);
       } else {
-        setdonations([])
+        setdonations([]);
+
       }
     } catch (error) {
       console.error(error);
       setdonations([]);
     }
+
   }
 
   useEffect(() => {
@@ -58,21 +58,16 @@ const Comments = () => {
         </>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default Comments
-
-
-
+export default Comments;
 
 const formatTimeDifference = (date: string) => {
   const now = moment();
   const commentDate = moment(date, moment.ISO_8601).tz(moment.tz.guess());
-  console.log('now:', now);
-  console.log('commentDate:', commentDate);
-  const diffInSeconds = now.diff(commentDate, 'seconds');
-  console.log('diffInSeconds:', diffInSeconds);
+  const diffInSeconds = now.diff(commentDate, "seconds");
+
 
   if (diffInSeconds < 60) {
     return `${diffInSeconds} שניות`;

@@ -1,6 +1,6 @@
-import LoginForm from "../../Components/Login/LoginForm";
 import Navbar from "../../Components/Navbar/Navbar";
-import "./loginPage.scss"
+import LoginForm from "../../components/Login/LoginForm";
+import "./loginPage.scss";
 const LoginPage = () => {
   return (
     <>

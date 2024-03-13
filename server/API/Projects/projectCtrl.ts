@@ -7,9 +7,7 @@ const { SECRET_KEY } = process.env;
 export async function startProject(req, res) {
   try {
     const { projectInfo, userToken } = req.body;
-    console.log(projectInfo, userToken);
     const { userId } = jwt.decode(userToken, SECRET_KEY);
-    console.log(userId);
 
     const userDB = await UserModel.findById(userId);
     if (!userDB) throw new Error("User not found login first");
@@ -20,7 +18,6 @@ export async function startProject(req, res) {
       projectCategory: projectInfo.projectCategory,
     });
     const projectDB = await newProject.save();
-    console.log(projectDB);
 
     res.send({ ok: true, projectDB });
   } catch (error) {
@@ -99,7 +96,6 @@ export async function get4latestProjects(req, res) {
     const latestProjects = await ProjectModel.find({isProjectCompleted: true})
       .sort({ createdAt: -1 })
       .limit(4);
-    console.log(latestProjects);
     res.send({ ok: true, latestProjects });
   } catch (error) {
     console.error(error);
@@ -135,7 +131,6 @@ export async function allCompletedProjects(req, res) {
 export async function deleteProject(req, res) {
   try {
     const { projectId, userToken } = req.body;
-    console.log(projectId, userToken);
 
     const deletedProject = await ProjectModel.findOneAndDelete({
       _id: projectId,
@@ -231,7 +226,6 @@ async function addRandomProject() {
       ],
     });
     const projectDB = await newProject.save();
-    console.log(projectDB);
   } catch (error) {
     console.error(error);
   }

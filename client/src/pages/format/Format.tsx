@@ -1,21 +1,17 @@
-import AppBarProps from "../../components/appbar/AppBar";
+import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
+import NoteAltOutlinedIcon from "@mui/icons-material/NoteAltOutlined";
+import RocketLaunchOutlinedIcon from "@mui/icons-material/RocketLaunchOutlined";
+import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Navbar from "../../Components/Navbar/Navbar";
+import ConnectWithUs from "../../components/Popups/ConnectWithUs";
 import { TitleImgP } from "../../components/titleImgP/TitleImgP";
 import "./scss/format.scss";
-import NoteAltOutlinedIcon from "@mui/icons-material/NoteAltOutlined";
-import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
-import RocketLaunchOutlinedIcon from "@mui/icons-material/RocketLaunchOutlined";
-import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import Inputs from "./util/Inputs";
-import ContactSupportOutlinedIcon from "@mui/icons-material/ContactSupportOutlined";
-import ConnectWithUs from "../../components/Popups/ConnectWithUs";
-import { useEffect, useState } from "react";
-import LoginForm from "../../Components/Login/LoginForm";
-import { Navigate, useNavigate } from "react-router-dom";
-import Navbar from "../../Components/Navbar/Navbar";
 
 const Format = () => {
   const isLogin = sessionStorage.getItem("userToken") ? true : false;
-  console.log(isLogin);
   const navigate = useNavigate();
   useEffect(() => {
     if (!isLogin) {

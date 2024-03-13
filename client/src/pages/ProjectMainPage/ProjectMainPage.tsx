@@ -1,8 +1,8 @@
+import { useEffect, useState } from "react";
 import { getProjectById } from "../../API/Projects/projectClientCtrl";
 import Navbar from "../../Components/Navbar/Navbar";
 import Header from "../../components/projectPage/Header";
 import MiniNavProject from "../../components/projectPage/MiniNavProject";
-import { FC, useEffect, useState } from "react";
 
 const ProjectMainPage = () => {
   const [projectInformation, setProjectInformation] = useState<any>({});
@@ -11,7 +11,6 @@ const ProjectMainPage = () => {
   const fetchProject = async () => {
     try {
       const projectInfo = await getProjectById();
-      console.log(projectInfo);
 
       setProjectInformation(projectInfo);
       setTimeout(() => {
@@ -23,7 +22,6 @@ const ProjectMainPage = () => {
   };
 
   useEffect(() => {
-    console.log("ProjectHeader");
     fetchProject();
   }, []);
 

@@ -25,7 +25,6 @@ import WhereToVoteOutlinedIcon from '@mui/icons-material/WhereToVoteOutlined';
 
 
 export const options = [
-    // יוצרים חלומות
     { category: 'יוצרים חלומות', title: 'אנימציה', img: <AnimationOutlinedIcon/> },
     { category: 'יוצרים חלומות', title: 'ציור', img: <BrushOutlinedIcon /> },
     { category: 'יוצרים חלומות', title: 'וידאו', img:  <VideoLabelOutlinedIcon/> },
@@ -39,7 +38,6 @@ export const options = [
     { category: 'יוצרים חלומות', title: 'תאטרון', img: <StadiumOutlinedIcon /> },
     { category: 'יוצרים חלומות', title: 'בידור', img: <SportsEsportsOutlinedIcon /> },
     { category: 'יוצרים חלומות', title: 'פסטיבלים', img: <FestivalOutlinedIcon/> },
-    // יוזמים עסקים
     { category: 'יוזמים עסקים', title: 'אוכל', img: <LocalDiningOutlinedIcon /> },
     { category: 'יוזמים עסקים', title: 'אינטרנט', img: <WifiOutlinedIcon /> },
     { category: 'יוזמים עסקים', title: 'אפליקציות', img: <AppsOutlinedIcon /> },
@@ -48,7 +46,6 @@ export const options = [
     { category: 'יוזמים עסקים', title: 'ספורט', img: <PedalBikeOutlinedIcon /> },
     { category: 'יוזמים עסקים', title: 'עסקים מקומיים', img: <BusinessCenterOutlinedIcon /> },
     { category: 'יוזמים עסקים', title: 'סיורים', img: <TourOutlinedIcon /> },
-    // כוחה של קהילה
     { category: 'כוחה של קהילה', title: 'חינוך', img: <SchoolOutlinedIcon /> },
     { category: 'כוחה של קהילה', title: 'סביבה', img: <ForestOutlinedIcon /> },
     { category: 'כוחה של קהילה', title: 'בחירות', img: <WhereToVoteOutlinedIcon /> },
