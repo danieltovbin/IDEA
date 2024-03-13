@@ -3,7 +3,6 @@ import {
   getAllDonations,
   getDonationsByProject,
 } from "../../../API/Donation/donationClientCtl";
-import { Donation } from "../../../vite-env";
 import "./scss/supporter.scss";
 import Svg from "./util/Svg";
 

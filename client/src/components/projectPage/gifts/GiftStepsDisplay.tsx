@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { GoLightBulb } from "react-icons/go";
-import { Gift, Project } from "../../../vite-env";
 import "./giftStepsDisplay.scss";
 interface GiftStepsDisplayProps {
   gift: Gift;
@@ -15,8 +14,7 @@ const GiftStepsDisplay: FC<GiftStepsDisplayProps> = ({
      const donorsOfThisGift =    gift.donations.length;
      const donors = (()=>{
       let donorsNum = 0 
-      project.gifts.forEach(gift=>{
-        donorsNum += gift.donations.length
+      project.gifts.forEach(gift=>{donorsNum += gift.donations.length
       })
       return donorsNum
     }) ()
@@ -43,7 +41,6 @@ const GiftStepsDisplay: FC<GiftStepsDisplayProps> = ({
           </span>
         </p>
       </div>
-      {/* <div className="labelToSupport">לחצו לתמיכה</div> */}
     </div>
   );
 };

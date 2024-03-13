@@ -3,6 +3,7 @@ import { MdDeleteForever } from "react-icons/md";
 import "./projectCard.scss";
 import ProgressBar from "./ProgressBar";
 import LeftDays from "./helpers/LeftDays";
+
 interface ProjectCardProps {
   project: Project;
   handleDelete: (project: Project) => void;

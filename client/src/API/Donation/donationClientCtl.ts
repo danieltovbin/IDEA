@@ -1,5 +1,4 @@
 import axios from "axios";
-import { Donation } from "../../vite-env";
 
 export const addDonation = async (donation:Donation) => {
   try {
