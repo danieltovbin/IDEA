@@ -28,19 +28,18 @@ const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
     ownerInfo,
     gifts,
   } = projectInfo;
-  console.log(projectInfo);
 
   const percentRaised = parseInt(
     (((raised == null ? 0 : raised) / aid) * 100).toString()
   );
 
-  const donors = (()=>{
-    let donorsNum = 0 
-    gifts.forEach(gift=>{
-      donorsNum += gift.donations.length
-    })
-    return donorsNum
-  }) ()
+  const donors = (() => {
+    let donorsNum = 0;
+    gifts.forEach((gift) => {
+      donorsNum += gift.donations.length;
+    });
+    return donorsNum;
+  })();
 
   const enterProject = () => {
     sessionStorage.setItem("projectId", projectInfo._id);
@@ -49,13 +48,14 @@ const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
 
   const scrollIntoGifts = () => {
     const element = document.getElementById("allGifts");
-    if (element) element.scrollIntoView(({ 
-      behavior: 'smooth' 
-  }));
+    if (element)
+      element.scrollIntoView({
+        behavior: "smooth",
+      });
   };
 
   return (
-    <div  className="">
+    <div className="">
       <div className="topProjectNum1 topProject " dir="rtl">
         <div className="rSide">
           <iframe
@@ -68,7 +68,7 @@ const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
                     .pop()}`
                 : `https://www.youtube.com/embed/${
                     projectInfo.videoLink.split("=")[1]
-                  }`
+                  }`.split("&")[0]
             }
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -189,7 +189,11 @@ const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
             </div>
           </div>
           <div className="enterToProjectDiv">
-            <button style={{transition: "all 1s ease"}} onClick={scrollIntoGifts} className="enterToProjectBtn">
+            <button
+              style={{ transition: "all 1s ease" }}
+              onClick={scrollIntoGifts}
+              className="enterToProjectBtn"
+            >
               לתמיכה בפרוייקט
             </button>
           </div>

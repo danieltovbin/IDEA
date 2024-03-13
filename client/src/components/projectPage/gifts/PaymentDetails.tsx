@@ -1,5 +1,5 @@
 import { TextField } from "@mui/material";
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { MdLockOutline } from "react-icons/md";
 import { Donation, Gift, Project } from "../../../vite-env";
 import "./styles/paymentDetailsStyle.scss";
@@ -17,8 +17,13 @@ const PaymentDetails: FC<PaymentDetailsProps> = ({
   next,
   handleDonationChange,
 }) => {
+  const [confetti, setConfetti] = useState(false);
+
   return (
     <div className="paymentDetails" dir="rtl">
+      {confetti && (
+        <img className="confetti" src="/image/Animation - 1710236956744.gif" />
+      )}
       <div className="safetyPayment">
         <MdLockOutline />
         <p>
@@ -53,8 +58,10 @@ const PaymentDetails: FC<PaymentDetailsProps> = ({
       </div>
       <button
         onClick={() => {
-          handleDonationChange();
-          next(5);
+          setConfetti(true);
+          setTimeout(() => {
+            handleDonationChange();
+          }, 1800);
         }}
       >
         שמור

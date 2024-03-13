@@ -23,10 +23,7 @@ const ConnectWithUs = () => {
     e.preventDefault();
     try {
       const response = await axios.post("/API/users/send-email",formData);
-      if(response.data.ok) {
-        console.log("Email sent successfully");
-        
-      }else {
+      if(!response.data.ok) {        
         console.error("Failed to send email");
       }
     } catch (error) {

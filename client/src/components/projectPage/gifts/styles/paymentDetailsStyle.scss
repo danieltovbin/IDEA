@@ -61,4 +61,11 @@
     background-color: #ff4492;
     color: white;
   }
+  .confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50vw;
+    z-index: 100;
+  }
 }

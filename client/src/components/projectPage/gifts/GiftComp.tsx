@@ -13,12 +13,15 @@ const GiftComp: FC<GiftCompProps> = ({ gift, project }) => {
   const handleClickOnGift = () => {
     setIsChosenGift(true);
   };
+  const returnToFirstGift = () => {
+    setIsChosenGift(false);
+  }
   return (
     <div className="giftComp">
       {!IsChosenGift ? (
         <GiftFirstDisplay onClick={handleClickOnGift} gift={gift} project={project} />
       ) : (
-        <ChosenGiftDisplay gift={gift} project={project} />
+        <ChosenGiftDisplay gift={gift} project={project} onStepsCompleted={returnToFirstGift} />
       )}
     </div>
   );

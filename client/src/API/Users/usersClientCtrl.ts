@@ -18,7 +18,6 @@ export const register = async (userData: {
     });
     if (!data) throw new Error("connection to server is fail");
     if (data.ok == false) {
-      console.log(data);
       return false;
     } else return true;
   } catch (error) {
@@ -33,7 +32,6 @@ export const login = async (userData: {
 }) => {
   try {
     const { userName, password } = userData;
-    console.log(userName, password);
 
     if (!userName || !password) throw new Error("please complete all fields");
     const { data } = await axios.post("/API/users/login", {

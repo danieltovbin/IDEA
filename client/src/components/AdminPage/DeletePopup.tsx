@@ -24,8 +24,6 @@ const DeletePopup: FC<{
     visible = isVisible;
   }, [isVisible]);
 
-  console.log("project:" + project);
-  console.log("visible: " + visible + ", isVisible: " + isVisible);
 
   return (
     <div>

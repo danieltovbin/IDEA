@@ -56,7 +56,6 @@ const RegisterForm = () => {
     ev.preventDefault();
     if (isMatch) {
       const ok = await register({ name: fullName, password, email, userName });
-      console.log(ok);
 
       if (!ok) {
         toast.error("אחד מהפרטים או יותר שגויים וההרשמה נדחתה", {

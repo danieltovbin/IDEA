@@ -16,7 +16,7 @@ export const DonationSchema = new Schema({
   comment: String,
   approvalRegulation: {type: Boolean, required:true},
   anonymous: {type: Boolean, default: false},
-  date: {type:Date, default:new Date()},
+  date: { type: Date, default: Date.now }
 });
 
 const DonationModel = model("donation", DonationSchema);

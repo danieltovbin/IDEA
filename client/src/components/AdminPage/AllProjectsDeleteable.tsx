@@ -4,6 +4,7 @@ import ProjectCard from "./ProjectCrad";
 import "./allProjectStyle.scss";
 import DeletePopup from "./DeletePopup";
 import Loading from "../Helpers/Loading";
+import { Project } from "../../vite-env";
 
 const AllProjectsDeletable = () => {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -13,7 +14,6 @@ const AllProjectsDeletable = () => {
   const allProjects = async () => {
     try {
       const { allProjects } = await allprojects();
-      console.log("allProjects from ProjectCard", allProjects);
       setProjects(allProjects);
       setLoading(false);
     } catch (error) {

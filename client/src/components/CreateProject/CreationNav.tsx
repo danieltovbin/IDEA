@@ -1,10 +1,15 @@
 import { useState } from "react";
 
+import { useNavigate } from "react-router-dom";
 import "./creationNav.scss";
 import ProcessNav from "./ProcessNav";
 const CreationNav = () => {
+  const navigate = useNavigate();
   const [processPresent, setProcessPresent] = useState(false);
 
+  const toProjectPage = () => {
+    navigate("/project");
+  };
   return (
     <div>
       <div className="MuiContainer-root nav jss98  MuiContainer-maxWidthXl">
@@ -68,6 +73,7 @@ const CreationNav = () => {
             tabIndex={0}
             type="button"
             id="4996c8e7-c703-c2bd-3067-c723d4349809"
+            onClick={toProjectPage}
           >
             <span className="MuiButton-label">
               <svg

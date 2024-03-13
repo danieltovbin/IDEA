@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import "./scss/projectCard.scss";
 import { he, fakerHE } from "@faker-js/faker";
-import { allprojects } from "../../../API/Projects/projectClientCtrl";
+import { allCompletedProjects,  } from "../../../API/Projects/projectClientCtrl";
 import { calculateRemainingDays } from "./calculateRemainingDays";
 import { useNavigate } from "react-router-dom";
 import { Project, ProjectCardProps } from "../../../vite-env";
@@ -12,12 +12,10 @@ const ProjectCard: FC<ProjectCardProps> = ({
 }) => {
   const navigate = useNavigate();
   const [projects, setProjects] = useState<Project[]>([]);
-  console.log("projects from ProjectCard", projects);
 
   const allProjects = async () => {
     try {
-      const { allProjects } = await allprojects();
-      console.log("allProjects from ProjectCard", allProjects);
+      const { allProjects } = await allCompletedProjects();
       setProjects(allProjects);
     } catch (error) {
       console.error(error);
