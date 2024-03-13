@@ -1,0 +1,55 @@
+.gifts {
+  .moreOptions {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ecf6e5;
+    cursor: pointer;
+    width: 530px;
+    height: 40px;
+    border: 0.5px solid rgb(131, 131, 131);
+    padding: 0 10px;
+    min-height: 40px !important;
+    border-radius: 3px;
+    align-items: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .date-input {
+    height: 70px;
+    &::-webkit-calendar-picker-indicator {
+      color: greenyellow;
+      background-color: green;
+    }
+  }
+}
+
+.calendar {
+  width: 350px;
+  background-color: green;
+  font-family: Open Sans Hebrew, sans-serif !important;
+  cursor: default;
+  color: rgba(0, 0, 0, 0.87);
+  -webkit-tap-highlight-color: #0000;
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+.css-4pax7l-MuiPickersLayout-root .MuiPickersLayout-toolbar {
+  background-color: #48ad02;
+  color: white;
+  font-family: Open Sans Hebrew, sans-serif !important;
+  cursor: default;
+  -webkit-tap-highlight-color: #0000;
+  display: flex;
+  flex-direction: column;
+}
+.css-1u23akw-MuiButtonBase-root-MuiPickersDay-root.Mui-selected {
+  color: #fff;
+  background-color: #48ad02 !important;
+  font-weight: 500;
+}

@@ -1,4 +1,3 @@
-import React from "react";
 
 import "./processNavStyle.scss";
 
@@ -8,7 +7,7 @@ const ProcessNav = () => {
       <div className="MuiContainer-root step jss1133 MuiContainer-disableGutters">
         <div className="MuiContainer-root jss1134 MuiContainer-disableGutters">
           <svg
-            className="MuiSvgIcon-root"
+            className="MuiSvgIcon-root checkIcon"
             focusable="false"
             viewBox="0 0 45 45"
             aria-hidden="true"
@@ -20,7 +19,10 @@ const ProcessNav = () => {
               fill="#fff"
             ></path>
           </svg>
-          <div className="MuiDivider-root dashed jss1132 dashed" role="separator"></div>
+          <div
+            className="MuiDivider-root dashedEmpty jss1132 "
+            role="separator"
+          ></div>
         </div>
         <p className="MuiTypography-root jss1135 textBold MuiTypography-body1">
           מילוי תכני הפרויקט ושליחתו לאישור
@@ -30,7 +32,7 @@ const ProcessNav = () => {
       <div className="MuiContainer-root step jss1133 MuiContainer-disableGutters">
         <div className="MuiContainer-root jss1134 MuiContainer-disableGutters">
           <svg
-            className="MuiSvgIcon-root"
+            className="MuiSvgIcon-root checkIcon"
             focusable="false"
             viewBox="0 0 45 45"
             aria-hidden="true"
@@ -46,7 +48,10 @@ const ProcessNav = () => {
               d="M17.69,25.94a1,1,0,0,1-.7-.29l-5.28-5.27A1,1,0,0,1,13.13,19l4.56,4.57,9.18-9.18a1,1,0,0,1,1.42,0,1,1,0,0,1,0,1.41L18.4,25.65A1,1,0,0,1,17.69,25.94Z"
             ></path>
           </svg>
-          <div className="MuiDivider-root jss1132  dashed" role="separator"></div>
+          <div
+            className="MuiDivider-root jss1132  dashed"
+            role="separator"
+          ></div>
         </div>
         <p className="MuiTypography-root jss1135 textDisabled MuiTypography-body1">
           חידוד ושיפור התכנים יחד עם צוות ניהול הפרויקט
@@ -56,7 +61,7 @@ const ProcessNav = () => {
       <div className="MuiContainer-root step jss1133 MuiContainer-disableGutters">
         <div className="MuiContainer-root jss1134 MuiContainer-disableGutters">
           <svg
-            className="MuiSvgIcon-root"
+            className="MuiSvgIcon-root checkIcon"
             focusable="false"
             viewBox="0 0 45 45"
             aria-hidden="true"
@@ -72,7 +77,10 @@ const ProcessNav = () => {
               d="M17.69,25.94a1,1,0,0,1-.7-.29l-5.28-5.27A1,1,0,0,1,13.13,19l4.56,4.57,9.18-9.18a1,1,0,0,1,1.42,0,1,1,0,0,1,0,1.41L18.4,25.65A1,1,0,0,1,17.69,25.94Z"
             ></path>
           </svg>
-          <div className="MuiDivider-root jss1132 dashed" role="separator"></div>
+          <div
+            className="MuiDivider-root jss1132 dashed"
+            role="separator"
+          ></div>
         </div>
         <p className="MuiTypography-root jss1135 textDisabled MuiTypography-body1">
           הפרויקט מאושר לפרסום! לחיצה אחת והוא באוויר
@@ -82,7 +90,7 @@ const ProcessNav = () => {
       <div className="MuiContainer-root step jss1133 MuiContainer-disableGutters">
         <div className="MuiContainer-root jss1134 MuiContainer-disableGutters">
           <svg
-            className="MuiSvgIcon-root"
+            className="MuiSvgIcon-root checkIcon"
             focusable="false"
             viewBox="0 0 45 45"
             aria-hidden="true"
@@ -98,13 +106,15 @@ const ProcessNav = () => {
               d="M17.69,25.94a1,1,0,0,1-.7-.29l-5.28-5.27A1,1,0,0,1,13.13,19l4.56,4.57,9.18-9.18a1,1,0,0,1,1.42,0,1,1,0,0,1,0,1.41L18.4,25.65A1,1,0,0,1,17.69,25.94Z"
             ></path>
           </svg>
+          <div
+            className="MuiDivider-root jss1132 dashed"
+            role="separator"
+          ></div>
         </div>
         <p className="MuiTypography-root jss1135 textDisabled MuiTypography-body1">
           סיימת את המסע, עד לפעם הבאה :-)
         </p>
       </div>
-
-      <input type="file" />
     </div>
   );
 };

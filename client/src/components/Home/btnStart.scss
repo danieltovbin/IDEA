@@ -3,26 +3,54 @@
     background-color: white !important;
   }
   width: 100vw;
-  height: 70vh;
+  height: 60vh;
   display: flex;
   justify-content: center;
-  background-image: url(https://cdn.pixabay.com/photo/2023/12/20/07/04/mountains-8459056_640.jpg);
+  background-image: url(https://headstart.co.il/image/c1d5e003-33d7-a4ff-faa0-543cd239946d.webp/2500);
+  background-image: url(https://cdn.pixabay.com/photo/2020/03/03/20/31/boat-4899802_1280.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
   align-items: center;
-  button {
-    background-color: #ff0d91;
-    height: 150px;
-    width: 400px;
-    color: white;
-    font-size: 35px;
-    letter-spacing: 2.5px;
-    transition: all 0.3s;
-  
-    &:hover {
-      cursor: pointer;
-      scale: 1.05;
+  background-position: 0px -10px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 400px;
+  object-fit: cover;
+  display: flex;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h4 {
+      display: block;
+      color: white;
+      font-size: 20px;
+      width: 900px;
+      font-weight: bolder;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.69);
+      font-size: 28px;
+      text-align: center;
+    }
+    button {
+      display: block;
+      background-color: #ff0d91;
+      height: 80px;
+      width: 400px;
+      color: white;
+      position: relative;
+      top: 3.2rem;
+      transition: all 0.3s;
+      display: flex;
+      margin-top: 2rem;
+      justify-content: center;
+      align-items: center;
+      &:hover {
+        cursor: pointer;
+        scale: 1.05;
+      }
     }
   }
 }

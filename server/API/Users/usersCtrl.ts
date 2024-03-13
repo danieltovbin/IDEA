@@ -1,7 +1,7 @@
-import { cookieParser } from "cookie-parser";
-import UserModel from "./usersModel";
 import bcrypt from "bcrypt";
 import jwt from "jwt-simple";
+import nodemailer from "nodemailer";
+import UserModel from "./usersModel";
 const { SECRET_KEY } = process.env;
 const saltRounds = 10;
 
@@ -13,16 +13,18 @@ export const register = async (req, res) => {
     const hash = await bcrypt.hash(password, saltRounds);
     const user = new UserModel({ userName, password: hash, email, name });
     const userDB = await user.save();
-    res.send(userDB);
+    if (userDB) res.send({ userDB, ok: true });
+    else res.send({ ok: false });
   } catch (error) {
-    res.status(400).send({ error: "Bad Request", message: error.message });
+    res
+      .status(400)
+      .send({ error: "Bad Request", message: error.message, ok: false });
   }
 };
 
 export const login = async (req, res) => {
   try {
     const { userName, password } = req.body;
-    console.log(userName, password);
     if (!userName || !password) throw new Error("not get all user information");
     const userDB = await UserModel.findOne({ userName });
     if (!userDB) throw new Error("user not found");
@@ -32,10 +34,10 @@ export const login = async (req, res) => {
     if (!match) throw new Error("password are incorrect");
     const cookie = {
       userId: userDB._id,
-    };    
+    };
     const token = jwt.encode(cookie, SECRET_KEY);
     res.cookie("user", token, { httpOnly: true, maxAge: 1000 * 60 * 60 * 3 });
-    res.send({ userDB, ok: true });
+    res.send({ userDB, ok: true, userToken: token });
   } catch (error) {
     console.error(error);
     res.status(400).send({ error: "Bad Request", message: error.message });
@@ -53,5 +55,80 @@ export const getUserByToken = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(400).send({ error: "Bad Request", message: error.message });
+  }
+};
+
+export const checkIsAdmin = async (req, res) => {
+  try {
+    const { userToken } = req.body;
+    if (!userToken) throw new Error("no token");
+    const { userId } = jwt.decode(userToken, SECRET_KEY);
+    const userDB = await UserModel.findById(userId);
+    if (!userDB) throw new Error("no user");
+
+    if (userDB.role === "admin") {
+      res.send({ isAdmin: true });
+    } else res.send({ isAdmin: false });
+  } catch (error) {
+    console.error(error);
+    res.status(400).send({ error: "Bad Request", message: error.message });
+  }
+};
+
+export const checkIsAdminMW = async (req, res, next) => {
+  try {
+    const { userToken } = req.body;
+    if (!userToken) throw new Error("no token");
+    const { userId } = jwt.decode(userToken, SECRET_KEY);
+    const userDB = await UserModel.findById(userId);
+    if (!userDB) throw new Error("no user");
+
+    if (userDB.role === "admin") {
+      next();
+    } else res.send({ isAdmin: false, error: "not authorized" });
+  } catch (error) {
+    console.error(error);
+    res.status(400).send({ error: "Bad Request", message: error.message });
+  }
+};
+
+const PORT = process.env.PORT || 3000;
+
+export const sendEmail = async (req, res) => {
+  try {
+    const { fullName, email, phone, subject, message } = req.body;
+
+    const transporter = nodemailer.createTransport({
+      port: 3000,
+      service: "gmail",
+      auth: {
+        user: "idearuthdaniel@gmail.com",
+        pass: "cbwk cqra yzag pnyh",
+      },
+    });
+
+    const mailOptions = {
+      from: "idearuthdaniel@gmail.com",
+      to: "idearuthdaniel@gmail.com",
+      subject: subject,
+      html: `<p style="color:red;">Name: ${fullName}<br>Email: ${email}</br>Phone: ${phone}<br>Message: ${message}</br></p>`,
+    };
+
+    const mailToUser = {
+      from: "idearuthdaniel@gmail.com",
+      to: email,
+      subject: subject,
+      html: `<p > שלום ${fullName}, <br/> Idea הודעתך התקבלה בהצלחה במערכת 😊 </p>`,
+    };
+
+    await transporter.sendMail(mailOptions);
+    await transporter.sendMail(mailToUser);
+
+    res.send({ ok: true, message: "Email sent successfully" });
+  } catch (error) {
+    console.error("Error sending email:", error);
+    res
+      .status(500)
+      .send({ error: "Internal Server Error", message: error.message });
   }
 };

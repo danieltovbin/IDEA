@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from "react";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import {
-  TextField,
   Button,
   Container,
   Grid,
-  Typography,
-  InputLabel,
-  OutlinedInput,
   IconButton,
   InputAdornment,
+  TextField,
+  Typography
 } from "@mui/material";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import "./register.scss";
-import { ToastContainer, toast } from "react-toastify";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { register } from "../../API/Users/usersCtrl";
+import { register } from "../../API/Users/usersClientCtrl";
+import "./register.scss";
 
 const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -28,6 +27,7 @@ const RegisterForm = () => {
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
+  const navigate = useNavigate();
   const handleMouseDownPassword = (
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
@@ -39,11 +39,9 @@ const RegisterForm = () => {
       if (matchPassword !== "" && matchPassword === password) {
         await toast.dismiss();
         setIsMatch(true);
-        toast.success("confirm password!");
       } else if (matchPassword !== "" && matchPassword !== password) {
         await toast.dismiss();
         setIsMatch(false);
-        toast.error("Passwords are not equal", {});
       }
     };
 
@@ -52,7 +50,25 @@ const RegisterForm = () => {
 
   const registerForm = async (ev: any) => {
     ev.preventDefault();
-    if (isMatch) await register({ name: fullName, password, email, userName });
+    if (isMatch) {
+      const ok = await register({ name: fullName, password, email, userName });
+
+      if (!ok) {
+        toast.error("אחד מהפרטים או יותר שגויים וההרשמה נדחתה", {
+          position: "top-center",
+          rtl: true,
+        });
+        setEmail("");
+        setUserName("");
+        ev.target.reset();
+      } else {
+        toast.success("הפרטים נקלטו במערכת בהצלחה", {
+          position: "top-center",
+          rtl: true,
+        });
+        navigate("/login");
+      }
+    }
   };
 
   return (
@@ -65,14 +81,14 @@ const RegisterForm = () => {
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <Typography variant="h5" align="center">
-              Register
+              הרשמה
             </Typography>
           </Grid>
           <Grid item xs={12}>
             <TextField
               className="TextField"
               fullWidth
-              label="Full Name"
+              label="שם מלא"
               variant="outlined"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
@@ -82,7 +98,7 @@ const RegisterForm = () => {
             <TextField
               className="TextField"
               fullWidth
-              label="User Name"
+              label="שם משתמש"
               variant="outlined"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
@@ -92,7 +108,7 @@ const RegisterForm = () => {
             <TextField
               className="TextField"
               fullWidth
-              label="Email"
+              label="כתובת מייל"
               type="email"
               variant="outlined"
               value={email}
@@ -104,10 +120,9 @@ const RegisterForm = () => {
             <TextField
               className="TextField"
               fullWidth
-              label="Password"
+              label="סיסמה"
               type={showPassword ? "text" : "password"}
               variant="outlined"
-              // value={password}
               onChange={(e) => setPassword(e.target.value)}
               InputProps={{
                 endAdornment: (
@@ -129,10 +144,9 @@ const RegisterForm = () => {
             <TextField
               className="TextField"
               fullWidth
-              label="Confirm Password"
+              label="אימות סיסמה"
               type={showPassword ? "text" : "password"}
               variant="outlined"
-              // value={matchPassword}
               onChange={(e) => setMatchPassword(e.target.value)}
               InputProps={{
                 endAdornment: (
@@ -152,9 +166,9 @@ const RegisterForm = () => {
           </Grid>
           {isMatch != null ? (
             isMatch ? (
-              <p className="confirmPass">Confirm password!</p>
+              <p className="confirmPass">סיסמה מאומתת!</p>
             ) : (
-              <p className="noConfirmPass">Passwords needs to be equal.</p>
+              <p className="noConfirmPass">הסיסמאות צירכות להיות תואמות</p>
             )
           ) : (
             <></>
@@ -167,7 +181,7 @@ const RegisterForm = () => {
               variant="contained"
               color="primary"
             >
-              Register
+              הירשם
             </Button>
           </Grid>
         </Grid>

@@ -1,23 +1,23 @@
-import { VisibilityOff, Visibility } from "@mui/icons-material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {
+  Button,
   Container,
   Grid,
-  Typography,
-  TextField,
-  InputAdornment,
   IconButton,
-  Button,
+  InputAdornment,
+  TextField,
+  Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import { login, register } from "../../API/Users/usersCtrl";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { login } from "../../API/Users/usersClientCtrl";
 import "./loginForm.scss";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (
@@ -29,9 +29,17 @@ const LoginForm = () => {
   const loginForm = async (ev: any) => {
     ev.preventDefault();
     if (password && userName) {
-      console.log(password, userName);
-      
-      await login({userName, password });
+      const result = await login({ userName, password });
+
+      if (result) {
+        const { ok, userToken } = result;
+        if (ok && userToken) {
+          sessionStorage.setItem("userToken", userToken);
+          navigate("/format");
+        }
+      } else {
+        console.error("No response from server");
+      }
     }
   };
 
@@ -45,7 +53,7 @@ const LoginForm = () => {
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <Typography variant="h5" align="center">
-              Login
+              כניסה
             </Typography>
           </Grid>
         </Grid>
@@ -53,7 +61,7 @@ const LoginForm = () => {
           <TextField
             className="TextField"
             fullWidth
-            label="User Name"
+            label="שם משתמש"
             variant="outlined"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
@@ -64,10 +72,9 @@ const LoginForm = () => {
           <TextField
             className="TextField"
             fullWidth
-            label="Password"
+            label="סיסמה"
             type={showPassword ? "text" : "password"}
             variant="outlined"
-            // value={password}
             onChange={(e) => setPassword(e.target.value)}
             InputProps={{
               endAdornment: (
@@ -94,9 +101,12 @@ const LoginForm = () => {
             variant="contained"
             color="primary"
           >
-            Login
+            התחברות
           </Button>
         </Grid>
+        <a dir="rtl" href="/register">
+          עוד אין לך משתמש? הירשם בקלות כאן
+        </a>
       </form>
     </Container>
   );

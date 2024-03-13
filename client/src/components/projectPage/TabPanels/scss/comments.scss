@@ -1,0 +1,20 @@
+.header{
+    width: 100%;
+margin: 34px 0 19px;
+font-size: 13px;
+text-align: center;
+line-height: 47px;
+background-color: rgba(214, 214, 214, 0.5);
+}
+
+.comment{
+    max-width: 343px;
+    width: 100%;
+    min-height: 60px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    border-radius: 2px;
+}
+

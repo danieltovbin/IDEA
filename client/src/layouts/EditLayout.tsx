@@ -1,22 +1,26 @@
-import React,{FC} from 'react'
-import AppBarProps from '../components/appbar/AppBar';
-import Navtabs from '../components/navtabs/Navtabs';
-import './scss/edit.scss';
+import React, { FC } from "react";
+import CreationNav from "../Components/CreateProject/CreationNav";
+import BottomPage from "../Components/Home/BottomPage";
+import Navbar from "../Components/Navbar/Navbar";
+import Navtabs from "../components/navtabs/Navtabs";
+import "./scss/edit.scss";
 
 interface LayoutProps {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }
 
-const EditLayout:FC<LayoutProps> = ({children}) => {
-    return (
-        <div className="edit" >
-          <AppBarProps />
-          <div>
-            <Navtabs />
-          </div>
-          {children}
-        </div>
-      );
-}
+const EditLayout: FC<LayoutProps> = ({ children }) => {
+  return (
+    <div className="edit">
+      <Navbar/>
+      <CreationNav />
+      <div>
+        <Navtabs />
+      </div>
+      {children}
+      <BottomPage />
+    </div>
+  );
+};
 
-export default EditLayout
+export default EditLayout;

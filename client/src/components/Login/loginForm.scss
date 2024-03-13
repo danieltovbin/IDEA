@@ -1,7 +1,6 @@
 .loginFormDiv {
-  padding: 3rem ;
+  padding: 3rem;
   border-radius: 10px;
-  // background-color: white;
   .TextField {
     width: calc(100% - 10px);
     margin: 10px;
@@ -11,9 +10,15 @@
     color: black;
     padding: 20px;
     margin: 10px;
+    width: calc(100% - 10px);
     &:hover {
       background-color: rgb(8, 136, 85);
       color: white;
     }
+  }
+  a {
+    font-size: 9px;
+    float: right;
+    margin: 10px;
   }
 }
