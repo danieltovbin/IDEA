@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 
 const LeftDays: FC<{ limitDate: string }> = ({ limitDate }) => {
   const [leftDays, setLeftDays] = useState<number>(0);

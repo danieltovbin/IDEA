@@ -1,7 +1,8 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import "./projectCard.scss";
 
+import { Project } from "../../vite-env";
 import ProgressBar from "./ProgressBar";
 import LeftDays from "./helpers/LeftDays";
 interface ProjectCardProps {

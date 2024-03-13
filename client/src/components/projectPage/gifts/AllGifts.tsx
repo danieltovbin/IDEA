@@ -1,7 +1,6 @@
-import React, { FC } from "react";
-import GiftComp from "./GiftComp";
-import { fakerHE } from "@faker-js/faker";
+import { FC } from "react";
 import { Project } from "../../../vite-env";
+import GiftComp from "./GiftComp";
 
 interface AllGiftsProps {
     project: Project;

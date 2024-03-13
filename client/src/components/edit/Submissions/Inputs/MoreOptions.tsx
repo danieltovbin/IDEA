@@ -23,8 +23,7 @@ const MoreOptions = () => {
           </div>
           <div className='moreOptions moreOptions__moreOptionsContainer'>
             {showOptions && <DeliveryOptions />}
-          </div>
-          
+          </div>   
         </div>
       );
 }

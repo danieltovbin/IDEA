@@ -1,5 +1,3 @@
-import { Margin } from "@mui/icons-material";
-import React from "react";
 import { GrUserAdmin } from "react-icons/gr";
 
 const AdminHeader = () => {

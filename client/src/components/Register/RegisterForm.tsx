@@ -1,22 +1,20 @@
-import React, { useEffect, useState } from "react";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import {
-  TextField,
   Button,
   Container,
   Grid,
-  Typography,
-  InputLabel,
-  OutlinedInput,
   IconButton,
   InputAdornment,
+  TextField,
+  Typography
 } from "@mui/material";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import "./register.scss";
-import { ToastContainer, toast } from "react-toastify";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { register } from "../../API/Users/usersClientCtrl";
-import { Navigate, useNavigate } from "react-router-dom";
+import "./register.scss";
 
 const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);

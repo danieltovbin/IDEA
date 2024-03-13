@@ -6,8 +6,8 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { Gift } from "../components/edit/Submissions/AddGift";
 import { getProjectById } from "../API/Projects/projectClientCtrl";
+import { Gift } from "../components/edit/Submissions/AddGift";
 
 interface GiftContextProps {
   giftAdded: Gift[];

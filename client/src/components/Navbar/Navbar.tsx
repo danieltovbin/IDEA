@@ -1,12 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { CiLogout } from "react-icons/ci";
-
-import "./navbar.scss";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { handleLogOut } from "../../API/Users/usersClientCtrl";
-import { render } from "react-dom";
+import "./navbar.scss";
 const Navbar = () => {
-  const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(
     sessionStorage.getItem("userToken") ? true : false
   );

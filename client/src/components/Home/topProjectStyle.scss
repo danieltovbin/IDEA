@@ -15,7 +15,7 @@
       .label {
         display: flex;
         height: 30px;
-        vertical-align: middle; /* יישור אנכי כדי להקטין את הקווים בהתאם לגובה של הטקסט בסביבתם */
+        vertical-align: middle; 
         margin: 5px 10px;
         align-items: center;
         padding-left: 10px;
@@ -83,7 +83,6 @@
     }
     .progressBar {
       margin-top: 50px;
-
       width: 100%;
 
       background-color: rgb(209, 209, 209);
@@ -157,7 +156,7 @@
         align-items: center;
         text-align: center;
         svg {
-          vertical-align: middle; /* יישור אנכי כדי להקטין את הקווים בהתאם לגובה של הטקסט בסביבתם */
+          vertical-align: middle; 
         }
         a {
           height: 24px;

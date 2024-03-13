@@ -1,8 +1,8 @@
-import { SvgIcon, Tooltip, TooltipProps, tooltipClasses } from "@mui/material"
-import { FC } from "react"
-import './scss/labelAndNote.scss'
+import { SvgIcon, Tooltip, TooltipProps, tooltipClasses } from "@mui/material";
 import { styled } from '@mui/material/styles';
+import { FC } from "react";
 import { LabelNoteProps } from "./LabelNoteProps";
+import './scss/labelAndNote.scss';
 
 const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
   <Tooltip {...props} classes={{ popper: className }} />
