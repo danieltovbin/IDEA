@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./creationNav.scss";
-import ProcessNav from "./ProcessNav";
+import "./creationNavStyle.scss"
+import ProcessNav from "../../components/CreateProject/ProcessNav";
 
 
 const CreationNav = () => {

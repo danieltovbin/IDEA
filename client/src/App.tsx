@@ -4,9 +4,10 @@ import { disableReactDevTools } from '@fvilers/disable-react-devtools';
 import "./App.css";
 import { router } from "./routes/routes";
 
+disableReactDevTools();
+
 function App() {
   
-  disableReactDevTools();
   return (
     <>
       <ToastContainer></ToastContainer>

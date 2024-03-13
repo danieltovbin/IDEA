@@ -8,12 +8,16 @@ import cloudinaryRoutes from "./API/Cloudinary/cloudinaryRoutes";
 import donationRoutes from "./API/Donors/donationRoutes";
 import projectRoutes from "./API/Projects/projectRoutes";
 import usersRoutes from "./API/Users/usersRoutes";
+import { corsOptions } from "./config/corsOptions";
+import { allowedOrigins } from "./config/allowedOrigin";
+
 dotenv.config();
 
 const app = express();
 
 const PORT = process.env.PORT || 3000;
 app.use(cors());
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(cookieParser());
