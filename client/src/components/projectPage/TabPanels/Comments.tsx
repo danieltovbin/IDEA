@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { getDonationsByProject } from '../../../API/Donation/donationClientCtl'
-import { Donation } from '../../../vite-env'
 import './scss/comments.scss';
 import moment from 'moment';
 import 'moment-timezone';

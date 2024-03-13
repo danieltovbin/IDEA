@@ -134,9 +134,7 @@ const CreationNav = () => {
             <span className="MuiButton-label jss102">
               <svg
                 className="MuiSvgIcon-root jss103"
-                // focusable="false"
                 viewBox="0 0 24 24"
-                // aria-hidden="true"
                 style={{
                   width: "24px",
                   height: "24px",

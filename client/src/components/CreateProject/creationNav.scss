@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-around;
   padding: 0px 9rem;
-  width: 100vw; //will change to 100%
+  width: 100vw; 
   background-color: #fafafa;
   box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.11);
   .rNav {
@@ -22,7 +22,6 @@
     button {
       align-items: center;
       justify-content: center;
-      //   font-weight: lighter;
       font-size: 13px;
       height: 40px;
       svg {
@@ -40,8 +39,8 @@
   }
 
   .MuiSvgIcon-root {
-    display: inline-block; /* גורם לאייקונים להופיע כבלוקים כדי שנוכל להשתמש ב-text-align */
-    vertical-align: middle; /* יישור אנכי כדי להקטין את הקווים בהתאם לגובה של הטקסט בסביבתם */
+    display: inline-block;
+    vertical-align: middle; 
     margin: 0px 10px;
   }
 }

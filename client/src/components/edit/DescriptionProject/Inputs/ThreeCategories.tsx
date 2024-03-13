@@ -52,7 +52,7 @@ const ThreeCategories: FC<InputProps> = ({ addChangeToProject, value }) => {
         id="threeCategories"
         options={options.map((option) => option.title)}
         onChange={handleSelecteChange}
-        defaultValue={[options[13].title]} // צריכות לשים את הקטגוריה שהמשתמש בחר בעמוד של פורמט כקטגוריה דפולטיבית
+        defaultValue={[options[13].title]} 
         renderTags={(value: readonly string[], getTagProps) =>
           value.map((option: string, index: number) => (
             <Chip

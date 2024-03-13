@@ -1,4 +1,3 @@
-// import DeliveryDate from './DeliveryDate';
 import { useState } from 'react';
 import DeliveryOptions from './DeliveryOptions/DeliveryOptions';
 import './scss/MoreOptions.scss';

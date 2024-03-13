@@ -1,5 +1,5 @@
 import { UserSchema } from "./../../server/API/Users/usersModel";
-// / <reference types="vite/client" />
+/// <reference types="vite/client" />
 
 interface Gift {
   name: string;
@@ -20,15 +20,6 @@ interface OwnerInfo {
   profileImageUrl: string;
 }
 
-// interface Donation {
-//   userId: string;
-//   projectId: string;
-//   userLevel: number;
-//   donorName: string;
-//   amount: number;
-//   date: string;
-//   Comment: string;
-// }
 
 type Donation = {
   _id?: string;

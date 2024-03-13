@@ -1,14 +1,12 @@
 import { Divider, IconButton, Paper, SvgIcon } from '@mui/material'
-import NameGift from './Inputs/NameGift'
-import PriceGift from './Inputs/PriceGift'
+import { ChangeEvent, FC, useEffect, useState } from 'react'
+import { useGiftContext } from '../../../context/GiftContext'
 import DescriptionGift from './Inputs/DescriptionGift'
 import MoreOptions from './Inputs/MoreOptions'
-import { ChangeEvent, FC, useEffect, useState } from 'react'
-import './scss/stillNoOffers.scss'
+import NameGift from './Inputs/NameGift'
+import PriceGift from './Inputs/PriceGift'
 import SavedGifts from './SavedGifts'
-import { useGiftContext } from '../../../context/GiftContext'
-import StillNoOffers from './StillNoOffers'
-import { useSubmissionContext } from '../../../context/SubmissionContext'
+import './scss/stillNoOffers.scss'
 
 interface AddGiftProps {
     showAddGift: () => void;
@@ -22,9 +20,8 @@ export interface Gift {
     id: string | number;
 }
 
-const AddGift: FC<AddGiftProps> = ({ showAddGift, showForm}) => {
+const AddGift: FC<AddGiftProps> = ({ showAddGift, showForm }) => {
     const { giftAdded, setGiftAdded } = useGiftContext();
-    // const { showNewSubmission, setShowNewSubmission } = useSubmissionContext();
     const [isFormComplete, setIsFormComplete] = useState(false);
     const [nameGift, setNameGift] = useState('');
     const [priceValue, setPriceValue] = useState('');
@@ -32,7 +29,6 @@ const AddGift: FC<AddGiftProps> = ({ showAddGift, showForm}) => {
     const [nameIsValid, setNameIsValid] = useState(false);
     const [priceIsValid, setPriceIsValid] = useState(false);
     const [descriptionIsValid, setDescriptionIsValid] = useState(false);
-    // const [giftAdded, setGiftAdded] = useState<Gift[]>([]);
     const [editingGift, setEditdingGift] = useState<Gift | null>(null);
 
     useEffect(() => {

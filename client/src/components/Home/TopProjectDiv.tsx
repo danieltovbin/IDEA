@@ -1,8 +1,7 @@
 import { FC } from "react";
-import "./topProjectStyle.scss";
 import { useNavigate } from "react-router-dom";
 import LeftDays from "../AdminPage/helpers/LeftDays";
-// import LinearProgressWithLabel from '@mui/lab/LinearProgressWithLabel';
+import "./topProjectStyle.scss";
 
 interface Gift {
   name: string;
@@ -43,21 +42,12 @@ interface TopProjectDivProps {
 
 const TopProjectDiv: FC<TopProjectDivProps> = ({ projectInfo }) => {
   const navigate = useNavigate();
-  let {
-    ownerId,
+  let {  
     projectName,
     projectCategory,
-    shortDescription,
-    tags,
-    images,
-    videoLink,
-    projectStory,
     aid,
     raised,
-    location,
-    limitDate,
     ownerInfo,
-    gifts,
   } = projectInfo;
 
   const percentRaised = parseInt(

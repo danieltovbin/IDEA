@@ -7,9 +7,6 @@ const customInputProps = {
   inputMode: "numeric",
   pattern: "[0-9]*",
 };
-// interface RecruitmentProps {
-//     handleChange:(ev:any) => void;
-// }
 const Recruitment: FC<InputProps> = ({ addChangeToProject, value }) => {
   return (
     <>
