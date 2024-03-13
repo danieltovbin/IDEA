@@ -11,7 +11,7 @@ const Comments = () => {
     try {
       const response = await getDonationsByProject();
       if (response && response.allDonations) {
-        const { allDonations } = response;
+        const { allDonations } = response;        
         setdonations(allDonations);
       } else {
         setdonations([]);

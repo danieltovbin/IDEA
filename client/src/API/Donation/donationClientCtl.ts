@@ -18,7 +18,7 @@ export const getDonationsByProject = async () => {
   try {
     const projectId = sessionStorage.getItem("projectId")
     if(!projectId) throw new Error("No projectId found in getDonationsByProject")
-    const { data } = await axios.post(`${environment}/API/donation/allDonationByProject",{projectId} `);
+    const { data } = await axios.post(`${environment}/API/donation/allDonationByProject`,{projectId});
     if (data) return data;
     else return [];
   } catch (error) {
