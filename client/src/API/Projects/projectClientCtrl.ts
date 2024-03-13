@@ -1,5 +1,10 @@
 import axios from "axios";
-import { Project } from "../../vite-env";
+
+// export let environment = "DEV"
+// const CLIENT_DEV_URL = "http://localhost:3000";
+// const CLIENT_PROD_URL = "https://r-fit-server-deploy.onrender.com";
+
+// environment = environment === "DEV" ? CLIENT_DEV_URL : CLIENT_PROD_URL;
 
 export async function startProject(projectInfo: any) {
   try {
@@ -73,7 +78,7 @@ export async function uploadImage(file: any, key: string) {
     formData.append("projectId", projectId!);
     formData.append("key", key);
 
-    const response = await axios
+    await axios
       .post("API/cloudinary/upload", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -125,10 +130,6 @@ export async function deleteProject(projectId: string, ) {
   try {
     const userToken = sessionStorage.getItem("userToken");
     if(!userToken) throw new Error("User token not found in client session");
-    const params = {
-      userToken: userToken,
-      projectId: projectId,
-    };
     if (!projectId) throw new Error("project not found");
     const { data } = await axios.post(`/API/projects/deleteProject`, {userToken, projectId});
 

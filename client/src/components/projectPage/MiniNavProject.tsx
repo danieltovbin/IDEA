@@ -3,12 +3,11 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import { Box, Tab } from "@mui/material";
 import { FC, useState } from "react";
-import { Project } from "../../vite-env";
 import Comments from "./TabPanels/Comments";
 import Supporters from "./TabPanels/Supporters";
 import AllGifts from "./gifts/AllGifts";
 import "./miniNavProject.scss";
-import ProjectContent from "./projectContent";
+import ProjectContent from "./ProjectContent";
 
 interface miniNavDivProps {
   project: Project;

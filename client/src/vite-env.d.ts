@@ -3,11 +3,11 @@
 interface Gift {
   name: string;
   description: string;
-  price?: number;
+  price: number;
   deliveryOption: string[];
-  donations?: { donationId: string; sumOfDonations: number }[];
+  donations: { donationId: string; sumOfDonations: number }[];
   date?: string;
-  _id?: string;
+  _id: string;
 }
 
 interface OwnerInfo {
@@ -24,15 +24,15 @@ type Donation = {
   date?: string;
   giftId: string;
   projectId: string;
-  userToken?: string;
+  userToken: string;
   name: string;
   email: string;
   address: string;
   city: string;
   rewardAmount: number;
-  donationSum?: number;
-  noteToOwner?: string;
-  comment?: string;
+  donationSum: number;
+  noteToOwner: string;
+  comment: string;
   approvalRegulation: boolean;
   anonymous: boolean;
 };
@@ -48,7 +48,7 @@ type Project = {
   videoLink: string;
   donations?: Donation[];
   projectStory: string;
-  aid?: number;
+  aid: number;
   raised?: number;
   location?: string;
   limitDate?: string;

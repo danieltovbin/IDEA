@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./creationNav.scss";
 import ProcessNav from "./ProcessNav";
+
+
 const CreationNav = () => {
   const navigate = useNavigate();
   const [processPresent, setProcessPresent] = useState(false);

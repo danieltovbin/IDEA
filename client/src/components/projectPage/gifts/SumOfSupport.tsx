@@ -1,6 +1,5 @@
 import { TextField } from "@mui/material";
 import { FC, useEffect, useState } from "react";
-import { Gift, Project } from "../../../vite-env";
 import GiftStepsDisplay from "./GiftStepsDisplay";
 import "./sumOfSupport.scss";
 

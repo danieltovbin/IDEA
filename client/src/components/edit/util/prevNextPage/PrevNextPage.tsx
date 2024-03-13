@@ -38,7 +38,7 @@ const PrevNextPage: FC<PrevNextPageProps> = ({
             <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41"></path>
           </SvgIcon>
           <Typography
-            onClick={(e) => {navigate(`/${prevPageName}`);getContentFunc ? getContentFunc() : null; getChangesOnOwnerPage ? getChangesOnOwnerPage() : null; getGifts ? getGifts() : null;}}
+            onClick={() => {navigate(`/${prevPageName}`);getContentFunc ? getContentFunc() : null; getChangesOnOwnerPage ? getChangesOnOwnerPage() : null; getGifts ? getGifts() : null;}}
             style={{
               color: "#424242",
               cursor: "pointer",

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { allprojects } from "../../API/Projects/projectClientCtrl";
-import { Project } from "../../vite-env";
 import Loading from "../Helpers/Loading";
 import DeletePopup from "./DeletePopup";
 import ProjectCard from "./ProjectCrad";

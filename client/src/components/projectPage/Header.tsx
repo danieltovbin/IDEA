@@ -1,15 +1,11 @@
 import { FC } from "react";
-import { Project } from "../../vite-env";
 import ProjectHeader from "./ProjectHeader";
 
-
-interface HeaderProps{
-  project:Project;
-  loading?:boolean;
+interface HeaderProps {
+  project: Project;
+  loading?: boolean;
 }
-const Header:FC<HeaderProps> = ({project, loading}) => {
- 
-
+const Header: FC<HeaderProps> = ({ project, loading }) => {
   return (
     <div>
       {loading ? (

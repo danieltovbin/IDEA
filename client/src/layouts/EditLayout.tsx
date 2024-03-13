@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import CreationNav from "../Components/CreateProject/CreationNav";
-import BottomPage from "../Components/Home/BottomPage";
 import Navbar from "../components/NavbarFiled/Navbar";
 import Navtabs from "../components/navtabs/Navtabs";
 import "./scss/edit.scss";
+import BottomPage from "../Components/Home/BottomPage";
 
 interface LayoutProps {
   children: React.ReactNode;

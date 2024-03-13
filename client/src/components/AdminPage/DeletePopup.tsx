@@ -1,6 +1,5 @@
 import { FC, useEffect, useState } from "react";
 import { deleteProject } from "../../API/Projects/projectClientCtrl";
-import { Project } from "../../vite-env";
 import "./deletePopupStyle.scss";
 
 const DeletePopup: FC<{
@@ -11,7 +10,7 @@ const DeletePopup: FC<{
   const [isVisible, setIsVisible] = useState(visible);
 
   const handleDeleteProject = async () => {
-    if (project && isVisible) {
+    if (project && isVisible && project._id) {
       deleteProject(project._id);
     }
     onClose();
@@ -33,7 +32,7 @@ const DeletePopup: FC<{
           <div dir="rtl" className="deletePopupCont">
             <div className="deletePopupDiv">
               <h2>{`האם אתה בטוח שברצונך למחוק את הפרוייקט: ${project.projectName}`}</h2>
-              <h4>בעלים: {project.ownerInfo.ownerName || "Unknown owner"}</h4>
+              <h4>בעלים: {project.ownerInfo? project.ownerInfo .ownerName : "Unknown owner"}</h4>
               <p>בלחיצה על "מחק" הפרוייקט ימחק לצמיתות</p>
               <div className="btns">
                 <button className="deleteBtn" onClick={handleDeleteProject}>

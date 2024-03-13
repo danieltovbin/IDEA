@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { GoLightBulb } from "react-icons/go";
-import { Gift, Project } from "../../../vite-env";
 
 interface GiftFirstDisplayProps{
     gift:Gift;
@@ -9,7 +8,7 @@ interface GiftFirstDisplayProps{
 }
 
 const GiftFirstDisplay:FC<GiftFirstDisplayProps> = ({gift, project, onClick}) => {
-  const donorsOfThisGift =    gift.donations.length;
+  const donorsOfThisGift = gift.donations.length;
   const donors = (()=>{
     let donorsNum = 0 
     project.gifts.forEach(gift=>{

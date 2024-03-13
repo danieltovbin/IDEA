@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { Project } from "../../../vite-env";
 import GiftComp from "./GiftComp";
 
 interface AllGiftsProps {

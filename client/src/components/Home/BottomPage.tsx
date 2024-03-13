@@ -1,4 +1,5 @@
-import "./bottomPage.scss";
+import "./bottomPageStyle.scss";
+
 const BottomPage = () => {
   return (
     <div className="bottomPageDiv " dir="rtl">

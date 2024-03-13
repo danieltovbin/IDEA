@@ -1,7 +1,6 @@
 import { FC } from "react";
 import "./projectHeaderStyle.scss";
 import LeftDays from "../AdminPage/helpers/LeftDays";
-import { Project } from "../../vite-env";
 
 interface TopProjectDivProps {
   projectInfo: Project;
@@ -25,12 +24,10 @@ const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
   const donors = (() => {
     let donorsNum = 0;
     gifts.forEach((gift) => {
-      donorsNum += gift.donations.length;
+      if (gift.donations) donorsNum += gift.donations.length;
     });
     return donorsNum;
   })();
-
-
 
   const scrollIntoGifts = () => {
     const element = document.getElementById("allGifts");
@@ -78,7 +75,11 @@ const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
                   <path d="M12,12.85a3.29,3.29,0,1,1,3.28-3.28A3.28,3.28,0,0,1,12,12.85Zm0-5.57a2.29,2.29,0,1,0,2.28,2.29A2.29,2.29,0,0,0,12,7.28Z"></path>
                 </svg>
               </div>
-              <p>{projectInfo.ownerInfo.location}</p>
+              <p>
+                {projectInfo.ownerInfo
+                  ? projectInfo.ownerInfo.location
+                  : "ישראל"}
+              </p>
             </div>
             <div className="category label">
               <div className="categoryIcon icon1">
@@ -107,12 +108,12 @@ const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
         <div className="lSide">
           <h2>{projectName}</h2>
           <div className="owner">
-            <img src={ownerInfo.profileImageUrl} alt="" />
+            <img src={ownerInfo ? ownerInfo.profileImageUrl : ""} alt="" />
             <div className="ownerName">
               <p>הפרוייקט של:</p>
               <div className="name">
                 <p>
-                  <strong>{ownerInfo.ownerName}</strong>
+                  <strong>{ownerInfo? ownerInfo.ownerName : "אנונימי"}</strong>
                 </p>
                 <span className="mailIcon">
                   <svg
@@ -166,7 +167,7 @@ const ProjectHeader: FC<TopProjectDivProps> = ({ projectInfo }) => {
               <p>מתוך {aid} ₪</p>
             </div>
             <div className="leftDays">
-              <LeftDays limitDate={limitDate} />
+              <LeftDays limitDate={limitDate ? limitDate : ""} />
               <p>ימים שנותרו</p>
             </div>
             <div className="supporter">

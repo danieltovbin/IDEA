@@ -1,7 +1,6 @@
 import { TextField } from "@mui/material";
 import { FC, useState } from "react";
 import { MdLockOutline } from "react-icons/md";
-import { Donation, Gift } from "../../../vite-env";
 import "./styles/paymentDetailsStyle.scss";
 
 interface PaymentDetailsProps {

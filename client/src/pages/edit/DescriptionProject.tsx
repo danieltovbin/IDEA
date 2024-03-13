@@ -21,7 +21,7 @@ import "./scss/description.scss";
 const DescriptionProject = () => {
   const navigate = useNavigate();
   const [images, setImages] = useState();
-  const [currentProject, setCurrentProject] = useState<Project>({
+  const [currentProject, setCurrentProject] = useState<any>({
     ownerId: "",
     projectName: "",
     projectCategory: [""],
@@ -39,7 +39,6 @@ const DescriptionProject = () => {
     ],
   });
 
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const getProject = async () => {
     setCurrentProject(await getProjectById());
