@@ -1,4 +1,6 @@
 import axios from "axios";
+import { environment } from "../Projects/projectClientCtrl";
+
 
 export const register = async (userData: {
   userName: string;
@@ -10,7 +12,7 @@ export const register = async (userData: {
     const { userName, password, email, name } = userData;
     if (!userName || !password || !email || !name)
       throw new Error("please complete all fields");
-    const { data } = await axios.post("/API/users/register", {
+    const { data } = await axios.post(`${environment}/API/users/register`, {
       userName,
       password,
       email,
@@ -34,7 +36,7 @@ export const login = async (userData: {
     const { userName, password } = userData;
 
     if (!userName || !password) throw new Error("please complete all fields");
-    const { data } = await axios.post("/API/users/login", {
+    const { data } = await axios.post(`${environment}/API/users/login`, {
       userName,
       password,
     });
@@ -49,7 +51,7 @@ export const login = async (userData: {
 export const checkIsAdminInDB = async () => {
   try {
     const userToken = sessionStorage.getItem("userToken");
-    const { data } = await axios.post("/API/users/checkIsAdmin", { userToken });
+    const { data } = await axios.post(`${environment}/API/users/checkIsAdmin`, { userToken });
     return {authorized: data.isAdmin };
   } catch (error) {
     console.error(error);

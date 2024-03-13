@@ -1,4 +1,4 @@
-import BottomPage from "../../Components/Home/BottomPage";
+import BottomPage from "../../components/Home/BottomPage";
 import Navbar from "../../components/NavbarFiled/Navbar";
 import BtnStart from "../../components/Home/BtnStart";
 import ContainerProjects from "../../components/Home/ContainerProjects";

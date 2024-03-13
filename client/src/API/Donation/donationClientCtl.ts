@@ -1,8 +1,9 @@
 import axios from "axios";
+import { environment } from "../Projects/projectClientCtrl";
 
 export const addDonation = async (donation:Donation) => {
   try {
-    const { data } = await axios.post("/API/donation/addDonation", {
+    const { data } = await axios.post(`${environment}/API/donation/addDonation`, {
       donation
     });
     if (data.ok) return { ok: true };
@@ -17,7 +18,7 @@ export const getDonationsByProject = async () => {
   try {
     const projectId = sessionStorage.getItem("projectId")
     if(!projectId) throw new Error("No projectId found in getDonationsByProject")
-    const { data } = await axios.post("/API/donation/allDonationByProject",{projectId});
+    const { data } = await axios.post(`${environment}/API/donation/allDonationByProject",{projectId} `);
     if (data) return data;
     else return [];
   } catch (error) {
@@ -27,7 +28,7 @@ export const getDonationsByProject = async () => {
 };
 export const getAllDonations = async () => {
   try {
-    const { data } = await axios.get("/API/donation/getAllDonations");
+    const { data } = await axios.get(`${environment}/API/donation/getAllDonations`);
     if (data) return data;
     else return [];
   } catch (error) {

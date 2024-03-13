@@ -1,4 +1,4 @@
-import CreationNav from "../../Components/CreateProject/CreationNav";
+import CreationNav from "../../components/CreateProject/CreationNav";
 
 const CreateProject = () => {
   return (
