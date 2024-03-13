@@ -1,7 +1,6 @@
-import React from "react";
-import "./registerPageStyle.scss";
 import Navbar from "../../Components/Navbar/Navbar";
 import RegisterForm from "../../components/Register/RegisterForm";
+import "./registerPageStyle.scss";
 const RegisterPage = () => {
   return (
     <>

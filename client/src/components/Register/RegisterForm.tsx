@@ -41,11 +41,9 @@ const RegisterForm = () => {
       if (matchPassword !== "" && matchPassword === password) {
         await toast.dismiss();
         setIsMatch(true);
-        // toast.success("confirm password!");
       } else if (matchPassword !== "" && matchPassword !== password) {
         await toast.dismiss();
         setIsMatch(false);
-        // toast.error("Passwords are not equal", {});
       }
     };
 
@@ -127,7 +125,6 @@ const RegisterForm = () => {
               label="סיסמה"
               type={showPassword ? "text" : "password"}
               variant="outlined"
-              // value={password}
               onChange={(e) => setPassword(e.target.value)}
               InputProps={{
                 endAdornment: (
@@ -152,7 +149,6 @@ const RegisterForm = () => {
               label="אימות סיסמה"
               type={showPassword ? "text" : "password"}
               variant="outlined"
-              // value={matchPassword}
               onChange={(e) => setMatchPassword(e.target.value)}
               InputProps={{
                 endAdornment: (

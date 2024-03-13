@@ -1,14 +1,13 @@
-import { UserSchema } from "./../../server/API/Users/usersModel";
 /// <reference types="vite/client" />
 
 interface Gift {
   name: string;
   description: string;
-  price: number;
+  price?: number;
   deliveryOption: string[];
-  donations: { donationId :string , sumOfDonations:number}[];
-  date: string;
-  _id: string;
+  donations?: { donationId: string; sumOfDonations: number }[];
+  date?: string;
+  _id?: string;
 }
 
 interface OwnerInfo {
@@ -20,10 +19,9 @@ interface OwnerInfo {
   profileImageUrl: string;
 }
 
-
 type Donation = {
   _id?: string;
-  date?: string ;
+  date?: string;
   giftId: string;
   projectId: string;
   userToken?: string;
@@ -32,15 +30,15 @@ type Donation = {
   address: string;
   city: string;
   rewardAmount: number;
-  donationSum: number;
-  noteToOwner: string;
-  comment: string;
+  donationSum?: number;
+  noteToOwner?: string;
+  comment?: string;
   approvalRegulation: boolean;
   anonymous: boolean;
 };
 
 type Project = {
-  _id: string;
+  _id?: string;
   ownerId: string;
   projectName: string;
   projectCategory: string[];
@@ -48,13 +46,13 @@ type Project = {
   tags: string[];
   images: string[];
   videoLink: string;
-  donations: Donation[];
+  donations?: Donation[];
   projectStory: string;
-  aid: number;
-  raised: number;
-  location: string;
-  limitDate: string;
-  ownerInfo: OwnerInfo;
+  aid?: number;
+  raised?: number;
+  location?: string;
+  limitDate?: string;
+  ownerInfo?: OwnerInfo;
   gifts: Gift[];
 };
 

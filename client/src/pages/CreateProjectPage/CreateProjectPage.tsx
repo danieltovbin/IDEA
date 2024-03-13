@@ -1,12 +1,11 @@
-import React from 'react'
-import CreationNav from '../../Components/CreateProject/CreationNav'
+import CreationNav from "../../Components/CreateProject/CreationNav";
 
 const CreateProject = () => {
   return (
     <div>
-        <CreationNav/>
+      <CreationNav />
     </div>
-  )
-}
+  );
+};
 
-export default CreateProject
+export default CreateProject;

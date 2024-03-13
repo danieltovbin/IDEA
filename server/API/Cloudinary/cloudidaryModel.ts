@@ -10,7 +10,6 @@ export const uploadBase64Image = async (base64String) => {
     const result = await cloudinary.v2.uploader.upload(
       `data:image/jpeg;base64,${base64String}`
     );
-    console.log("Image uploaded successfully:", result);
     return result.url;
   } catch (error) {
     if (

@@ -1,4 +1,10 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  getProjectById,
+  updateOneOnProject,
+  uploadImage
+} from "../../API/Projects/projectClientCtrl";
 import EntrepreneurName from "../../components/edit/DeveloperDetails/Inputs/EntrepreneurName";
 import LinkToFacebook from "../../components/edit/DeveloperDetails/Inputs/LinkToFacebook";
 import Phone from "../../components/edit/DeveloperDetails/Inputs/Phone";
@@ -8,14 +14,6 @@ import PicProfile from "../../components/edit/DeveloperDetails/picProfile/PicPro
 import PrevNextPage from "../../components/edit/util/prevNextPage/PrevNextPage";
 import EditLayout from "../../layouts/EditLayout";
 import "./scss/description.scss";
-import {
-  getProjectById,
-  updateOneOnProject,
-  updateProject,
-  uploadImage,
-} from "../../API/Projects/projectClientCtrl";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 const DeveloperDetails = () => {
   const navigate = useNavigate();
@@ -31,7 +29,6 @@ const DeveloperDetails = () => {
 
   const handleChangeInput = (event: any): void => {
     const { name, value } = event.target;
-    console.log(name, value);
 
     setOwnerInfo((prevFormData) => ({
       ...prevFormData,
@@ -41,13 +38,11 @@ const DeveloperDetails = () => {
 
   const handleProfileImage = async (event: any) => {
     setProfileImg(event.target.files[0]);
-    console.log(event.target.files[0]);
   };
 
   const getProject = async () => {
     const currentProject = await getProjectById();
     setOwnerInfo(currentProject.ownerInfo);
-    console.log("get project from DB", currentProject);
   };
 
   useEffect(() => {
@@ -55,10 +50,8 @@ const DeveloperDetails = () => {
   }, []);
 
   const handleSubmit = () => {
-    console.log("form complete!");
-    console.log(ownerInfo);
     updateOneOnProject("ownerInfo", ownerInfo);
-    uploadImage(profileImg, "ownerInfo.profileImageUrl")
+    uploadImage(profileImg, "ownerInfo.profileImageUrl");
     navigate("/project");
   };
 
@@ -131,7 +124,7 @@ const DeveloperDetails = () => {
         prevPageName={"Submissions"}
         nextPageName={"project"}
       />
-      <div style={{marginBottom:"70px"}}></div>
+      <div style={{ marginBottom: "70px" }}></div>
     </EditLayout>
   );
 };

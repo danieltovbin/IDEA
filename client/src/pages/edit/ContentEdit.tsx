@@ -3,7 +3,6 @@ import "primeicons/primeicons.css";
 import { Editor } from "primereact/editor";
 import "primereact/resources/themes/lara-dark-indigo/theme.css";
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { updateOneOnProject } from "../../API/Projects/projectClientCtrl";
 import PrevNextPage from "../../components/edit/util/prevNextPage/PrevNextPage";
 import LabelAndNote from "../../components/labelNoteProps/LabelAndNote";
@@ -11,27 +10,20 @@ import EditLayout from "../../layouts/EditLayout";
 import "./scss/content.scss";
 
 const ContentEdit = () => {
-  const navigate = useNavigate();
   const [text, setText] = useState("");
 
   const editorRef = useRef<Editor>(null);
 
   const handleGetContent = async () => {
     if (editorRef.current) {
-      const content = editorRef.current.getContent().innerHTML;
-      const content1 = editorRef.current.getQuill();
-      console.log(content1);
-
       await updateOneOnProject("projectStory", text);
     }
   };
 
-  useEffect(() => {
-    console.log(text);
-  }, [text]);
+  useEffect(() => {}, [text]);
   return (
     <EditLayout>
-      <div className="card" >
+      <div className="card">
         <p>
           זהו המקום לספר את הסיפור של הפרויקט. בצורה עניינית מצד אחד ומלאה
           ומפורטת מהצד השני. כדאי להוסיף כותרות, תמונות, סרטונים וכל תוכן נוסף
@@ -52,10 +44,12 @@ const ContentEdit = () => {
 את העמוד כדאי לעצב בצורה נעימה לקריאה, בשילוב תמונות, סרטונים ומצגים.`}
           showTooltip={true}
         />
-        <Editor dir="ltr"
+        <Editor
+          dir="ltr"
           ref={editorRef}
           value={text}
           onTextChange={(e) => {
+            //@ts-ignore
             setText(e.htmlValue);
           }}
           style={{ height: "320px", marginBottom: "35px", minHeight: "360px" }}

@@ -2,13 +2,12 @@ import { Box, Stepper } from "@mui/material";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import { FC, useState } from "react";
+import { addDonation } from "../../../API/Donation/donationClientCtl";
 import { Donation, Gift, Project } from "../../../vite-env";
 import PaymentDetails from "./PaymentDetails";
 import PersonalDetails from "./PersonalDetails";
 import SumOfSupport from "./SumOfSupport";
 import "./chosenGiftDisplay.scss";
-import { log } from "console";
-import { addDonation } from "../../../API/Donation/donationClientCtl";
 
 interface GiftCompProps {
   gift: Gift;

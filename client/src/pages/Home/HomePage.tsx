@@ -1,19 +1,19 @@
 import BottomPage from "../../Components/Home/BottomPage";
-import BtnStart from "../../components/Home/BtnStart";
 import Navbar from "../../Components/Navbar/Navbar";
+import BtnStart from "../../components/Home/BtnStart";
 import ContainerProjects from "../../components/Home/ContainerProjects";
 import TopProjects from "../../components/Home/TopProjects";
-import "./homePage.scss";
 import ConnectWithUs from "../../components/Popups/ConnectWithUs";
+import "./homePage.scss";
 const HomePage = () => {
   return (
     <div className="homePageDiv">
       <Navbar />
       <BtnStart />
       <TopProjects />
-      <ContainerProjects/>
+      <ContainerProjects />
       <BottomPage />
-      <ConnectWithUs/>
+      <ConnectWithUs />
     </div>
   );
 };

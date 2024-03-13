@@ -25,7 +25,6 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
   try {
     const { userName, password } = req.body;
-    console.log(userName, password);
     if (!userName || !password) throw new Error("not get all user information");
     const userDB = await UserModel.findOne({ userName });
     if (!userDB) throw new Error("user not found");
@@ -78,8 +77,6 @@ export const checkIsAdmin = async (req, res) => {
 
 export const checkIsAdminMW = async (req, res, next) => {
   try {
-    console.log(req.params.userToken);
-
     const { userToken } = req.body;
     if (!userToken) throw new Error("no token");
     const { userId } = jwt.decode(userToken, SECRET_KEY);
@@ -119,7 +116,6 @@ export const sendEmail = async (req, res) => {
 
     const info = await transporter.sendMail(mailOptions);
 
-    console.log("Message sent: %s", info.messageId);
     res.send({ ok: true, message: "Email sent successfully" });
   } catch (error) {
     console.error("Error sending email:", error);

@@ -8,7 +8,6 @@ export const uploadImageController = async (req: Request, res: Response) => {
     const imageBuffer = req.file?.buffer;
     const base64String = imageBuffer.toString("base64");
 
-    console.log(projectId, key, imageBuffer);
     if (!imageBuffer || !key || !projectId) throw new Error("Invalid upload");
     if (!imageBuffer) {
       return res.status(400).json({ error: "No image provided" });
@@ -21,12 +20,6 @@ export const uploadImageController = async (req: Request, res: Response) => {
         { $set: { [key]: imageUrl } },
         { new: true }
       );
-
-      if (updatedProject) {
-        console.log("Profile image URL updated successfully:", updatedProject);
-      } else {
-        console.log("Project not found");
-      }
 
       return res.json({ imageUrl });
     }

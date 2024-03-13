@@ -76,7 +76,6 @@ const LoginForm = () => {
             label="סיסמה"
             type={showPassword ? "text" : "password"}
             variant="outlined"
-            // value={password}
             onChange={(e) => setPassword(e.target.value)}
             InputProps={{
               endAdornment: (

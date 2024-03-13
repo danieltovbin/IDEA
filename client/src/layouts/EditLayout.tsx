@@ -13,7 +13,6 @@ const EditLayout: FC<LayoutProps> = ({ children }) => {
   return (
     <div className="edit">
       <Navbar/>
-      {/* <AppBarProps /> */}
       <CreationNav />
       <div>
         <Navtabs />
