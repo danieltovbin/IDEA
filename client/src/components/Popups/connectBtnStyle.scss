@@ -21,14 +21,14 @@
     width: 100vw;
     height: 100vmax;
     background-color: rgba(0, 0, 0, 0.145);
-    position: absolute;
+    position: fixed;
     top: 0;
     z-index: 10;
   }
   .coneectWithusPopup {
     width: 390px;
     z-index: 11;
-    position: absolute;
+    position: fixed;
     top: 5rem;
     left: calc(50% - 200px);
     border-radius: 3px;

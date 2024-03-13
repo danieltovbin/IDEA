@@ -114,7 +114,15 @@ export const sendEmail = async (req, res) => {
       html: `<p style="color:red;">Name: ${fullName}<br>Email: ${email}</br>Phone: ${phone}<br>Message: ${message}</br></p>`,
     };
 
-    const info = await transporter.sendMail(mailOptions);
+    const mailToUser = {
+      from: "idearuthdaniel@gmail.com",
+      to: email,
+      subject: subject,
+      html: `<p > שלום ${fullName}, <br/> Idea הודעתך התקבלה בהצלחה במערכת 😊 </p>`,
+    };
+
+    await transporter.sendMail(mailOptions);
+    await transporter.sendMail(mailToUser);
 
     res.send({ ok: true, message: "Email sent successfully" });
   } catch (error) {
