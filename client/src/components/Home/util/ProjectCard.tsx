@@ -28,8 +28,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
   function isValidDate(date: Date): boolean {
     return !isNaN(date.getTime());
   }
-  const filteredProjects = projects
-    .filter((project) => {
+  const filteredProjects = projects.filter((project) => {
       switch (categoryFilter) {
         case "endingSoon":
           const currentDate = new Date();
