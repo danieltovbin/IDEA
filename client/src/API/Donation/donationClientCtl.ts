@@ -2,7 +2,7 @@ import axios from "axios";
 
 export let environment = "DEV";
 const CLIENT_DEV_URL = "http://localhost:3000";
-const CLIENT_PROD_URL = "https://idea-getappyourstartup-server.onrender.com";
+const CLIENT_PROD_URL = "https://idea-2mv8.onrender.com";
 
 environment = environment === "DEV" ? CLIENT_DEV_URL : CLIENT_PROD_URL;
 
