@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { allCompletedProjects, } from "../../../API/Projects/projectClientCtrl";
+import { allCompletedProjects} from "../../../API/Projects/projectClientCtrl";
 import { calculateRemainingDays } from "./calculateRemainingDays";
 import "./scss/projectCard.scss";
 
@@ -10,25 +10,59 @@ const ProjectCard: FC<ProjectCardProps> = ({
 }) => {
   const navigate = useNavigate();
   const [projects, setProjects] = useState<Project[]>([]);
+  console.log('projects from ProjectCard',projects)
 
   const allProjects = async () => {
-    try {
-      const { allProjects } = await allCompletedProjects();
-      setProjects(allProjects);
-    } catch (error) {
-      console.error(error);
-      return [];
-    }
+    const fetchData = async () => {
+      try {
+        const response = await allCompletedProjects();
+        if (response.ok) {
+          setProjects(response.allProjects);
+          console.log("Fetched projects:", response.allProjects);
+        } else {
+          console.error("Error fetching projects:", response.error);
+        }
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+      }
+    };
+
+    fetchData();
   };
+
 
   useEffect(() => {
     allProjects();
-  }, []);
+    console.log("allProjects from ProjectCard", projects)
+  },[]);
+
+
+
+  // const allProjects = async () => {
+  //   try {
+  //     const fetchedProjects = await allCompletedProjects();
+  //     setProjects(fetchedProjects);
+  //     console.log("Projects fetched:", fetchedProjects);
+  //     setLoading(false);
+  //   } catch (error) {
+  //     console.error(error);
+  //     setLoading(false)
+  //   }
+  // };
+
+
+  // useEffect(() => {
+  //   allProjects();
+  //   console.log("allProjects from ProjectCard", projects)
+  // },[]);
 
   function isValidDate(date: Date): boolean {
     return !isNaN(date.getTime());
   }
-  const filteredProjects = projects.filter((project) => {
+
+
+
+  const filteredProjects = Array.isArray(projects) && projects.length > 0? projects.filter((project) => {
       switch (categoryFilter) {
         case "endingSoon":
           const currentDate = new Date();
@@ -68,7 +102,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
           return true;
       }
     })
-    .slice(0, projectsToShow);
+    .slice(0, projectsToShow): [];
 
   const clickedOnProject = (projectId: string) => {
     sessionStorage.setItem("projectId", projectId);
@@ -83,7 +117,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
         flexWrap: "wrap",
       }}
     >
-      {filteredProjects.map((project, index) => (
+      {filteredProjects && filteredProjects.map((project, index) => (
         <div
           className="main"
           onClick={() => clickedOnProject(project._id)}

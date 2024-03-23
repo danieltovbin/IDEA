@@ -18,7 +18,10 @@ export async function startProject(projectInfo: any) {
 
     sessionStorage.setItem("projectId", data.projectDB._id);
 
-    if (data.ok) return { ok: true };
+    if (data.ok){
+      // await getProjectById();
+      return { ok: true };
+    } 
     else throw new Error("Could not create project");
   } catch (error) {
     console.error("Failed to start project in client Side:" + error);
@@ -29,6 +32,10 @@ export async function startProject(projectInfo: any) {
 export async function getProjectById() {
   try {
     const projectId = sessionStorage.getItem("projectId");
+    if(!projectId){
+      console.error("ProjectId is null or undefined")
+      return undefined;
+    }
     const { data } = await axios.post(`${environment}/API/projects/getProjectById`, {
       projectId,
     });
@@ -123,6 +130,17 @@ export async function allCompletedProjects() {
     return [];
   }
 }
+// export async function allCompletedProjects() {
+//   try {
+//     const response = await axios.get(`${environment}/API/projects/allCompletedProjects`);
+//     console.log("response from allCompletedProjects",response.data); // Log the response data
+//     if (response.data) return response.data;
+//     else return [];
+//   } catch (error) {
+//     console.error(error);
+//     return [];
+//   }
+// }
 
 export async function deleteProject(projectId: string) {
   try {
