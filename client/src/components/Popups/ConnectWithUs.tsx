@@ -8,6 +8,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import "./connectBtnStyle.scss";
+import { connectWithUsThroughEmail } from "../../API/Users/usersClientCtrl";
 
 const ConnectWithUs = () => {
   const [visible, setVisible] = useState(false);
@@ -22,9 +23,11 @@ const ConnectWithUs = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/API/users/send-email", formData);
-      if (!response.data.ok) {
-        console.error("Failed to send email");
+      const { fullName, email, phone, subject, message } = formData;
+      const data = await connectWithUsThroughEmail(fullName, email, phone, subject, message);
+      if (data && data.ok) {
+      } else {
+        throw new Error("Failed to send email");
       }
     } catch (error) {
       console.error("Error sending email", error);

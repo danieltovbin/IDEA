@@ -29,6 +29,8 @@ export async function getProjectById(req, res) {
   try {
     const { projectId } = req.body;
     console.log("projectId:", projectId);
+    await startProject(req, res);
+    
     const projectDB = await ProjectModel.findById(projectId);
     console.log("projectDB:", projectDB); 
     if (!projectDB) throw new Error("Project not found");

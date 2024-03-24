@@ -7,6 +7,12 @@ const CLIENT_PROD_URL = "https://idea-2mv8.onrender.com";
 
 environment = environment === "PROD" ? CLIENT_PROD_URL : CLIENT_DEV_URL;
 
+// export let environment = "DEV";
+// const CLIENT_DEV_URL = "http://localhost:3000";
+// const CLIENT_PROD_URL = "https://idea-2mv8.onrender.com";
+
+// environment = environment === "DEV" ? CLIENT_DEV_URL : CLIENT_PROD_URL;
+
 export async function startProject(projectInfo: any) {
   try {
     const userToken = sessionStorage.getItem("userToken");
@@ -19,7 +25,6 @@ export async function startProject(projectInfo: any) {
     sessionStorage.setItem("projectId", data.projectDB._id);
 
     if (data.ok){
-      // await getProjectById();
       return { ok: true };
     } 
     else throw new Error("Could not create project");

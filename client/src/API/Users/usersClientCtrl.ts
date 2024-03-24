@@ -73,3 +73,16 @@ export const checkIsAdminInDB = async () => {
 export const handleLogOut =()=>{
   sessionStorage.removeItem("userToken");
 }
+
+export const connectWithUsThroughEmail = async ( fullName:string, email:string, phone:string, subject:string, message:string )=>{
+  try {
+    const response = await axios.post(`${environment}/API/users/send-email`, { fullName, email, phone, subject, message });
+    if (!response.data.ok) {
+      console.error("Failed to send email");
+    }
+    return response.data;
+  } catch (error) {
+    console.error("Error sending email connectWithUsThroughEmail", error);
+    throw error;
+  }
+}
