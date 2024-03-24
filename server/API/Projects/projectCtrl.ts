@@ -96,8 +96,8 @@ export async function updateOneOnProject(req, res) {
 export async function get4latestProjects(req, res) {
   try {
     const latestProjects = await ProjectModel.find({isProjectCompleted: true})
-      .sort({ createdAt: -1 })
-      .limit(4);
+    .sort({ createdAt: -1 })
+    .limit(4);
     res.send({ ok: true, latestProjects });
   } catch (error) {
     console.error(error);
@@ -232,6 +232,14 @@ async function addRandomProject() {
     console.error(error);
   }
 }
+// async function addMultipleProjects(numProjects) {
+//   for (let i = 0; i < numProjects; i++) {
+//     await addRandomProject();
+//   }
+// }
+
+// // Call the function to add 10 projects
+// addMultipleProjects(10);
 
 export function generateUUID(): string {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
