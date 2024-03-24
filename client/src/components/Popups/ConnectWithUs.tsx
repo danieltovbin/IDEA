@@ -4,7 +4,6 @@ import {
   NativeSelect,
   TextField,
 } from "@mui/material";
-import axios from "axios";
 import React, { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import "./connectBtnStyle.scss";
